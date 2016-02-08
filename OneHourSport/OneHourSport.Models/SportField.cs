@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class SportField
     {
@@ -22,14 +23,20 @@
 
         public Guid Id { get; set; }
 
+        [Required]
+        [StringLength(100, MinimumLength = 5)]
         public string Name { get; set; }
 
+        [Required]
+        [StringLength(1000, MinimumLength = 50)]
         public string Description { get; set; }
 
+        [Required]
         public decimal PricePerHour { get; set; }
-        
+
         public string SportComplexId { get; set; }
 
+        [Required]
         public virtual SportComplex SportComplex { get; set; }
 
         public bool isAprooved { get; set; }
@@ -37,7 +44,7 @@
         public bool isCovered { get; set; }
 
         public virtual Picture Picture { get; set; }
-        
+
         public virtual ICollection<OccupiedHour> OccupiedHours
         {
             get { return this.hours; }
@@ -55,6 +62,5 @@
             get { return this.ratings; }
             set { this.ratings = value; }
         }
-
     }
 }

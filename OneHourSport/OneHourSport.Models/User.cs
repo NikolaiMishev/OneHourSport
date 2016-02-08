@@ -7,10 +7,13 @@
     {
         private ICollection<OccupiedHour> hours;
 
+        private ICollection<Skill> skills;
+        
         public User(string userName) 
             : base(userName)
         {
             this.hours = new HashSet<OccupiedHour>();
+            this.skills = new HashSet<Skill>();
         }
 
         public string FirstName { get; set; }
@@ -27,7 +30,10 @@
             set { this.hours = value; }
         }
 
-        // TODO
-        // Skills -
+        public virtual ICollection<Skill> Skills
+        {
+            get { return this.skills; }
+            set { this.skills = value; }
+        }
     }
 }
