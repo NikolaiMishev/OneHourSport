@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using OneHourSport.Web.Models;
+using OneHourSport.Web.Models.Account;
 using OneHourSport.Models;
 
 namespace OneHourSport.Web.Controllers

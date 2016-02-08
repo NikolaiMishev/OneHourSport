@@ -3,6 +3,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
     using System.Threading.Tasks;
     public class User : IdentityUser
@@ -17,12 +18,20 @@
             this.skills = new HashSet<Skill>();
         }
 
+        [Required]
+        [StringLength(50, MinimumLength = 2)]
         public string FirstName { get; set; }
 
+        [Required]
+        [StringLength(50, MinimumLength = 2)]
         public string LastName { get; set; }
 
+        [Required]
         public override string UserName {  get;  set; }
 
+        public bool IsComplex { get; set; }
+
+        [Required]
         public override string Email { get; set; }
 
         public virtual Picture Picture { get; set; }
