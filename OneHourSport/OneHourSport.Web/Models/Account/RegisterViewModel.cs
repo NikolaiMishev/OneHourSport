@@ -1,6 +1,7 @@
 ﻿namespace OneHourSport.Web.Models.Account
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
 
     public class RegisterViewModel
@@ -33,12 +34,19 @@
         public string LastName { get; set; }
 
         [Required]
+        [StringLength(9, ErrorMessage = "The Phone number must be exactly {2} characters long.", MinimumLength = 9)]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Only diggits are alowed!")]
+        [Display(Name = "Phone number: (+359)")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         [StringLength(50, ErrorMessage = "The {0} must be atleast {2} characters long.", MinimumLength = 5)]
+        [Index(IsUnique = true)]
         [Display(Name = "Username")]
         public string UserName { get; set; }
 
-        [Display(Name = "Have Complex")]
-        public string IsComplex { get; set; }
+        [Display(Name = "Have Complex?")]
+        public bool IsComplex { get; set; }
 
         public HttpPostedFileBase ProfilePicture { get; set; }
     }

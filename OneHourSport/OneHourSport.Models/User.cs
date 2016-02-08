@@ -4,6 +4,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
     public class User : IdentityUser
@@ -33,6 +34,9 @@
 
         [Required]
         public override string Email { get; set; }
+
+        [Required]
+        public override string PhoneNumber { get; set; }
 
         public virtual Picture Picture { get; set; }
 

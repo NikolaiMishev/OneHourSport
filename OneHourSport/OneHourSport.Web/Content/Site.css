@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.coolLi ul li {
+    list-style-type: none !important;
+}
