@@ -2,7 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     public class Skill
     {
         public Skill()
@@ -15,15 +15,18 @@
         [Required]
         public SportCategory Category { get; set; }
 
+
         public string CreatorId { get; set; }
 
         [Required]
+        [ForeignKey("CreatorId")]
         public virtual User Creator { get; set; }
 
         public string ResieverId { get; set; }
 
         [Required]
-        public virtual User Resiever { get; set; }
+        [ForeignKey("ResieverId")]
 
+        public virtual User Resiever { get; set; }
     }
 }

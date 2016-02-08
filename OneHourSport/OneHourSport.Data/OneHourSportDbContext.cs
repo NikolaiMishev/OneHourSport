@@ -3,7 +3,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using OneHourSport.Models;
     using System.Data.Entity;
-
+    using System.Data.Entity.ModelConfiguration.Conventions;
     public class OneHourSportDbContext : IdentityDbContext<User>, IOneHourSportDbContext
     {
         public OneHourSportDbContext() 
@@ -30,5 +30,18 @@
         public virtual IDbSet<SportComplex> SportComplexes { get; set; }
 
         public virtual IDbSet<SportField> SportFields { get; set; }
+
+        public static OneHourSportDbContext Create()
+        {
+            return new OneHourSportDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

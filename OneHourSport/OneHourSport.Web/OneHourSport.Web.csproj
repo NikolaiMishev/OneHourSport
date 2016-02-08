@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -245,6 +246,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OneHourSport.Data\OneHourSport.Data.csproj">
+      <Project>{58719b91-1cba-4d65-9b43-9102f5eea382}</Project>
+      <Name>OneHourSport.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OneHourSport.Models\OneHourSport.Models.csproj">
+      <Project>{c726fafa-9624-4f4e-aac9-2fcff6ddb5ce}</Project>
+      <Name>OneHourSport.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
