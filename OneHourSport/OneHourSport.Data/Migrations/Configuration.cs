@@ -18,11 +18,12 @@ namespace OneHourSport.Data.Migrations
 
         protected override void Seed(OneHourSport.Data.OneHourSportDbContext context)
         {
-            //context.Configuration.LazyLoadingEnabled = true;
+            context.Configuration.LazyLoadingEnabled = true;
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            //var userManager = new UserManager<User>(new UserStore<User>(context));
-            //userManager.PasswordValidator = new MinimumLengthValidator(5);
+            var userManager = new UserManager<User>(new UserStore<User>(context));
+
+            userManager.PasswordValidator = new MinimumLengthValidator(5);
 
             if (!roleManager.RoleExists("admin"))
             {
@@ -34,23 +35,24 @@ namespace OneHourSport.Data.Migrations
                 roleManager.Create(new IdentityRole("complex"));
             }
 
-            //var user = new User
-            //{
-            //    UserName = "admin",
-            //    Email = "admin@gmail.com",
-            //    PhoneNumber = "0888111222",
-            //    FirstName = "Admin",
-            //    LastName = "Admin"
-            //};
+            var user = new User
+            {
+                UserName = "admin@gmail.com",
+                DisplayName = "admin",
+                Email = "admin@gmail.com",
+                PhoneNumber = "0888111222",
+                FirstName = "Admin",
+                LastName = "Admin"
+            };
 
-            //if (userManager.FindByName("admin") == null)
-            //{
-            //    var result = userManager.Create(user, "admin");
-            //    if (result.Succeeded)
-            //    {
-            //        userManager.AddToRole(user.Id, "admin");
-            //    }
-            //}
+            if (userManager.FindByName("admin") == null)
+            {
+                var result = userManager.Create(user, "admin");
+                if (result.Succeeded)
+                {
+                    userManager.AddToRole(user.Id, "admin");
+                }
+            }
 
 
 
