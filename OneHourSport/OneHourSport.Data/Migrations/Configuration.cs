@@ -37,8 +37,7 @@ namespace OneHourSport.Data.Migrations
 
             var user = new User
             {
-                UserName = "admin@gmail.com",
-                DisplayName = "admin",
+                UserName = "admin",
                 Email = "admin@gmail.com",
                 PhoneNumber = "0888111222",
                 FirstName = "Admin",

@@ -26,18 +26,9 @@
         [Required]
         [StringLength(50, MinimumLength = 2)]
         public string LastName { get; set; }
-
-        [Required]
-        public override string UserName {  get;  set; }
-
-        [Required]
-        public string DisplayName { get; set; }
-
+        
         public bool IsComplex { get; set; }
-
-        [Required]
-        public override string Email { get; set; }
-
+        
         [Required]
         public override string PhoneNumber { get; set; }
 

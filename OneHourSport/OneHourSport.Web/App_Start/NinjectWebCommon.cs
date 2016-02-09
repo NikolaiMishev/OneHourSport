@@ -67,10 +67,10 @@ namespace OneHourSport.Web.App_Start
         {
             kernel.Bind<IOneHourSportDbContext>().To<OneHourSportDbContext>().InRequestScope();
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
-            //kernel.Bind(b => b
-            //   .From(Assemblies.DataServices)
-            //   .SelectAllClasses()
-            //   .BindDefaultInterface());
+            kernel.Bind(b => b
+               .From(Assemblies.DataServices)
+               .SelectAllClasses()
+               .BindDefaultInterface());
         }        
     }
 }
