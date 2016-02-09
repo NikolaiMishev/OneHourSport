@@ -154,15 +154,22 @@ namespace OneHourSport.Web.Controllers
             {
                 var user = new User
                 {
-                    UserName = model.UserName,
+                    UserName = model.Email,
+                    DisplayName = model.UserName,
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     IsComplex = model.IsComplex,
                     PhoneNumber = model.PhoneNumber
-
                 };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
+
+                if (model.IsComplex)
+                {
+                    UserManager.AddToRole(user.Id, "complex");
+                }
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

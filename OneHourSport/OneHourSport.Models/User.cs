@@ -30,6 +30,9 @@
         [Required]
         public override string UserName {  get;  set; }
 
+        [Required]
+        public string DisplayName { get; set; }
+
         public bool IsComplex { get; set; }
 
         [Required]

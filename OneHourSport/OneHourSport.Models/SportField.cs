@@ -12,6 +12,9 @@
 
         private ICollection<Rating> ratings;
 
+        private ICollection<Picture> pictures;
+
+
 
         public SportField()
         {
@@ -19,6 +22,7 @@
             this.hours = new HashSet<OccupiedHour>();
             this.comments = new HashSet<Comment>();
             this.ratings = new HashSet<Rating>();
+            this.pictures = new HashSet<Picture>();
         }
 
         public Guid Id { get; set; }
@@ -45,7 +49,11 @@
 
         public virtual SportCategory Category { get; set; }
 
-        public virtual Picture Picture { get; set; }
+        public virtual ICollection<Picture> Pictures
+        {
+            get { return this.pictures; }
+            set { this.pictures = value; }
+        }
 
         public virtual ICollection<OccupiedHour> OccupiedHours
         {

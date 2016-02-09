@@ -4501,22 +4501,23 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+  background-color: #000000;
+  border-color: #CACACA;
+  border-bottom: 1px solid #149E03;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: #999;
 }
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #ffffff;
+  color: white;
   background-color: transparent;
 }
 
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: white;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -4525,7 +4526,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: white;
   background-color: transparent;
 }
 
