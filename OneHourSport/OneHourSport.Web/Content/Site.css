@@ -34,9 +34,9 @@ textarea {
 }
 
 body {
-     height: 100%;
-     width: 100%;
-     background-image: url("defaults/backraoun.png");
+    height: 100%;
+    width: 100%;
+    background-image: url("defaults/backraoun.png");
 }
 
 .navigation {
@@ -56,19 +56,23 @@ body {
     color: white;
     background-color: transparent;
 }
-.myBox{
+
+.myBox {
     border: 1px solid #EEEEEE;
 }
+
 .centered-profile-image {
     width: 50px;
     height: 47px;
     margin-top: 3%;
     border-radius: 5px;
 }
+
 .btn-file {
     position: relative;
     overflow: hidden;
 }
+
 .btn-file input[type=file] {
     position: absolute;
     top: 0;
@@ -84,11 +88,27 @@ body {
     cursor: inherit;
     display: block;
 }
-.profileBackground{
+
+.profileBackground {
     background-color: #DDD;
     font-size: 1.9em;
 }
-.descriptionBackground{
-     background-color: #80A4A5;
+
+.descriptionBackground {
+    background-color: #80A4A5;
     font-size: 1.7em;
+}
+
+.sportImageSmall {
+    margin-top: 2px;
+    margin-bottom: 1px;
+
+    height: 30px;
+    width: 30px;
+}
+#wrap{
+    color: #435A5A;
+}
+#wrap a{
+    color: #022E2F;
 }

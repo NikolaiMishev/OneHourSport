@@ -50,23 +50,33 @@
     </div>
     <div class="container miniMenu">
         <div class="col-md-2 col-sm-offset-1">
-            @Html.ActionLink("Football", "Index", "Home")
+            <a href='@Url.Action("Index", "Home")'>
+                <img src="@Url.Content("~/Content/defaults/football.png")" class="img-responsive sportImageSmall" title="Football"/>
+            </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            @Html.ActionLink("Tennis", "Index", "Home")
+            <a href='@Url.Action("Index", "Home")'>
+                <img src="@Url.Content("~/Content/defaults/tennis.png")" class="img-responsive sportImageSmall" title="Tennis"/>
+            </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            @Html.ActionLink("Volayball", "Index", "Home")
+            <a href='@Url.Action("Index", "Home")'>
+                <img src="@Url.Content("~/Content/defaults/volleyball.png")" class="img-responsive sportImageSmall" title="Volleyball" />
+            </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            @Html.ActionLink("Basketball", "Index", "Home")
+            <a href='@Url.Action("Index", "Home")'>
+                <img src="@Url.Content("~/Content/defaults/basketball.png")" class="img-responsive sportImageSmall" title="Basketball"/>
+            </a>
         </div>
     </div>
     <div class="container body-content coolSideLines">
         @RenderBody()
         <hr />
         <footer class="panel-footer text-center" id="wrap">
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; 2016 - Telerik Academy</p>
+            <p>ASP.NET MVC Application by (<a href="http://telerikacademy.com/Users/nikolai.mishev.5"  target="_blank">Nikolay Mishev</a>)</p>
+            <p><a href="https://github.com/NikolaiMishev/OneHourSport"  target="_blank">OneHourSport System 1.0</a></p>
         </footer>
 
     </div>

@@ -28,16 +28,21 @@
                 </div>
                 <div class="row">
                     @Html.Label("Address:")
-                    @Html.DisplayTextFor(m => m.Address)
+                    <a href="http://maps.google.com/?q=@Model.Address" target="_blank">@Model.Address</a>
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.WorkHourFrom):
+                    @Html.Label("We work from ")
                     @Html.DisplayTextFor(m => m.WorkHourFrom)
-                </div>
-                <div class="row">
-                    @Html.LabelFor(model => model.WorkHourTo):
+                    @Html.Label(" to ")
                     @Html.DisplayTextFor(m => m.WorkHourTo)
+                    @Html.Label(" o'clock!")
+
+
                 </div>
+                @*<div class="row">
+                    @Html.LabelFor(model => model.WorkHourTo):
+                    
+                </div>*@
             </div>
             <div class="col-md-3">
                 <div class="row">
