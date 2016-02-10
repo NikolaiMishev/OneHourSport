@@ -7,12 +7,13 @@
     {
         public Picture()
         {
-            this.Id = Guid.NewGuid();
         }
 
-        public Guid Id { get; set; }
-        
+        public int Id { get; set; }
+
+        public byte[] Content { get; set; }
+
         [Required]
-        public string Path { get; set; }
+        public string FileExtension { get; set; }
     }
 }

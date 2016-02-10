@@ -2049,9 +2049,9 @@ fieldset[disabled] .btn {
 }
 
 .btn-default {
-  color: #333333;
-  background-color: #ffffff;
-  border-color: #cccccc;
+  color: white;
+  background-color: #022E2F;
+  border-color: #93E888;
 }
 
 .btn-default:hover,
@@ -2061,7 +2061,7 @@ fieldset[disabled] .btn {
 .open .dropdown-toggle.btn-default {
   color: #333333;
   background-color: #ebebeb;
-  border-color: #adadad;
+  border-color: #149E03;
 }
 
 .btn-default:active,
@@ -4501,9 +4501,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #000000;
+  background-color: #022E2F;
   border-color: #CACACA;
-  border-bottom: 1px solid #149E03;
+  border-bottom: 1px solid #93E888;
 }
 
 .navbar-inverse .navbar-brand {

@@ -34,8 +34,9 @@ textarea {
 }
 
 body {
-    background-color: #EFEFEF;
      height: 100%;
+     width: 100%;
+     background-image: url("defaults/backraoun.png");
 }
 
 .navigation {
@@ -43,7 +44,7 @@ body {
 }
 
 .miniMenu {
-    background-color: #B7BDB6;
+    background-color: #80A4A5;
 }
 
 .miniMenu a {
@@ -54,4 +55,36 @@ body {
 .miniMenu a:focus {
     color: white;
     background-color: transparent;
+}
+.myBox{
+    border: 1px solid #EEEEEE;
+}
+.centered-profile-image {
+    width: 50px;
+    height: 47px;
+    margin-top: 3%;
+    border-radius: 5px;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+.profileBackground{
+    background-color: #DDD;
+    font-size: 1.9em;
 }

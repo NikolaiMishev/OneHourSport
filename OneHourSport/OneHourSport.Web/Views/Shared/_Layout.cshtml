@@ -27,16 +27,19 @@
                             if (User.IsInRole("admin"))
                             {
                                 //TODO finish admin paths
+                                <li>@Html.ActionLink("Admin Staff", "Index", "Home")</li>
                             }
-
-                            if (User.IsInRole("complex"))
+                            else if (User.IsInRole("complex"))
                             {
                                 <li>@Html.ActionLink("My Complex", "Index", "Home")</li>
                                 <li>@Html.ActionLink("My Fields", "Index", "Home")</li>
+                                <li>@Html.ActionLink("My Games", "Index", "Home")</li>
+
                             }
-
-                            <li>@Html.ActionLink("My Games", "Index", "Home")</li>
-
+                            else
+                            {
+                                <li>@Html.ActionLink("My Games", "Index", "Home")</li>
+                            }
                         }
                     }
                 </ul>
@@ -64,9 +67,9 @@
         <footer class="panel-footer text-center" id="wrap">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
-       
+
     </div>
-   
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

@@ -1,5 +1,6 @@
 ﻿namespace OneHourSport.Models
 {
+    using Common.Constants;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -47,7 +48,7 @@
 
         public bool isCovered { get; set; }
 
-        public virtual SportCategory Category { get; set; }
+        public SportCategory Category { get; set; }
 
         public virtual ICollection<Picture> Pictures
         {

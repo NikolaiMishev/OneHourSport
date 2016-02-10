@@ -6,9 +6,10 @@ namespace OneHourSport.Data.Migrations
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<OneHourSport.Data.OneHourSportDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<OneHourSportDbContext>
     {
         public Configuration()
         {
@@ -16,7 +17,7 @@ namespace OneHourSport.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(OneHourSport.Data.OneHourSportDbContext context)
+        protected override void Seed(OneHourSportDbContext context)
         {
             context.Configuration.LazyLoadingEnabled = true;
 
@@ -34,7 +35,7 @@ namespace OneHourSport.Data.Migrations
             {
                 roleManager.Create(new IdentityRole("complex"));
             }
-
+           
             var user = new User
             {
                 UserName = "admin",

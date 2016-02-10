@@ -24,9 +24,7 @@
         public virtual IDbSet<Rating> Ratings { get; set; }
 
         public virtual IDbSet<Skill> Skills { get; set; }
-
-        public virtual IDbSet<SportCategory> SportCategories { get; set; }
-
+        
         public virtual IDbSet<SportComplex> SportComplexes { get; set; }
 
         public virtual IDbSet<SportField> SportFields { get; set; }

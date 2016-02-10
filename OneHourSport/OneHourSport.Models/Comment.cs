@@ -8,6 +8,7 @@
         public Comment()
         {
             this.Id = Guid.NewGuid();
+            this.DateCreated = DateTime.UtcNow;
         }
 
         public Guid Id { get; set; }
@@ -24,6 +25,8 @@
         public string ComplexId { get; set; }
         
         public virtual SportComplex Complex { get; set; }
+
+        public DateTime DateCreated { get; }
 
         public string FieldId { get; set; }
 

@@ -64,7 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
     <Compile Include="Skill.cs" />
-    <Compile Include="SportCategory.cs" />
     <Compile Include="SportComplex.cs" />
     <Compile Include="SportField.cs" />
     <Compile Include="User.cs" />
@@ -72,6 +71,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OneHourSport.Common\OneHourSport.Common.csproj">
+      <Project>{3e7188cb-59ae-49cd-94be-5d9931a937f2}</Project>
+      <Name>OneHourSport.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

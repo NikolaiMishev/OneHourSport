@@ -1,0 +1,79 @@
+﻿@model OneHourSport.Web.Models.Account.UserDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row text-center">
+        <br />
+        @if (Model != null)
+        {
+
+            <div class="myBox container">
+                <div class="row text-center profileBackground">
+                    Profile Information for @Model.UserName
+                </div>
+                <br />
+                <div class="col-md-3 col-md-offset-1">
+                    @Html.Label("Picture")
+                    <div class="myBox">
+                        <img src="@Url.Action("GetImage", "Picture", new { id = Model.PictureId })" alt="@Model.UserName" class="profilePicture img-responsive" />
+                    </div>
+                </div>
+                <div class="col-md-3 text-left col-md-offset-1">
+                    <div class="row">
+                        @Html.LabelFor(model => model.UserName):
+                        @Html.DisplayTextFor(m => m.UserName)
+                    </div>
+                    <div class="row">
+                        @Html.LabelFor(model => model.FirstName):
+                        @Html.DisplayTextFor(m => m.FirstName)
+                    </div>
+                    <div class="row">
+                        @Html.LabelFor(model => model.LastName):
+                        @Html.DisplayTextFor(m => m.LastName)
+                    </div>
+                    <div class="row">
+                        @Html.LabelFor(model => model.PhoneNumber):
+                        @Html.DisplayTextFor(m => m.PhoneNumber)
+                    </div>
+                    <div class="row">
+                        @Html.LabelFor(model => model.Email):
+                        @Html.DisplayTextFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @Html.Label("Skills")
+                    <div class="row text-left">
+                        @Html.Label("Football"):
+                        @Html.DisplayTextFor(m => m.FootBallVotes)
+                    </div>
+                    <div class="row text-left">
+                        @Html.Label("VolayBall"):
+                        @Html.DisplayTextFor(m => m.VolayBallVotes)
+                    </div>
+                    <div class="row text-left">
+                        @Html.Label("BasketBall"):
+                        @Html.DisplayTextFor(m => m.BasketBallVotes)
+                    </div>
+                    <div class="row text-left">
+                        @Html.Label("Tennis"):
+                        @Html.DisplayTextFor(m => m.TennisVotes)
+                    </div>
+                </div>
+                @if (Model.UserName == User.Identity.Name)
+                {
+                    <div>
+                        @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default pull-right" })
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <h1>Hmm Admin Right!</h1>
+            <h2>Dont try this agan!</h2>
+            <h3>Or do anithing stupid!</h3>
+        }
+    </div>
+</div>
