@@ -14,19 +14,16 @@
         private ICollection<Rating> ratings;
 
         private ICollection<Picture> pictures;
-
-
-
+        
         public SportField()
         {
-            this.Id = Guid.NewGuid();
             this.hours = new HashSet<OccupiedHour>();
             this.comments = new HashSet<Comment>();
             this.ratings = new HashSet<Rating>();
             this.pictures = new HashSet<Picture>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 5)]

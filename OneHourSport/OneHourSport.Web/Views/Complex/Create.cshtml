@@ -1,0 +1,79 @@
+﻿@model OneHourSport.Web.Models.Complex.ComplexRequestViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Complex", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Add your Complex here!</h4>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-7 text-center text-danger">
+            @Html.ValidationSummary(true, "", new { @class = "coolLi alert alert-dismissible alert-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(m => m.ProfilePicture, null, new { @class = "text-danger text-center help-inline" })
+            <span class="btn btn-warning btn-file">
+                Browse... @Html.TextBoxFor(m => m.ProfilePicture, new { @class = "form-control", type = "file" })
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger text-center help-inline" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger text-center help-inline" })
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.WorkHourFrom, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(m => m.WorkHourFrom, null, new { @class = "text-danger text-center help-inline" })
+            @Html.TextBoxFor(m => m.WorkHourFrom, new { @class = "form-control", type = "number", placeholder = "Hour" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.WorkHourTo, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(m => m.WorkHourTo, null, new { @class = "text-danger text-center help-inline" })
+            @Html.TextBoxFor(m => m.WorkHourTo, new { @class = "form-control", type = "number", placeholder = "Hour" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CityName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(m => m.CityName, null, new { @class = "text-danger text-center help-inline" })
+            @Html.TextBoxFor(m => m.CityName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(m => m.Address, null, new { @class = "text-danger text-center help-inline" })
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default btn-lg" value="Create" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

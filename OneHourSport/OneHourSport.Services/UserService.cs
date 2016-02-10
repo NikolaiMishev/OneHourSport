@@ -29,5 +29,10 @@
         {
             return this.users.All().Where(u => u.UserName == username);
         }
+
+        public void UpdateUserComplex(User user)
+        {
+            this.users.Update(user);
+        }
     }
 }

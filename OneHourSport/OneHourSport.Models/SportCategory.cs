@@ -1,18 +1,13 @@
 ﻿namespace OneHourSport.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class City
+    public class SportCategory
     {
-        public City()
-        {
-        }
-
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50,MinimumLength = 3)]
+        [StringLength(30, MinimumLength = 4)]
         public string Name { get; set; }
     }
 }

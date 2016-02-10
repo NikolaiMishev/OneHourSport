@@ -1,0 +1,65 @@
+﻿@model OneHourSport.Web.Models.Complex.ComplexDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row text-center">
+        <br />
+        <div class="myBox container">
+            <div class="row text-center profileBackground">
+               Information for @Model.Name
+            </div>
+            <br />
+            <div class="col-md-3 col-md-offset-1">
+                @Html.Label("Picture")
+                <div class="myBox">
+                    <img src="@Url.Action("GetImage", "Picture", new { id = Model.PictureId })" alt="@Model.Name" class="profilePicture img-responsive" />
+                </div>
+            </div>
+            <div class="col-md-3 text-left col-md-offset-1">
+                <div class="row">
+                    @Html.LabelFor(model => model.Name):
+                    @Html.DisplayTextFor(m => m.Name)
+                </div>
+                <div class="row">
+                    @Html.Label("City:")
+                    @Html.DisplayTextFor(m => m.CityName)
+                </div>
+                <div class="row">
+                    @Html.Label("Address:")
+                    @Html.DisplayTextFor(m => m.Address)
+                </div>
+                <div class="row">
+                    @Html.LabelFor(model => model.WorkHourFrom):
+                    @Html.DisplayTextFor(m => m.WorkHourFrom)
+                </div>
+                <div class="row">
+                    @Html.LabelFor(model => model.WorkHourTo):
+                    @Html.DisplayTextFor(m => m.WorkHourTo)
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="row text-center descriptionBackground">
+                            Description
+                    </div>
+                    <p>
+                        <span style="width: 10em; word-wrap: break-word;">
+                            @Html.DisplayTextFor(m => m.Description)
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="row text-center">
+               @foreach (var field in Model.MyFields)
+               {
+                   //TODO just make it clap
+                <div class="row">
+                    @field.Name
+                </div>
+               }
+            </div>
+        </div>
+    </div>
+</div>

@@ -42,7 +42,8 @@ namespace OneHourSport.Data.Migrations
                 Email = "admin@gmail.com",
                 PhoneNumber = "0888111222",
                 FirstName = "Admin",
-                LastName = "Admin"
+                LastName = "Admin",
+                 
             };
 
             if (userManager.FindByName("admin") == null)

@@ -9,10 +9,9 @@
     {
         public Skill()
         {
-            this.Id = Guid.NewGuid();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public SportCategory Category { get; set; }

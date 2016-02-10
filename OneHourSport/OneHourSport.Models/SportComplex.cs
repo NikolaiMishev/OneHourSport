@@ -7,17 +7,13 @@
     public class SportComplex
     {
         private ICollection<SportField> fields;
-
-        private ICollection<Comment> comments;
         
         public SportComplex()
         {
-            this.Id = Guid.NewGuid();
             this.fields = new HashSet<SportField>();
-            this.comments = new HashSet<Comment>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 5)]
@@ -37,6 +33,8 @@
         [Range(0, 24)]
         public int WorkHourTo { get; set; }
 
+        public string OwnerId { get; set; }
+        
         [Required]
         public string Address { get; set; }
 
@@ -47,12 +45,6 @@
         {
             get { return this.fields; }
             set { this.fields = value; }
-        }
-
-        public virtual ICollection<Comment> Comments
-        {
-            get { return this.comments; }
-            set { this.comments = value; }
         }
     }
 }
