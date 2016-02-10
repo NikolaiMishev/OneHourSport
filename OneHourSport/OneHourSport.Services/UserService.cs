@@ -33,6 +33,7 @@
         public void UpdateUserComplex(User user)
         {
             this.users.Update(user);
+            this.users.SaveChanges();
         }
     }
 }

@@ -15,7 +15,7 @@
         private IComplexService complexService;
 
         private IFieldService fieldService;
-        
+
         private IUserService userService;
 
 
@@ -27,9 +27,24 @@
         }
 
         [HttpGet]
+        public ActionResult CheckComplex()
+        {
+            var user = this.userService
+            .GetByUsername(this.User.Identity.Name)
+            .FirstOrDefault();
+
+            if (user.SportComplex == null)
+            {
+                return RedirectToAction("Create");
+               
+            }
+            return RedirectToAction("ComplexDetails", new { id = user.SportComplex.Id });
+        }
+
+
+        [HttpGet]
         public ActionResult ComplexDetails(int id)
         {
-            // TODO ProjectTo ViewModel!!!
             var result = this.complexService
                 .GetById(id)
                 .ProjectTo<ComplexDetailsViewModel>()
@@ -83,7 +98,7 @@
 
             currentUser.SportComplex = modelAsDb;
             this.userService.UpdateUserComplex(currentUser);
-           
+
             return this.RedirectToAction("ComplexDetails", new { id = complexId });
         }
     }
