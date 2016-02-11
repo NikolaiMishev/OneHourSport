@@ -6,6 +6,7 @@
     using System;
     using System.Linq;
     using Data.Repositories;
+
     public class FieldService : IFieldService
     {
         private IRepository<SportField> fields;
@@ -17,7 +18,12 @@
 
         public int Create(SportField field)
         {
-            throw new NotImplementedException();
+            //TODO Fix it
+
+            this.fields.Add(field);
+            this.fields.SaveChanges();
+
+            return 0;
         }
 
         public IQueryable<SportField> GetAll()
@@ -27,12 +33,13 @@
 
         public IQueryable<SportField> GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.fields.All().Where(x => x.Id == id);
         }
 
         public void Update(SportField field)
         {
-            throw new NotImplementedException();
+            this.fields.Update(field);
+            this.fields.SaveChanges();
         }
     }
 }

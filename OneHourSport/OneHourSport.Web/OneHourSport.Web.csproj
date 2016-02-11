@@ -226,6 +226,7 @@
     <Compile Include="Models\Complex\ComplexDetailsViewModel.cs" />
     <Compile Include="Models\Complex\ComplexRequestViewModel.cs" />
     <Compile Include="Models\Field\FieldDisplayViewModel.cs" />
+    <Compile Include="Models\Field\FieldRequestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -294,6 +295,7 @@
     <Content Include="Views\Templates\DisplayTemplates\CustomString.cshtml" />
     <Content Include="Views\Complex\Create.cshtml" />
     <Content Include="Views\Complex\ComplexDetails.cshtml" />
+    <Content Include="Views\Field\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

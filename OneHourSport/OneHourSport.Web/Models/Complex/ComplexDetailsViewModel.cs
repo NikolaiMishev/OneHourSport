@@ -11,6 +11,8 @@
     public class ComplexDetailsViewModel : IMapFrom<SportComplex>, IHaveCustomMappings
     {
         public string Name { get; set; }
+
+        public int Id { get; set; }
         
         public string Description { get; set; }
         

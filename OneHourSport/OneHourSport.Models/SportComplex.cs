@@ -37,8 +37,7 @@
         
         [Required]
         public string Address { get; set; }
-
-        [Required]
+        
         public virtual City City { get; set; }
         
         public virtual ICollection<SportField> Fields

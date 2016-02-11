@@ -63,7 +63,7 @@
                 </div>
                 @if (Model.UserName == User.Identity.Name)
                 {
-                    <div>
+                    <div class="detailsBtn">
                         @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default pull-right" })
                     </div>
                 }

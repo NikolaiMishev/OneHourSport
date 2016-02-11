@@ -39,10 +39,6 @@
 
 
                 </div>
-                @*<div class="row">
-                    @Html.LabelFor(model => model.WorkHourTo):
-                    
-                </div>*@
             </div>
             <div class="col-md-3">
                 <div class="row">
@@ -55,6 +51,9 @@
                         </span>
                     </p>
                 </div>
+            </div>
+            <div class="detailsBtn">
+                @Html.ActionLink("Add field", "Create", "Field", new { complexId = Model.Id }, new { @class = "btn btn-default pull-right" })
             </div>
             <div class="row text-center">
                @foreach (var field in Model.MyFields)
