@@ -1,0 +1,46 @@
+﻿@model OneHourSport.Web.Models.Field.FieldDisplayViewModel
+@{
+    Layout = null;
+}
+
+<div>
+    <div class="row">
+        <br />
+        <div class="container">
+            <div class="row col-lg-offset-1">
+                <h3><span style="background-color: #80A4A5; margin-right:10px;">@Model.Index</span><a href="@Url.Action("FieldDetails", "Field",new { id = Model.Id })">@Model.Name</a></h3>
+
+            </div>
+            <br />
+            <div class="col-md-3 col-md-offset-1">
+                <div class="">
+                    <img src="@Url.Action("GetImage", "Picture", new { id = Model.PictureId })" alt="@Model.Name" class="displayImage myBox img-responsive" />
+                </div>
+            </div>
+
+            <div class="col-md-6 text-left">
+                <div class="row">
+                    @Html.Label("A part of ")
+                    @Html.ActionLink(Model.SportComplexName, "ComplexDetails", "Complex")
+                </div>
+                <div class="row">
+                    @Html.Label("Comments: ")
+                    @Html.DisplayTextFor(m => m.CommentsCount)
+                </div>
+                <div class="row">
+                    @Html.Label("Category: ")
+                    @Html.ActionLink(Model.Category.ToString(), "AllFields", "Field", new { category = Model.Category }, null)
+                </div>
+                <div class="row">
+                    @Html.Label("Location: ")
+                    @Html.DisplayTextFor(m => m.Location)
+                </div>
+                <div class="row">
+                 Rating ;}
+                </div>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+    </div>
+</div>

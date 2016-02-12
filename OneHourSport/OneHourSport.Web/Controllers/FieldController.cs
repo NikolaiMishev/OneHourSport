@@ -1,5 +1,7 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
+    using AutoMapper.QueryableExtensions;
+    using Common.Constants;
     using Models.Field;
     using OneHourSport.Models;
     using Services.Contracts;
@@ -23,10 +25,21 @@
             this.complexService = complexService;
         }
 
+        public ActionResult FieldsByCategory(SportCategory category, int page = 1)
+        {
+            throw new NotImplementedException();
+        }
+
+
         [HttpGet]
         public ActionResult FieldDetails(int id)
         {
-            return this.View();
+            var field = this.fieldService
+                .GetById(id)
+                .ProjectTo<FieldDetailsViewModel>()
+                .FirstOrDefault();
+
+            return this.View(field);
         }
 
         [HttpGet]
@@ -69,6 +82,7 @@
 
             modelAsEntity.Pictures = dbImages;
             complex.Fields.Add(modelAsEntity);
+
             try
             {
                 this.complexService.Update(complex);
@@ -87,13 +101,8 @@
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
 
-            var fieldId = this.fieldService
-                .GetAll()
-                .Where(x => x.SportComplexId == complex.Id)
-                .FirstOrDefault()
-                .Id;
-
-            return RedirectToAction("FieldDetails", new { id = fieldId });
+            
+            return RedirectToAction("FieldDetails", new { id = modelAsEntity.Id });
         }
     }
 }

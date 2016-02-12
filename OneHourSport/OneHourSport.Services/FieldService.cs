@@ -6,7 +6,7 @@
     using System;
     using System.Linq;
     using Data.Repositories;
-
+    using Common.Constants;
     public class FieldService : IFieldService
     {
         private IRepository<SportField> fields;
@@ -28,6 +28,7 @@
 
         public IQueryable<SportField> GetAll()
         {
+            //Add .Where(x => x.isApprooved)
             return this.fields.All();
         }
 
@@ -40,6 +41,11 @@
         {
             this.fields.Update(field);
             this.fields.SaveChanges();
+        }
+
+        public IQueryable<SportField> GetAllByCategory(SportCategory category)
+        {
+            return this.fields.All().Where(x => x.Category == category);
         }
     }
 }

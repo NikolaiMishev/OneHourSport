@@ -1,5 +1,80 @@
-﻿@{
+﻿@model OneHourSport.Web.Models.Field.FieldDetailsViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
+<div class="container">
+    <div class="row text-center">
+        <br />
+        <div class="myBox container">
+            <div class="row text-center profileBackground">
+                Sport Field - @Model.Name
+            </div>
+            <div class="row col-md-12 text-center">
+                <div class="row">
+                    @Html.Label("Pictures")
+                </div>
+                <div id="images-box" class="row">
+                    @{
+                        var index = 1;
+                    }
+                    @foreach (var pic in Model.Pictures)
+                    {
+                        <div class="holder col-sm-3">
+                            <div id="image-@index" class="image-lightbox">
+                                <span class="close"><a href="#">X</a></span>
+                                <img src="@Url.Action("GetImage", "Picture", new { id = pic.PictureId })" alt="@Model.Name" class="" />
+                                <a class="expand" href="#image-@index"></a>
+                            </div>
+                        </div>
+                        index++;
+                    }
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <hr />
+                <div class="col-md-4 text-center col-md-offset-4 profileBackground">
+                    Information
+                </div>
+            </div>
+            <div class="row">
+                <hr />
+                <div class="col-md-6">
+                    <div class="row">
+                        @Html.Label("Name:")
+                        @Html.DisplayFor(x => x.Name)
+                    </div>
+                    <div class="row">
+                        @Html.Label("Category:")
+                        @Html.DisplayFor(x => x.Category)
+                    </div>
+                    <div class="row">
+                        @Html.Label("A part of:")
+                        @Html.ActionLink(Model.SportComplex.Name, "ComplexDetails", "Complex", new { id = Model.SportComplex.Id },null)
+                    </div>
+                    <div class="row">
+                        @Html.Label("Price per hour:")
+                        @Html.DisplayFor(x => x.PricePerHour) lv
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="row">
+                        <div class="col-md-4 text-center col-md-offset-4 profileBackground">
+                            Description
+                        </div>
+                    </div>
+                    <p>
+                        <span style="width: 10em; word-wrap: break-word;">
+                            @Html.DisplayTextFor(m => m.Description)
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</div>

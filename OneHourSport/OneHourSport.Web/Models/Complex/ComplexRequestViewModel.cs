@@ -37,7 +37,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<ComplexRequestViewModel, SportComplex>("ComplexCreate")
-                .ForMember(r => r.City, opts => opts.MapFrom(r => new City { Name = r.CityName })); ;
+                .ForMember(r => r.City, opts => opts.MapFrom(r => new City { Name = r.CityName }));
         }
     }
 }

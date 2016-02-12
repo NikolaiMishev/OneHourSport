@@ -68,6 +68,10 @@
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OneHourSport.Common\OneHourSport.Common.csproj">
+      <Project>{3e7188cb-59ae-49cd-94be-5d9931a937f2}</Project>
+      <Name>OneHourSport.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OneHourSport.Data\OneHourSport.Data.csproj">
       <Project>{58719b91-1cba-4d65-9b43-9102f5eea382}</Project>
       <Name>OneHourSport.Data</Name>

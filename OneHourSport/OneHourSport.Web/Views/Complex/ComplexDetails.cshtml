@@ -4,7 +4,7 @@
 }
 
 <div class="container">
-    <div class="row text-center">
+    <div class="row ">
         <br />
         <div class="myBox container">
             <div class="row text-center profileBackground">
@@ -55,15 +55,25 @@
             <div class="detailsBtn">
                 @Html.ActionLink("Add field", "Create", "Field", new { complexId = Model.Id }, new { @class = "btn btn-default pull-right" })
             </div>
-            <div class="row text-center">
-               @foreach (var field in Model.MyFields)
-               {
-                   //TODO just make it clap
-                <div class="row">
-                    @field.Name
-                </div>
-               }
+          
+        </div>
+        <div class="row">
+            <div class="pull-left col-lg-offset-1">
+                <h1>Complex Field's</h1>
             </div>
+        </div>
+        <hr />
+        <div>
+            @{
+                var i = 1;
+            }
+            @foreach (var field in Model.MyFields)
+            {
+                field.Index = i;
+                Html.RenderPartial("_FieldPartial", field);
+                i++;
+                <hr />
+            }
         </div>
     </div>
 </div>
