@@ -61,7 +61,7 @@
                         @Html.DisplayTextFor(m => m.TennisVotes)
                     </div>
                 </div>
-                @if (Model.UserName == User.Identity.Name)
+                @if (Model.UserName == this.User.Identity.Name)
                 {
                     <div class="detailsBtn">
                         @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default pull-right" })

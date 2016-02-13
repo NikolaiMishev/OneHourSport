@@ -13,10 +13,10 @@
         public int PictureId { get; set; }
 
         public string CreatorName { get; set; }
-
+        
         public string Text { get; set; }
         
-        public DateTime DateCreated { get; }
+        public string DateCreated { get; set; }
 
         public int FieldId { get; set; }
 
@@ -26,7 +26,9 @@
                 .ForMember(r => r.CreatorId, opts => opts.MapFrom(r => r.Creator.Id))
                 .ForMember(r => r.CreatorName, opts => opts.MapFrom(r => r.Creator.UserName))
                 .ForMember(r => r.FieldId, opts => opts.MapFrom(r => r.Field.Id))
-                .ForMember(r => r.PictureId, opts => opts.MapFrom(r => r.Creator.Picture.Id));
+                .ForMember(r => r.PictureId, opts => opts.MapFrom(r => r.Creator.Picture.Id))
+                .ForMember(r => r.DateCreated, opts => opts.MapFrom(r => r.DateCreated.ToString()));
+
 
         }
     }

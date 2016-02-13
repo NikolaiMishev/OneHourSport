@@ -93,6 +93,19 @@ body {
     background-color: #DDD;
     font-size: 1.9em;
 }
+.menuHoursBackground{
+       
+       background-color: #022E2F;
+       font-size: 1.9em;
+}
+.menuHoursBackground a{
+    color: #F0FEFE;
+    text-decoration: none;
+
+}
+.menuHoursBackground a:hover{
+    color: #93E888;
+}
 
 .descriptionBackground {
     background-color: #80A4A5;
@@ -124,6 +137,11 @@ body {
 .displayImage{
     width: 200px;
     height:150px;
+}
+
+.commentImage{
+     width: 150px;
+    height:100px;
 }
 /*.fieldPictureSmall{
     margin-left: 10px;

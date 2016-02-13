@@ -12,10 +12,14 @@
             this.commentService = commentService;
         }
 
-        [HttpGet]
-        public ActionResult AddComment()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(string text, int fieldId)
         {
-            return this.View();
+            var currentUserUserName = this.User.Identity.Name;
+            this.commentService.Create(text, currentUserUserName, fieldId);
+
+            return this.RedirectToAction("FieldDetails", "Field",new { id = fieldId });
         }
 
 

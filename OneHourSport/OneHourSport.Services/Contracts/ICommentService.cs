@@ -9,6 +9,6 @@
 
         Comment GetById(int id);
 
-        void Create(Comment comment);
+        void Create(string text, string creatorUserName, int fieldId);
     }
 }

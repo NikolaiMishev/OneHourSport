@@ -224,6 +224,7 @@
     <Compile Include="Models\Account\UserDetailsViewModel.cs" />
     <Compile Include="Models\Account\VerifyCodeViewModel.cs" />
     <Compile Include="Models\Account\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Models\Comment\CommentRequestViewModel.cs" />
     <Compile Include="Models\Comment\CommentViewModel.cs" />
     <Compile Include="Models\Complex\ComplexDetailsViewModel.cs" />
     <Compile Include="Models\Complex\ComplexRequestViewModel.cs" />

@@ -10,14 +10,30 @@
     {
         private IRepository<Comment> comments;
 
-        public CommentService(IRepository<Comment> comments)
+        private IRepository<SportField> fields;
+
+        private IRepository<User> users;
+        
+        public CommentService(IRepository<Comment> comments, IRepository<SportField> fields, IRepository<User> users)
         {
             this.comments = comments;
+            this.users = users;
+            this.fields = fields;
         }
 
-        public void Create(Comment comment)
+        public void Create(string text, string creatorUserName, int fieldId)
         {
-            throw new NotImplementedException();
+            var user = this.users.All().Where(x => x.UserName == creatorUserName).FirstOrDefault();
+
+            var field = this.fields.GetById(fieldId);
+         var comment = new Comment
+            {
+                Creator = user,
+                Field = field,
+                Text = text
+            };
+            this.comments.Add(comment);
+            this.fields.SaveChanges();
         }
 
         public IQueryable<Comment> GetAllByFieldId(int id)

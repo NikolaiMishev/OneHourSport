@@ -52,7 +52,7 @@
                     </div>
                     <div class="row">
                         @Html.Label("A part of:")
-                        @Html.ActionLink(Model.SportComplex.Name, "ComplexDetails", "Complex", new { id = Model.SportComplex.Id },null)
+                        @Html.ActionLink(Model.SportComplex.Name, "ComplexDetails", "Complex", new { id = Model.SportComplex.Id }, null)
                     </div>
                     <div class="row">
                         @Html.Label("Price per hour:")
@@ -72,13 +72,53 @@
                     </p>
                 </div>
             </div>
-            <div class="row">
-                @* Link to partial view add comment *@
-                <h2>Add Comment</h2>
+            <div class="row text-center menuHoursBackground">
+                <a href="/">Shedule</a>
             </div>
-            <div class="row">
-                @* Link to listCommentsPartial with comments collection *@
-               
+            @foreach (var item in Model.Comments)
+            {
+                <div class="row">
+                    <div class="myBox col-md-offset-1 col-md-10">
+                        <div class="row">
+                            <div class="container">
+                                <div class="text-left col-md-offset-1">
+                                    <div class="col-md-2">
+                                        <h3><a href="@Url.Action("UserDetails", "Account", new { username = item.CreatorName })">@item.CreatorName</a></h3>
+                                        <div class="text-left">
+                                            <img src="@Url.Action("GetImage", "Picture", new { id = item.PictureId })" alt="@item.DateCreated" class="commentImage myBox img-responsive" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-offset-1 col-md-5" style="margin-top: 60px;">
+                                        <div class="myBox text-center">
+                                            @item.Text
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                @Html.Label("Date created:") @item.DateCreated
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="border-top: 1px solid #93E888;" />
+            }
+            <div class="row col-md-10 col-md-offset-1">
+                @using (Html.BeginForm("Create", "Comment", new { }, FormMethod.Post, new { @class = "", role = "form" }))
+                {
+                    <div class="row form-group">
+                        @Html.AntiForgeryToken()
+
+                        <div class="col-md-offset-2 col-md-4">
+                            @Html.TextArea("text", new { @class = "form-control", placeholder = "Text" })
+                            @Html.Hidden("fieldId", Model.Id)
+                        </div>
+                        <div class="col-md-offset-2 col-md-4">
+                            <input type="submit" class="btn btn-default btn-lg" value="Create Comment" />
+                        </div>
+                    </div>
+                }
+
             </div>
         </div>
     </div>
