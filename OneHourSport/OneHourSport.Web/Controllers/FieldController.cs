@@ -24,13 +24,13 @@
             this.fieldService = fieldService;
             this.complexService = complexService;
         }
+        
 
         public ActionResult FieldsByCategory(SportCategory category, int page = 1)
         {
             throw new NotImplementedException();
         }
-
-
+        
         [HttpGet]
         public ActionResult FieldDetails(int id)
         {
