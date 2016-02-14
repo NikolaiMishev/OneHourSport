@@ -1,29 +1,11 @@
-﻿@model ICollection < OneHourSport.Web.Models.Comment.CommentViewModel>
+﻿@model ICollection<OneHourSport.Web.Models.Comment.CommentViewModel>
 @{
     Layout = null;
 }
 
-
-@foreach (var item in Model)
-{
-    <div>
-        <div class="row">
-            <br />
-            <div class="container">
-                <br />
-                <div class="col-md-3 col-md-offset-1">
-                    <div class="">
-                        <img src="@Url.Action("GetImage", "Picture", new { id = item.PictureId })" alt="@item.CreatorName" class="displayImage myBox img-responsive" />
-                    </div>
-                </div>
-                <div class="col-md-8 text-center">
-                    <div class="row">
-                       @item.Text
-                    </div>
-                </div>
-                <div class="col-md-3">
-                </div>
-            </div>
-        </div>
-    </div>
-}
+<div>
+    @foreach (var item in Model)
+    {
+        Html.RenderPartial("~/Views/Comment/CommentViewModel.cshtml", item);
+    }
+</div>

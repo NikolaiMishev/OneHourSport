@@ -34,6 +34,12 @@
             return this.complexes.All().Where(x => x.Id == id);
         }
 
+        public IQueryable<SportComplex> GetByFieldId(int fieldId)
+        {
+            //TODO make the right querry
+            return this.complexes.All();
+        }
+
         public void Update(SportComplex complex)
         {
             this.complexes.Update(complex);

@@ -33,16 +33,25 @@
 
         public ICollection<PictureViewModel> Pictures  { get; set; }
 
-        public ICollection<OccupiedHourViewModel> OccupiedHours { get; set; }
+        public IList<OccupiedHourViewModel> OccupiedHours { get; set; }
 
         public ICollection<CommentViewModel> Comments { get; set; }
 
         public int Rating { get; set; }
 
+        public int WorkHoursCount { get; set; }
+
+        public int WorkHourFrom { get; set; }
+
+        public int WorkHourTo { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<SportField, FieldDetailsViewModel>("FieldDetails")
-                .ForMember(r => r.Rating, opts => opts.MapFrom(r => r.Ratings.Count > 0? (int)Math.Ceiling((double)r.Ratings.Sum(rg => rg.Value) / r.Ratings.Count) : 0));
+                .ForMember(r => r.Rating, opts => opts.MapFrom(r => r.Ratings.Count > 0 ? (int)Math.Ceiling((double)r.Ratings.Sum(rg => rg.Value) / r.Ratings.Count) : 0))
+                .ForMember(r => r.WorkHourFrom, opts => opts.MapFrom(r => r.SportComplex.WorkHourFrom))
+                .ForMember(r => r.WorkHourTo, opts => opts.MapFrom(r => r.SportComplex.WorkHourTo))
+                .ForMember(r => r.WorkHoursCount, opts => opts.MapFrom(r => r.SportComplex.WorkHourTo - r.SportComplex.WorkHourFrom));
         }
     }
 }

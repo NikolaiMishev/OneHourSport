@@ -11,27 +11,7 @@
             <div class="row text-center profileBackground">
                 Sport Field - @Model.Name
             </div>
-            <div class="row col-md-12 text-center">
-                <div class="row">
-                    @Html.Label("Pictures")
-                </div>
-                <div id="images-box" class="row">
-                    @{
-                        var index = 1;
-                    }
-                    @foreach (var pic in Model.Pictures)
-                    {
-                        <div class="holder col-sm-3">
-                            <div id="image-@index" class="image-lightbox">
-                                <span class="close"><a href="#">X</a></span>
-                                <img src="@Url.Action("GetImage", "Picture", new { id = pic.PictureId })" alt="@Model.Name" class="" />
-                                <a class="expand" href="#image-@index"></a>
-                            </div>
-                        </div>
-                        index++;
-                    }
-                </div>
-            </div>
+            @Html.Partial("_ListPicturesPartial", Model.Pictures)
             <br />
             <div class="row">
                 <hr />
@@ -73,36 +53,15 @@
                 </div>
             </div>
             <div class="row text-center menuHoursBackground">
-                <a href="/">Shedule</a>
+                <button id="shedule">Shedule</button>
             </div>
-            @foreach (var item in Model.Comments)
-            {
-                <div class="row">
-                    <div class="myBox col-md-offset-1 col-md-10">
-                        <div class="row">
-                            <div class="container">
-                                <div class="text-left col-md-offset-1">
-                                    <div class="col-md-2">
-                                        <h3><a href="@Url.Action("UserDetails", "Account", new { username = item.CreatorName })">@item.CreatorName</a></h3>
-                                        <div class="text-left">
-                                            <img src="@Url.Action("GetImage", "Picture", new { id = item.PictureId })" alt="@item.DateCreated" class="commentImage myBox img-responsive" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-offset-1 col-md-5" style="margin-top: 60px;">
-                                        <div class="myBox text-center">
-                                            @item.Text
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                @Html.Label("Date created:") @item.DateCreated
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-top: 1px solid #93E888;" />
-            }
+            @Html.Hidden("fieldId", Model.Id)
+            <div class="shedule" id="sheduleContainer">
+              
+            </div>
+            <div>
+                @Html.Partial("_ListCommentsPartial", Model.Comments);
+            </div>
             <div class="row col-md-10 col-md-offset-1">
                 @using (Html.BeginForm("Create", "Comment", new { }, FormMethod.Post, new { @class = "", role = "form" }))
                 {
@@ -118,8 +77,39 @@
                         </div>
                     </div>
                 }
-
             </div>
         </div>
     </div>
 </div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+
+            $(document).ajaxStart(function () {
+                //show a progress modal of your choosing
+                //showProgressModal('loading');
+            });
+            $(document).ajaxStop(function () {
+                //hide it
+                //hideProgressModal();
+            });
+            // AntiForgeryToken
+            $("#shedule").on("click", function () {
+                var data = {
+                    date: new Date().toISOString(),
+                    fieldId: Number.parseInt($("#fieldId").val())
+                    }
+                console.log(data);
+                $.ajax({
+                    url: '/Shedule/GetShedule',
+                    data: data,
+                    contentType: "application/json",
+                    success: function (data) {
+                        $('#sheduleContainer').html(data);
+                    }
+                });
+            })
+        });
+    </script>
+}

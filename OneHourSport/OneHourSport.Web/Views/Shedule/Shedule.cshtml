@@ -1,0 +1,72 @@
+﻿@model OneHourSport.Web.Models.Shedule.SheduleViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h3>@Model.Date</h3>
+    </div>
+    <div class="col-md-6">
+        <h3><input id="inputDate" class="datepicker" type="date" /></h3>
+    </div>
+</div>
+<table class="table table-striped table-hover text-center">
+    <thead class="text-center">
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Hour From</th>
+            <th class="text-center">Hour To</th>
+            <th class="text-center">Is Occupied/By</th>
+            <th class="text-center">Keep</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var currentHourFrom = Model.WorkHourFrom;
+            var currentHourTo = Model.WorkHourTo;
+        }
+        @for (int i = 0; i < Model.WorkHoursCount; i++)
+        {
+            var isOccupied = false;
+            string OccupiedByUsername = "";
+            string OccupiedById = "";
+            foreach (var item in Model.OccupiedHours)
+            {
+                if (Model.OccupiedHours[i].HourFrom == currentHourFrom)
+                {
+                    isOccupied = true;
+                    OccupiedByUsername = Model.OccupiedHours[i].OccupiedByUsername;
+                    OccupiedById = Model.OccupiedHours[i].OccupiedById;
+                    break;
+                }
+            }
+            if (isOccupied)
+            {
+                <tr class="danger">
+                    <td>@i</td>
+                    <td>@currentHourFrom</td>
+                    <td>@currentHourTo</td>
+                    <td><a href="@Url.Action("UserDetails", "Account", new { username = OccupiedByUsername })">@OccupiedByUsername</a></td>    
+                    <td>X</td>
+                </tr>
+            }
+            else
+            {
+                <tr class="success">
+                    <td>@i</td>
+                    <td>@currentHourFrom</td>
+                    <td>@currentHourTo</td>
+                    <td>Free</td>
+                    @* TODO Implement click logic *@
+                    <td><button id="keepHour" class="btn btn-default">Play here</button></td>
+                </tr>
+            }
+
+            currentHourFrom++;
+            currentHourTo++;
+
+        }
+    </tbody>
+</table>
