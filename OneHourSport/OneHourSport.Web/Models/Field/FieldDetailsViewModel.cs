@@ -52,6 +52,7 @@
                 .ForMember(r => r.WorkHourFrom, opts => opts.MapFrom(r => r.SportComplex.WorkHourFrom))
                 .ForMember(r => r.WorkHourTo, opts => opts.MapFrom(r => r.SportComplex.WorkHourTo))
                 .ForMember(r => r.WorkHoursCount, opts => opts.MapFrom(r => r.SportComplex.WorkHourTo - r.SportComplex.WorkHourFrom));
+
         }
     }
 }

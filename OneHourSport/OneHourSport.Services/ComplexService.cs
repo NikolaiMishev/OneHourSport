@@ -10,8 +10,11 @@
     {
         private IRepository<SportComplex> complexes;
 
-        public ComplexService(IRepository<SportComplex> complexes)
+        private IRepository<SportField> fields;
+
+        public ComplexService(IRepository<SportComplex> complexes, IRepository<SportField> fields)
         {
+            this.fields = fields;
             this.complexes = complexes;
         }
 
@@ -34,10 +37,10 @@
             return this.complexes.All().Where(x => x.Id == id);
         }
 
-        public IQueryable<SportComplex> GetByFieldId(int fieldId)
+        public SportComplex GetByFieldId(int fieldId)
         {
-            //TODO make the right querry
-            return this.complexes.All();
+            var result = this.fields.GetById(fieldId).SportComplex;
+            return result;
         }
 
         public void Update(SportComplex complex)

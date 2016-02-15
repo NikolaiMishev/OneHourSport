@@ -10,6 +10,7 @@ using OneHourSport.Web.Models.OccupiedHour;
 
 namespace OneHourSport.Web.Controllers
 {
+    [Authorize]
     public class SheduleController : Controller
     {
         private ISheduleService sheduleService;
@@ -21,15 +22,13 @@ namespace OneHourSport.Web.Controllers
             this.sheduleService = sheduleService;
             this.complexService = complexService;
         }
-
+        //15.2.2016 г. 2:35:49
         [HttpGet]
         [ActionName("GetShedule")]
-        public ActionResult Shedule(string date, int fieldId)
+        public ActionResult Shedule(DateTime date, int fieldId)
         {
-            DateTime realDate = DateTime.Parse(date);
-
             var hours = this.sheduleService
-                .GetAllHoursByDateAndField(realDate, fieldId)
+                .GetAllHoursByDateAndField(date, fieldId)
                 .ProjectTo<OccupiedHourViewModel>()
                 .ToList();
 
@@ -37,13 +36,16 @@ namespace OneHourSport.Web.Controllers
 
             var model = new SheduleViewModel
             {
-                Date = realDate,
+                Date = date,
                 OccupiedHours = hours,
-                WorkHoursCount = hours.Count()
-
+                WorkHoursCount = complex.WorkHourTo - complex.WorkHourFrom,
+                WorkHourFrom = complex.WorkHourFrom,
+                WorkHourTo = complex.WorkHourTo,
+                FieldId = fieldId,
+                CurrentUserUsername = this.User.Identity.Name
             };
 
-            return this.View(model);
+            return PartialView("~/Views/Shedule/Shedule.cshtml", model);
         }
     }
 }

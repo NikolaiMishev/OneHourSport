@@ -2,14 +2,16 @@
 
 @{
     Layout = null;
+    var userName = this.User.Identity.Name;
 }
 
 <div class="row">
     <div class="col-md-3">
-        <h3>@Model.Date</h3>
+        <h3 id="currentDate">@Model.Date.ToShortDateString()</h3>
     </div>
     <div class="col-md-6">
-        <h3><input id="inputDate" class="datepicker" type="date" /></h3>
+        @* value="@DateTime.Today.ToString("yyyy-MM-dd")" *@
+        <h3><input id="datePicker" type="date" value="@Model.Date.ToString("yyyy-MM-dd")"/></h3>
     </div>
 </div>
 <table class="table table-striped table-hover text-center">
@@ -25,7 +27,7 @@
     <tbody>
         @{
             var currentHourFrom = Model.WorkHourFrom;
-            var currentHourTo = Model.WorkHourTo;
+            var currentHourTo = Model.WorkHourFrom + 1;
         }
         @for (int i = 0; i < Model.WorkHoursCount; i++)
         {
@@ -34,11 +36,11 @@
             string OccupiedById = "";
             foreach (var item in Model.OccupiedHours)
             {
-                if (Model.OccupiedHours[i].HourFrom == currentHourFrom)
+                if (item.HourFrom == currentHourFrom)
                 {
                     isOccupied = true;
-                    OccupiedByUsername = Model.OccupiedHours[i].OccupiedByUsername;
-                    OccupiedById = Model.OccupiedHours[i].OccupiedById;
+                    OccupiedByUsername = item.OccupiedByUsername;
+                    OccupiedById = item.OccupiedById;
                     break;
                 }
             }
@@ -48,7 +50,7 @@
                     <td>@i</td>
                     <td>@currentHourFrom</td>
                     <td>@currentHourTo</td>
-                    <td><a href="@Url.Action("UserDetails", "Account", new { username = OccupiedByUsername })">@OccupiedByUsername</a></td>    
+                    <td><a href="@Url.Action("UserDetails", "Account", new { username = OccupiedByUsername })">@OccupiedByUsername</a></td>
                     <td>X</td>
                 </tr>
             }
@@ -60,13 +62,12 @@
                     <td>@currentHourTo</td>
                     <td>Free</td>
                     @* TODO Implement click logic *@
-                    <td><button id="keepHour" class="btn btn-default">Play here</button></td>
+                    <td><button class="btn btn-default keepHour" onclick="saveHour({hourFrom: @currentHourFrom, fieldId: @Model.FieldId, username: '@Model.CurrentUserUsername', date: '@Model.Date.Date' })">Play here:@Model.CurrentUserUsername</button></td>
                 </tr>
             }
 
             currentHourFrom++;
             currentHourTo++;
-
         }
     </tbody>
 </table>

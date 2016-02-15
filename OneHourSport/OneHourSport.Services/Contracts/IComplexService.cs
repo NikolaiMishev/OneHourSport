@@ -12,7 +12,7 @@
 
         int Create(SportComplex complex);
 
-        IQueryable<SportComplex> GetByFieldId(int fieldId);
+        SportComplex GetByFieldId(int fieldId);
 
         void Update(SportComplex complex);
 
