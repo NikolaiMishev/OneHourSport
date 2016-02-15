@@ -47,15 +47,15 @@ body {
     background-color: #80A4A5;
 }
 
-.miniMenu a {
-    color: black;
-}
+    .miniMenu a {
+        color: black;
+    }
 
-.miniMenu a:hover,
-.miniMenu a:focus {
-    color: white;
-    background-color: transparent;
-}
+        .miniMenu a:hover,
+        .miniMenu a:focus {
+            color: white;
+            background-color: transparent;
+        }
 
 .myBox {
     border: 1px solid #EEEEEE;
@@ -73,39 +73,40 @@ body {
     overflow: hidden;
 }
 
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
 
 .profileBackground {
     background-color: #DDD;
     font-size: 1.9em;
 }
-.menuHoursBackground{
-       
-       background-color: #022E2F;
-       font-size: 1.9em;
-}
-.menuHoursBackground a{
-    color: #F0FEFE;
-    text-decoration: none;
 
+.menuHoursBackground {
+    background-color: #022E2F;
+    font-size: 1.9em;
 }
-.menuHoursBackground a:hover{
-    color: #93E888;
-}
+
+    .menuHoursBackground a {
+        color: #F0FEFE;
+        text-decoration: none;
+    }
+
+        .menuHoursBackground a:hover {
+            color: #93E888;
+        }
 
 .descriptionBackground {
     background-color: #80A4A5;
@@ -115,33 +116,42 @@ body {
 .sportImageSmall {
     margin-top: 2px;
     margin-bottom: 1px;
-
     height: 30px;
     width: 30px;
 }
-#wrap{
+
+#wrap {
     color: #435A5A;
 }
-#wrap a{
-    color: #022E2F;
-}
-.detailsBtn{
+
+    #wrap a {
+        color: #022E2F;
+    }
+
+.detailsBtn {
     margin-top: 25%;
 }
+
 .logo {
     padding-top: 10px;
     margin-right: 20px;
     width: 95px;
     height: 40px;
 }
-.displayImage{
+
+.displayImage {
     width: 200px;
-    height:150px;
+    height: 150px;
 }
 
-.commentImage{
-     width: 150px;
-    height:100px;
+.homedisplayImage {
+    width: 150px;
+    height: 100px;
+}
+
+.commentImage {
+    width: 150px;
+    height: 100px;
 }
 /*.fieldPictureSmall{
     margin-left: 10px;
@@ -159,13 +169,13 @@ body {
     position: relative;
     top: 10px;
 }
- 
+
 .image-lightbox img {
     /* Inherit the width and height from the parent element */
     width: inherit;
     height: inherit;
 }
- 
+
 .holder {
     /* The width and height, you can change these */
     width: 250px;
@@ -174,7 +184,7 @@ body {
     float: left;
     margin: 0 20px 0 0;
 }
- 
+
 .image-lightbox {
     /* Inherit width and height from the .holder */
     width: inherit;
@@ -194,45 +204,49 @@ body {
     -ms-transition: all ease-in 0.5s;
     -o-transition: all ease-in 0.5s;
 }
- 
-.image-lightbox span {
-    display: none;
-}
-.image-lightbox img{
-    width:100%;
-    height: 100%;
-}
- 
-.image-lightbox .expand {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
- 
-.image-lightbox .close {
-    position: absolute;
-    width: 20px; height: 20px;
-    right: 20px; top: 20px;
-}
- 
-.image-lightbox .close a {
-    height: auto; width: auto;
-    padding: 5px 10px;
-    color: #fff;
-    text-decoration: none;
-    background: #22272c;
-    box-shadow: inset 0px 24px 20px -15px rgba(255, 255, 255, 0.1), inset 0px 0px 10px rgba(0,0,0,0.4), 0px 0px 30px rgba(255,255,255,0.4);
-    border-radius: 5px;
-    font-weight: bold;
-    float: right;
-}
- 
+
+    .image-lightbox span {
+        display: none;
+    }
+
+    .image-lightbox img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .image-lightbox .expand {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .image-lightbox .close {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 20px;
+        top: 20px;
+    }
+
+        .image-lightbox .close a {
+            height: auto;
+            width: auto;
+            padding: 5px 10px;
+            color: #fff;
+            text-decoration: none;
+            background: #22272c;
+            box-shadow: inset 0px 24px 20px -15px rgba(255, 255, 255, 0.1), inset 0px 0px 10px rgba(0,0,0,0.4), 0px 0px 30px rgba(255,255,255,0.4);
+            border-radius: 5px;
+            font-weight: bold;
+            float: right;
+        }
+
 .close a:hover {
     box-shadow: inset 0px -24px 20px -15px rgba(255, 255, 255, 0.01), inset 0px 0px 10px rgba(0,0,0,0.4), 0px 0px 20px rgba(255,255,255,0.4);
 }
- 
+
 div[id^=image]:target {
     width: 450px;
     height: 300px;
@@ -241,17 +255,20 @@ div[id^=image]:target {
     top: 50px;
     left: 100px;
 }
-div[id^=image]:target .close {
-    display: block;
+
+    div[id^=image]:target .close {
+        display: block;
+    }
+
+    div[id^=image]:target .expand {
+        display: none;
+    }
+
+div#image-1:target, div#image-2:target, div#image-3:target {
+    left: 200px;
 }
- 
-div[id^=image]:target .expand {
-    display: none;
-}
- 
-div#image-1:target, div#image-2:target, div#image-3:target { left: 200px; }
 /*Images CSS*/
-.lastGamesBackground{
+.lastGamesBackground {
     background-color: #93E888;
     font-size: 1.9em;
 }
