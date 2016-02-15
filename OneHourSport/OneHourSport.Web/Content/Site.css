@@ -251,3 +251,7 @@ div[id^=image]:target .expand {
  
 div#image-1:target, div#image-2:target, div#image-3:target { left: 200px; }
 /*Images CSS*/
+.lastGamesBackground{
+    background-color: #93E888;
+    font-size: 1.9em;
+}

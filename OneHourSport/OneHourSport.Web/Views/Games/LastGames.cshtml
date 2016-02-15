@@ -1,0 +1,57 @@
+﻿@model ICollection<OneHourSport.Web.Models.Game.GameViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row text-center">
+        <br />
+        <div class="myBox container">
+            <div class="row text-center lastGamesBackground">
+                
+                    Last Played Games
+            </div>
+            <hr />
+            <div>
+                <table class="table table-striped table-hover text-center">
+                    <thead class="text-center">
+                        <tr>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Hour From</th>
+                            <th class="text-center">Hour To</th>
+                            <th class="text-center">Field</th>
+                            <th class="text-center">Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+            {
+                if (item.Date > DateTime.Now)
+                {
+                                <tr class="success">
+                                    <td>@item.Date.Date.ToShortDateString()</td>
+                                    <td>@item.HourFrom</td>
+                                    <td>@item.HourTo</td>
+                                    <td><a href="@Url.Action("FieldDetails", "Field",new { id = item.SportFieldId })">@item.FieldName</a></td>
+                                    <td>To be played</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr class="warning">
+                                    <td>@item.Date.Date.ToShortDateString()</td>
+                                    <td>@item.HourFrom</td>
+                                    <td>@item.HourTo</td>
+                                    <td><a href="@Url.Action("FieldDetails", "Field",new { id = item.SportFieldId })">@item.FieldName</a></td>
+                                    <td>Finished</td>
+                                </tr>
+                            }
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

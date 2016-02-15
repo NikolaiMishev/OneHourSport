@@ -198,6 +198,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ComplexController.cs" />
     <Compile Include="Controllers\FieldController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OccupiedHourController.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Models\Field\FieldDetailsViewModel.cs" />
     <Compile Include="Models\Field\FieldDisplayViewModel.cs" />
     <Compile Include="Models\Field\FieldRequestViewModel.cs" />
+    <Compile Include="Models\Game\GameViewModel.cs" />
     <Compile Include="Models\OccupiedHour\OccupiedHourViewModel.cs" />
     <Compile Include="Models\Picture\PictureViewModel.cs" />
     <Compile Include="Models\Shedule\SheduleViewModel.cs" />
@@ -354,6 +356,7 @@
     <Content Include="Views\Field\ListFieldsByCategory.cshtml" />
     <Content Include="Views\Complex\ComplexDisplay.cshtml" />
     <Content Include="Views\Complex\AllComplexes.cshtml" />
+    <Content Include="Views\Games\LastGames.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
