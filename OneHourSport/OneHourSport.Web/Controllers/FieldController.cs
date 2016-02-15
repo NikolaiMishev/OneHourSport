@@ -25,10 +25,16 @@
             this.complexService = complexService;
         }
         
-
-        public ActionResult FieldsByCategory(SportCategory category, int page = 1)
+        [HttpGet]
+        [ActionName("ListFieldsByCategory")]
+        public ActionResult ListFieldsByCategory(SportCategory category, int page = 1)
         {
-            throw new NotImplementedException();
+            var result = this.fieldService
+                .GetAllByCategory(category, page)
+                .ProjectTo<FieldDisplayViewModel>()
+                .ToList();
+
+            return this.View(result);
         }
         
         [HttpGet]

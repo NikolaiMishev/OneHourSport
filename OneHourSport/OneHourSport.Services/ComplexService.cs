@@ -48,5 +48,14 @@
             this.complexes.Update(complex);
             this.complexes.SaveChanges();
         }
+
+        public IQueryable<SportComplex> GetAllByPage(int page = 1)
+        {
+            var take = 10;
+            var skip = (page - 1) * take;
+
+            var result = this.complexes.All().OrderBy(x => x.Fields.Count).Skip(skip).Take(take);
+            return result;
+        }
     }
 }

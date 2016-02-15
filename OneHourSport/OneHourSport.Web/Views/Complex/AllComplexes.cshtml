@@ -1,0 +1,12 @@
+﻿@model ICollection<OneHourSport.Web.Models.Complex.ComplexDisplayViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var index = 1;
+}
+
+@foreach (var complex in Model)
+{
+    complex.Index = index;
+    Html.RenderPartial("~/Views/Complex/ComplexDisplay.cshtml", complex);
+    index++;
+}

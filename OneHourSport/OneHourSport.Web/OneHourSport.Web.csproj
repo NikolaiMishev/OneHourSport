@@ -229,6 +229,7 @@
     <Compile Include="Models\Comment\CommentRequestViewModel.cs" />
     <Compile Include="Models\Comment\CommentViewModel.cs" />
     <Compile Include="Models\Complex\ComplexDetailsViewModel.cs" />
+    <Compile Include="Models\Complex\ComplexDisplayViewModel.cs" />
     <Compile Include="Models\Complex\ComplexRequestViewModel.cs" />
     <Compile Include="Models\Field\FieldDetailsViewModel.cs" />
     <Compile Include="Models\Field\FieldDisplayViewModel.cs" />
@@ -349,6 +350,10 @@
     <Content Include="Views\Comment\CommentViewModel.cshtml" />
     <Content Include="Views\Shared\_ListPicturesPartial.cshtml" />
     <Content Include="Views\Shedule\Shedule.cshtml" />
+    <Content Include="Views\Field\FieldDisplay.cshtml" />
+    <Content Include="Views\Field\ListFieldsByCategory.cshtml" />
+    <Content Include="Views\Complex\ComplexDisplay.cshtml" />
+    <Content Include="Views\Complex\AllComplexes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

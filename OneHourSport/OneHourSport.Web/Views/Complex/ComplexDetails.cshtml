@@ -64,16 +64,7 @@
         </div>
         <hr />
         <div>
-            @{
-                var i = 1;
-            }
-            @foreach (var field in Model.MyFields)
-            {
-                field.Index = i;
-                Html.RenderPartial("_FieldPartial", field);
-                i++;
-                <hr />
-            }
+            @Html.Partial("_FieldPartial", Model.MyFields);
         </div>
     </div>
 </div>

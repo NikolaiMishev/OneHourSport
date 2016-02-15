@@ -27,6 +27,18 @@
         }
 
         [HttpGet]
+        [ActionName("AllComplexes")]
+        public ActionResult GetAllComplexes(int page = 1)
+        {
+            var result = this.complexService
+                .GetAllByPage(page)
+                .ProjectTo<ComplexDisplayViewModel>()
+                .ToList();
+
+            return this.View(result);
+        }
+
+        [HttpGet]
         public ActionResult CheckComplex()
         {
             var user = this.userService

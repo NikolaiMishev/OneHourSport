@@ -44,7 +44,7 @@
                             }
                             else
                             {
-                                <li>@Html.ActionLink("All Complexes", "AllComplexes", "Complex")</li>
+                                <li>@Html.ActionLink("All Complexes", "GetAllComplexes", "Complex", new { page = 1 }, null)</li>
 
                                 <li>@Html.ActionLink("My Games", "Index", "Home")</li>
                             }
@@ -57,23 +57,23 @@
     </div>
     <div class="container miniMenu">
         <div class="col-md-2 col-sm-offset-1">
-            <a href='@Url.Action("FieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.FootBall} )'>
+            <a href='@Url.Action("ListFieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.FootBall} )'>
                 <img src="@Url.Content("~/Content/defaults/football.png")" class="img-responsive sportImageSmall" title="Football"/>
             </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            <a href='@Url.Action("Index", "Home")'>
-                <img src="@Url.Content("~/Content/defaults/tennis.png")" class="img-responsive sportImageSmall" title="Tennis"/>
+            <a href='@Url.Action("ListFieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.Tennis} )'>
+                <img src="@Url.Content("~/Content/defaults/tennis.png")" class="img-responsive sportImageSmall" title="Tennis" />
             </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            <a href='@Url.Action("Index", "Home")'>
+            <a href='@Url.Action("ListFieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.VoleyBall} )'>
                 <img src="@Url.Content("~/Content/defaults/volleyball.png")" class="img-responsive sportImageSmall" title="Volleyball" />
             </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            <a href='@Url.Action("Index", "Home")'>
-                <img src="@Url.Content("~/Content/defaults/basketball.png")" class="img-responsive sportImageSmall" title="Basketball"/>
+            <a href='@Url.Action("ListFieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.BasketBall} )'>
+                <img src="@Url.Content("~/Content/defaults/basketball.png")" class="img-responsive sportImageSmall" title="Basketball" />
             </a>
         </div>
     </div>
