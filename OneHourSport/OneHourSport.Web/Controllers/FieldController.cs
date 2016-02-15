@@ -13,6 +13,7 @@
     using System.Web;
     using System.Web.Mvc;
 
+    [Authorize]
     public class FieldController : Controller
     {
         private IFieldService fieldService;
