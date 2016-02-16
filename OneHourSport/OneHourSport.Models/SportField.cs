@@ -37,8 +37,7 @@
         public decimal PricePerHour { get; set; }
 
         public int SportComplexId { get; set; }
-
-        [Required]
+        
         public virtual SportComplex SportComplex { get; set; }
 
         public bool isAprooved { get; set; }

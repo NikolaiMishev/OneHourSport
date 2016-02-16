@@ -9,6 +9,8 @@
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
     using Models.Field;
+    using System.Data.Entity.Validation;
+
     [Authorize]
     public class ComplexController : Controller
     {
@@ -24,6 +26,58 @@
             this.complexService = complexService;
             this.fieldService = fieldService;
             this.userService = userService;
+        }
+
+        [HttpGet]
+        public ActionResult EditComplex(int complexId)
+        {
+            var model = this.complexService
+                .GetById(complexId)
+                .ProjectTo<ComplexEditViewModel>()
+                .FirstOrDefault();
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditComplex(ComplexEditViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var dbModel = this.complexService.GetById(model.Id).FirstOrDefault();
+
+
+            Picture image = null;
+            if (model.EditPicture != null)
+            {
+                using (var memory = new MemoryStream())
+                {
+                    model.EditPicture.InputStream.CopyTo(memory);
+                    var content = memory.GetBuffer();
+
+                    image = new Picture
+                    {
+                        Content = content,
+                        FileExtension = model.EditPicture.FileName.Split(new[] { '.' }).Last()
+                    };
+                }
+            }
+
+            dbModel.Picture = image;
+            dbModel.Name = model.Name;
+            dbModel.Address = model.Address;
+            dbModel.Description = model.Description;
+            dbModel.WorkHourFrom = model.WorkHourFrom;
+            dbModel.WorkHourTo = model.WorkHourTo;
+    
+            this.complexService.Update(dbModel);
+
+
+            return RedirectToAction("ComplexDetails", new { id = dbModel.Id });
         }
 
         [HttpGet]
@@ -48,7 +102,7 @@
             if (user.SportComplex == null)
             {
                 return RedirectToAction("Create");
-               
+
             }
             return RedirectToAction("ComplexDetails", new { id = user.SportComplex.Id });
         }
@@ -67,8 +121,8 @@
                 .Where(x => x.SportComplex.Id == id)
                 .ProjectTo<FieldDisplayViewModel>()
                 .ToList();
-            
-           
+
+
 
             result.MyFields = complexFields;
 

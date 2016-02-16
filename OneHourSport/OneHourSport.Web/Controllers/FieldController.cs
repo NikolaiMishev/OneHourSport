@@ -25,7 +25,40 @@
             this.fieldService = fieldService;
             this.complexService = complexService;
         }
-        
+
+        [HttpGet]
+        public ActionResult EditField(int fieldId)
+        {
+            var model = this.fieldService
+                .GetById(fieldId)
+                .ProjectTo<FieldEditViewModel>()
+                .FirstOrDefault();
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditField(FieldEditViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var dbModel = this.fieldService.GetById(model.Id).FirstOrDefault();
+            dbModel.Pictures.Clear();
+            dbModel.Pictures = ExtractFieldPictures(model.EditProfilePictures);
+            dbModel.isCovered = model.isCovered;
+            dbModel.Name = model.Name;
+            dbModel.Description = model.Description;
+            dbModel.PricePerHour = model.PricePerHour;
+            
+            this.fieldService.Update(dbModel);
+            
+            return RedirectToAction("FieldDetails", new { id = dbModel.Id });
+        }
+
         [HttpGet]
         [ActionName("ListFieldsByCategory")]
         public ActionResult ListFieldsByCategory(SportCategory category, int page = 1)
@@ -34,10 +67,10 @@
                 .GetAllByCategory(category, page)
                 .ProjectTo<FieldDisplayViewModel>()
                 .ToList();
-            
+
             return this.View(result);
         }
-        
+
         [HttpGet]
         public ActionResult FieldDetails(int id)
         {
@@ -66,8 +99,21 @@
 
             var complex = this.complexService.GetById(complexId).FirstOrDefault();
             var modelAsEntity = AutoMapper.Mapper.Map<FieldRequestViewModel, OneHourSport.Models.SportField>(model);
+
+
+            modelAsEntity.Pictures = ExtractFieldPictures(model.ProfilePictures);
+            complex.Fields.Add(modelAsEntity);
+
+
+            this.complexService.Update(complex);
+
+            return RedirectToAction("FieldDetails", new { id = modelAsEntity.Id });
+        }
+
+        private List<Picture> ExtractFieldPictures(IEnumerable<HttpPostedFileBase> pics)
+        {
             var dbImages = new List<Picture>();
-            foreach (var item in model.ProfilePictures)
+            foreach (var item in pics)
             {
                 Picture image = null;
                 if (item != null)
@@ -86,30 +132,7 @@
                     dbImages.Add(image);
                 }
             }
-
-            modelAsEntity.Pictures = dbImages;
-            complex.Fields.Add(modelAsEntity);
-
-            try
-            {
-                this.complexService.Update(complex);
-
-            }
-            catch (DbEntityValidationException ex)
-            {
-                var errorMessages = ex.EntityValidationErrors
-                   .SelectMany(x => x.ValidationErrors)
-                   .Select(x => x.ErrorMessage);
-                
-                var fullErrorMessage = string.Join("; ", errorMessages);
-
-                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
-
-                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
-            }
-
-            
-            return RedirectToAction("FieldDetails", new { id = modelAsEntity.Id });
+            return dbImages;
         }
     }
 }

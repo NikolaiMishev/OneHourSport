@@ -231,9 +231,11 @@
     <Compile Include="Models\Comment\CommentViewModel.cs" />
     <Compile Include="Models\Complex\ComplexDetailsViewModel.cs" />
     <Compile Include="Models\Complex\ComplexDisplayViewModel.cs" />
+    <Compile Include="Models\Complex\ComplexEditViewModel.cs" />
     <Compile Include="Models\Complex\ComplexRequestViewModel.cs" />
     <Compile Include="Models\Field\FieldDetailsViewModel.cs" />
     <Compile Include="Models\Field\FieldDisplayViewModel.cs" />
+    <Compile Include="Models\Field\FieldEditViewModel.cs" />
     <Compile Include="Models\Field\FieldRequestViewModel.cs" />
     <Compile Include="Models\Game\GameViewModel.cs" />
     <Compile Include="Models\HomeTop\HomeTop.ViewModel.cs" />
@@ -358,6 +360,8 @@
     <Content Include="Views\Complex\ComplexDisplay.cshtml" />
     <Content Include="Views\Complex\AllComplexes.cshtml" />
     <Content Include="Views\Games\LastGames.cshtml" />
+    <Content Include="Views\Complex\EditComplex.cshtml" />
+    <Content Include="Views\Field\EditField.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

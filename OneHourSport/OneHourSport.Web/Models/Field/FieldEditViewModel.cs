@@ -1,17 +1,19 @@
 ﻿namespace OneHourSport.Web.Models.Field
 {
-    using Common.Constants;
-    using Infrastructure;
     using OneHourSport.Models;
+    using OneHourSport.Web.Infrastructure;
+
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
 
-    public class FieldRequestViewModel : IMapFrom<SportField>
+    public class FieldEditViewModel : IMapFrom<SportField>
     {
         [Required]
         [StringLength(100, MinimumLength = 5)]
         public string Name { get; set; }
+
+        public int Id { get; set; }
 
         [Required]
         [StringLength(1000, MinimumLength = 50)]
@@ -21,9 +23,7 @@
         public decimal PricePerHour { get; set; }
         
         public bool isCovered { get; set; }
-
-        public SportCategory Category { get; set; }
         
-        public IEnumerable<HttpPostedFileBase> ProfilePictures { get; set; }
+        public IEnumerable<HttpPostedFileBase> EditProfilePictures { get; set; }
     }
 }
