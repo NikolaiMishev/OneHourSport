@@ -67,8 +67,22 @@
                 .Where(x => x.SportComplex.Id == id)
                 .ProjectTo<FieldDisplayViewModel>()
                 .ToList();
+            
+           
 
             result.MyFields = complexFields;
+
+            var isMine = this.userService.GetAll().Where(x => x.UserName == this.User.Identity.Name).FirstOrDefault().SportComplex.Id == id;
+
+            result.IsMine = isMine;
+
+            foreach (var item in complexFields)
+            {
+                if (isMine)
+                {
+                    item.IsMine = true;
+                }
+            }
 
             return this.View(result);
         }

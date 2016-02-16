@@ -81,7 +81,7 @@
                         @Html.AntiForgeryToken()
 
                         <div class="col-md-offset-2 col-md-4">
-                            @Html.TextArea("text", new { @class = "form-control", placeholder = "Text" })
+                            @Html.TextArea("text", new { @class = "form-control", placeholder = "Text", minlength = 5, required = "required" })
                             @Html.Hidden("fieldId", Model.Id)
                         </div>
                         <div class="col-md-offset-2 col-md-4">

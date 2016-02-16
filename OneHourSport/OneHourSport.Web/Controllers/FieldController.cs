@@ -34,7 +34,7 @@
                 .GetAllByCategory(category, page)
                 .ProjectTo<FieldDisplayViewModel>()
                 .ToList();
-
+            
             return this.View(result);
         }
         

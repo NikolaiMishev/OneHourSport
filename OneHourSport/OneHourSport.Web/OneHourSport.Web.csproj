@@ -236,6 +236,7 @@
     <Compile Include="Models\Field\FieldDisplayViewModel.cs" />
     <Compile Include="Models\Field\FieldRequestViewModel.cs" />
     <Compile Include="Models\Game\GameViewModel.cs" />
+    <Compile Include="Models\HomeTop\HomeTop.ViewModel.cs" />
     <Compile Include="Models\OccupiedHour\OccupiedHourViewModel.cs" />
     <Compile Include="Models\Picture\PictureViewModel.cs" />
     <Compile Include="Models\Shedule\SheduleViewModel.cs" />

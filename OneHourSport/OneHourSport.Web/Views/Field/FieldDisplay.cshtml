@@ -29,7 +29,7 @@
                 </div>
                 <div class="row">
                     @Html.Label("Category: ")
-                    @Html.ActionLink(Model.Category.ToString(), "AllFields", "Field", new { category = Model.Category }, null)
+                    @Html.ActionLink(Model.Category.ToString(), "ListFieldsByCategory", "Field", new { category = Model.Category }, null)
                 </div>
                 <div class="row">
                     @Html.Label("Location: ")
@@ -39,7 +39,17 @@
                     Rating ;}
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
+                @if (Model.IsMine)
+                {
+                    <div class="detailsBtn">
+                        @Html.ActionLink("Delete", "Delete", "Field", new { complexId = Model.Id }, new { @class = "btn btn-danger pull-right" })
+                    </div>
+
+                    <div class="detailsBtn">
+                        @Html.ActionLink("Edit", "Edit", "Field", new { complexId = Model.Id }, new { @class = "btn btn-warning pull-right" })
+                    </div>
+                }
             </div>
         </div>
     </div>

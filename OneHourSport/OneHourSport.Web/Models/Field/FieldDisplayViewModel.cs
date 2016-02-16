@@ -18,6 +18,8 @@
         
         public decimal PricePerHour { get; set; }
 
+        public bool IsMine { get; set; }
+
         public int SportComplexId { get; set; }
 
         public string SportComplexName { get; set; }

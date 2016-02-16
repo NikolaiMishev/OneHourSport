@@ -36,8 +36,6 @@
                     @Html.Label(" to ")
                     @Html.DisplayTextFor(m => m.WorkHourTo)
                     @Html.Label(" o'clock!")
-
-
                 </div>
             </div>
             <div class="col-md-3">
@@ -52,10 +50,16 @@
                     </p>
                 </div>
             </div>
-            <div class="detailsBtn">
-                @Html.ActionLink("Add field", "Create", "Field", new { complexId = Model.Id }, new { @class = "btn btn-default pull-right" })
-            </div>
-          
+            @if (Model.IsMine)
+            {
+                <div class="detailsBtn">
+                    @Html.ActionLink("Add field", "Create", "Field", new { complexId = Model.Id }, new { @class = "btn btn-default pull-right" })
+                </div>
+             
+                <div class="detailsBtn">
+                    @Html.ActionLink("Edit", "Edit", "Complex", new { complexId = Model.Id }, new { @class = "btn btn-warning pull-right" })
+                </div>
+            }
         </div>
         <div class="row">
             <div class="pull-left col-lg-offset-1">

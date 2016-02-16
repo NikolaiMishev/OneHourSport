@@ -8,6 +8,8 @@
     {
         IQueryable<SportComplex> GetAll();
 
+        IQueryable<SportComplex> GetTopThree();
+
         IQueryable<SportComplex> GetAllByPage(int page = 1);
         
         IQueryable<SportComplex> GetById(int id);

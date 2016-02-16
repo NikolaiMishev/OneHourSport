@@ -18,6 +18,15 @@
             this.complexes = complexes;
         }
 
+        public IQueryable<SportComplex> GetTopThree()
+        {
+            return this.complexes
+                .All()
+                .OrderBy(x => x.Fields.Count)
+                .Skip(0)
+                .Take(3);
+        }
+
         public int Create(SportComplex complex)
         {
             this.complexes.Add(complex);

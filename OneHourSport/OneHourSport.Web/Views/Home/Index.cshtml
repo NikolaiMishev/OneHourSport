@@ -1,23 +1,77 @@
-﻿@{
+﻿@model OneHourSport.Web.Models.HomeTop.HomeTop
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="">
     <hr />
-        <h2>Featured</h2>
-    <hr />
+        <h2>Top Complexes</h2>
+    <hr style="border-top: 1px solid #93E888;"/>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        @* Image goes here *@
-        <div class="col-md-5">
-            <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" class="img-responsive homedisplayImage"/>
+    @* Render partial home *@
+    @foreach (var item in Model.TopComplexes)
+    {
+        <div class="col-md-4">
+            @* Image goes here *@
+            <div class="col-md-5">
+                <h4><a href="@Url.Action("ComplexDetails", "Complex",new { id = item.Id })" class="">@item.Name</a></h4>
+                <img src="@Url.Action("GetImage", "Picture", new { id = item.Picture.Id })" class="img-responsive homedisplayImage" />
+            </div>
+            @* Info gose here *@
+            <div class="col-md-7">
+                <br />
+                <br />
+
+                <div>
+                    @Html.Label("City: ")
+                    @Html.DisplayFor(m => item.City.Name)
+                </div>
+                <div>
+                    @Html.Label("Address: ")
+                    @Html.DisplayFor(m => item.Address)
+                </div>
+            </div>
         </div>
-        @* Info gose here *@
-        <div class="col-md-7">
-            <label>Haha</label>
-            haha
+    }
+</div>
+
+<div class="">
+    <hr />
+    <h2>Top Fields</h2>
+    <hr style="border-top: 1px solid #93E888;" />
+</div>
+
+<div class="row">
+    @* Render partial home *@
+    @foreach (var item in Model.TopFields)
+    {
+        <div class="col-md-4">
+            @* Image goes here *@
+            <div class="col-md-5">
+                <h4><a href="@Url.Action("FieldDetails", "Field",new { id = item.Id })" class="">@item.Name</a></h4>
+                <img src="@Url.Action("GetImage", "Picture", new { id = item.Pictures.First().Id })" class="img-responsive homedisplayImage" />
+            </div>
+            @* Info gose here *@
+            <div class="col-md-7">
+                <br />
+                <br />
+
+                <div>
+                    @Html.Label("Rating: ")
+                    @Html.DisplayFor(m => item.Ratings.Count)
+                </div>
+                <div>
+                    @Html.Label("Category: ")
+                    @Html.DisplayFor(m => item.Category)
+                </div>
+                <div>
+                    @Html.Label("Price: ")
+                    @Html.DisplayFor(m => item.PricePerHour)
+                </div>
+            </div>
         </div>
-    </div>
+    }
 </div>

@@ -62,5 +62,15 @@
 
             return result;
         }
+
+        public IQueryable<SportField> GetTopThree()
+        {
+            return this.fields
+                .All()
+                .OrderBy(x => x.Ratings
+                .Sum(r => r.Value))
+                .Skip(0)
+                .Take(3);
+        }
     }
 }

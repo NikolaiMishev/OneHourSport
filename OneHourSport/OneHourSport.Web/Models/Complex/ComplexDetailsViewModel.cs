@@ -28,6 +28,10 @@
 
         public int PictureId { get; set; }
 
+        public bool IsMine { get; set; }
+
+        public string OwnerName { get; set; }
+
         public ICollection<FieldDisplayViewModel> MyFields { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
