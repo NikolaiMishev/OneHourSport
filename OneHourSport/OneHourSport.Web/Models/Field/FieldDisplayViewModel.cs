@@ -3,10 +3,12 @@
     using Common.Constants;
     using Infrastructure;
     using OneHourSport.Models;
-    using System;
     using AutoMapper;
+    using Contracts;
+
     using System.Linq;
-    public class FieldDisplayViewModel : IMapFrom<SportField>, IHaveCustomMappings
+    
+    public class FieldDisplayViewModel : IMapFrom<SportField>, IHaveCustomMappings, IPageable
     {
         public int Id { get; set; }
 

@@ -10,7 +10,7 @@
 
         IQueryable<SportField> GetTopThree();
 
-        IQueryable<SportField> GetAllByCategory(SportCategory category, int page = 1);
+        IQueryable<SportField> GetAllByCategory(SportCategory category);
         
         IQueryable<SportField> GetById(int id);
 

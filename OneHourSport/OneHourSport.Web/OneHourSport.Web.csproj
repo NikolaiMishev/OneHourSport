@@ -69,6 +69,14 @@
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -239,6 +247,7 @@
     <Compile Include="Models\Field\FieldRequestViewModel.cs" />
     <Compile Include="Models\Game\GameViewModel.cs" />
     <Compile Include="Models\HomeTop\HomeTop.ViewModel.cs" />
+    <Compile Include="Models\Contracts\IPageable.cs" />
     <Compile Include="Models\OccupiedHour\OccupiedHourViewModel.cs" />
     <Compile Include="Models\Picture\PictureViewModel.cs" />
     <Compile Include="Models\Shedule\SheduleViewModel.cs" />
@@ -255,6 +264,7 @@
     <Content Include="Content\defaults\tennis.png" />
     <Content Include="Content\defaults\userPicDefault.jpg" />
     <Content Include="Content\defaults\volleyball.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -352,16 +362,17 @@
     <Content Include="Views\Field\FieldDetails.cshtml" />
     <Content Include="Views\Shared\_FieldPartial.cshtml" />
     <Content Include="Views\Shared\_ListCommentsPartial.cshtml" />
-    <Content Include="Views\Comment\CommentViewModel.cshtml" />
+    <Content Include="Views\Comment\_SingleCommentPartial.cshtml" />
     <Content Include="Views\Shared\_ListPicturesPartial.cshtml" />
-    <Content Include="Views\Shedule\Shedule.cshtml" />
-    <Content Include="Views\Field\FieldDisplay.cshtml" />
+    <Content Include="Views\Shedule\_ShedulePartial.cshtml" />
+    <Content Include="Views\Field\_FieldDisplayPartial.cshtml" />
     <Content Include="Views\Field\ListFieldsByCategory.cshtml" />
-    <Content Include="Views\Complex\ComplexDisplay.cshtml" />
+    <Content Include="Views\Complex\_ComplexDisplayPartial.cshtml" />
     <Content Include="Views\Complex\AllComplexes.cshtml" />
     <Content Include="Views\Games\LastGames.cshtml" />
     <Content Include="Views\Complex\EditComplex.cshtml" />
     <Content Include="Views\Field\EditField.cshtml" />
+    <Content Include="Views\Shared\_PagingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

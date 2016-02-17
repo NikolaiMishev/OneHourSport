@@ -1,15 +1,18 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
     using Models.Complex;
+    using Models.Field;
     using OneHourSport.Models;
     using Services.Contracts;
-    using System;
+
     using System.IO;
     using System.Linq;
     using System.Web.Mvc;
+
     using AutoMapper.QueryableExtensions;
-    using Models.Field;
-    using System.Data.Entity.Validation;
+    using PagedList;
+
+    using Common.Constants;
 
     [Authorize]
     public class ComplexController : Controller
@@ -77,7 +80,7 @@
             this.complexService.Update(dbModel);
 
 
-            return RedirectToAction("ComplexDetails", new { id = dbModel.Id });
+            return RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = dbModel.Id });
         }
 
         [HttpGet]
@@ -89,7 +92,7 @@
                 .ProjectTo<ComplexDisplayViewModel>()
                 .ToList();
 
-            return this.View(result);
+            return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
         }
 
         [HttpGet]
@@ -104,7 +107,8 @@
                 return RedirectToAction("Create");
 
             }
-            return RedirectToAction("ComplexDetails", new { id = user.SportComplex.Id });
+
+            return RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = user.SportComplex.Id });
         }
 
 
@@ -179,7 +183,7 @@
             currentUser.SportComplex = modelAsDb;
             this.userService.UpdateUserComplex(currentUser);
 
-            return this.RedirectToAction("ComplexDetails", new { id = complexId });
+            return this.RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = complexId });
         }
     }
 }

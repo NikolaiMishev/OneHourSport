@@ -1,7 +1,8 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
+    using Common.Constants;
     using Services.Contracts;
-    using System;
+
     using System.Web.Mvc;
 
     public class PictureController : Controller
@@ -16,7 +17,7 @@
         public ActionResult GetImage(int id)
         {
             var imageData = this.pictures.GetById(id).Content;
-            return File(imageData, "image/jpg");
+            return File(imageData, GlobalConstants.ImageContentType);
         }
     }
 }

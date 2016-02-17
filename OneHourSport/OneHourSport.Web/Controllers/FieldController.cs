@@ -4,6 +4,7 @@
     using Common.Constants;
     using Models.Field;
     using OneHourSport.Models;
+    using PagedList;
     using Services.Contracts;
     using System;
     using System.Collections.Generic;
@@ -56,7 +57,7 @@
             
             this.fieldService.Update(dbModel);
             
-            return RedirectToAction("FieldDetails", new { id = dbModel.Id });
+            return RedirectToAction(GlobalConstants.FieldDetailsActionName, new { id = dbModel.Id });
         }
 
         [HttpGet]
@@ -64,11 +65,11 @@
         public ActionResult ListFieldsByCategory(SportCategory category, int page = 1)
         {
             var result = this.fieldService
-                .GetAllByCategory(category, page)
+                .GetAllByCategory(category)
                 .ProjectTo<FieldDisplayViewModel>()
                 .ToList();
-
-            return this.View(result);
+            this.ViewBag.category = category;
+            return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
         }
 
         [HttpGet]
@@ -107,7 +108,7 @@
 
             this.complexService.Update(complex);
 
-            return RedirectToAction("FieldDetails", new { id = modelAsEntity.Id });
+            return RedirectToAction(GlobalConstants.FieldDetailsActionName, new { id = modelAsEntity.Id });
         }
 
         private List<Picture> ExtractFieldPictures(IEnumerable<HttpPostedFileBase> pics)

@@ -19,7 +19,7 @@
             var currentUserUserName = this.User.Identity.Name;
             this.commentService.Create(text, currentUserUserName, fieldId);
 
-            return this.RedirectToAction("FieldDetails", "Field",new { id = fieldId });
+            return this.RedirectToAction("FieldDetails", "Field", new { id = fieldId });
         }
 
 
@@ -27,8 +27,8 @@
         [HttpGet]
         public ActionResult AllForField(int id)
         {
-            // TODO finish
-            var result =  this.commentService.GetAllByFieldId(id);
+            var result =  this.commentService
+                .GetAllByFieldId(id);
 
             return this.View();
         }

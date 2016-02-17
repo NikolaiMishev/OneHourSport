@@ -1,0 +1,8 @@
+﻿@using PagedList.Mvc;
+
+@model PagedList.IPagedList<OneHourSport.Web.Models.IPageable>
+
+<div class="row text-center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("ListFieldsByCategory", new { page, category = ViewBag.category }))
+</div>

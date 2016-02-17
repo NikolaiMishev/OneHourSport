@@ -1,4 +1,4 @@
-﻿@model ICollection<OneHourSport.Web.Models.Field.FieldDisplayViewModel>
+﻿@model PagedList.IPagedList<OneHourSport.Web.Models.Field.FieldDisplayViewModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var index = 1;
@@ -7,6 +7,8 @@
 @foreach (var item in Model)
 {
     item.Index = index;
-    Html.RenderPartial("~/Views/Field/FieldDisplay.cshtml", item);
+    Html.RenderPartial("~/Views/Field/_FieldDisplayPartial.cshtml.cshtml", item);
     index++;
 }
+
+@Html.Partial("_PagingPartial", Model)

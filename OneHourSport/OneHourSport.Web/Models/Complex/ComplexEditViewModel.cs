@@ -3,8 +3,6 @@
     using Infrastructure;
     using OneHourSport.Models;
     using System.Web;
-    using AutoMapper;
-    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class ComplexEditViewModel : IMapFrom<SportComplex>

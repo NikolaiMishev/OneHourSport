@@ -1,14 +1,11 @@
 ﻿namespace OneHourSport.Web.Models.Complex
 {
     using Infrastructure;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using AutoMapper;
     using OneHourSport.Models;
+    using Contracts;
 
-    public class ComplexDisplayViewModel : IMapFrom<SportComplex>, IHaveCustomMappings
+    public class ComplexDisplayViewModel : IMapFrom<SportComplex>, IHaveCustomMappings, IPageable
     {
         public int Id { get; set; }
 

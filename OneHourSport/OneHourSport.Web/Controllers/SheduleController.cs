@@ -1,15 +1,15 @@
 ﻿using OneHourSport.Services.Contracts;
 using OneHourSport.Web.Models.Shedule;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper.QueryableExtensions;
-using OneHourSport.Web.Models.OccupiedHour;
-
 namespace OneHourSport.Web.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using AutoMapper.QueryableExtensions;
+    using OneHourSport.Web.Models.OccupiedHour;
+    using OneHourSport.Common.Constants;
+
     [Authorize]
     public class SheduleController : Controller
     {
@@ -22,7 +22,7 @@ namespace OneHourSport.Web.Controllers
             this.sheduleService = sheduleService;
             this.complexService = complexService;
         }
-        //15.2.2016 г. 2:35:49
+        
         [HttpGet]
         [ActionName("GetShedule")]
         public ActionResult Shedule(DateTime date, int fieldId)
@@ -45,7 +45,7 @@ namespace OneHourSport.Web.Controllers
                 CurrentUserUsername = this.User.Identity.Name
             };
 
-            return PartialView("~/Views/Shedule/Shedule.cshtml", model);
+            return PartialView(GlobalConstants.SheduleFolderPathPrefix + "_ShedulePartial.cshtml", model);
         }
     }
 }

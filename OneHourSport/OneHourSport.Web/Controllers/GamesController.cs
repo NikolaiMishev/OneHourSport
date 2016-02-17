@@ -1,12 +1,11 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
-    using Services.Contracts;
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
+
+    using Services.Contracts;
     using AutoMapper.QueryableExtensions;
+    using Models.Game;
 
     [Authorize]
     public class GamesController : Controller
@@ -26,7 +25,7 @@
 
             var result = this.games
                 .GetLastGames(username)
-                .ProjectTo<OneHourSport.Web.Models.Game.GameViewModel>()
+                .ProjectTo<GameViewModel>()
                 .ToList();
 
             return this.View(result);

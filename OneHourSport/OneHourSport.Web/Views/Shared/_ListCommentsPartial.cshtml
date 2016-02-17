@@ -6,6 +6,6 @@
 <div>
     @foreach (var item in Model)
     {
-        Html.RenderPartial("~/Views/Comment/CommentViewModel.cshtml", item);
+        Html.RenderPartial("~/Views/Comment/_SingleCommentPartial.cshtml", item);
     }
 </div>
