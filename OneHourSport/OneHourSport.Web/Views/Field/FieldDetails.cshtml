@@ -94,8 +94,12 @@
     </div>
 </div>
 
+
 @section scripts{
+@Scripts.Render("~/bundles/kendo")
+
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+
 <script type="text/javascript">
         $(function () {
             $(document).on("click", "#sheduleLink", function () {

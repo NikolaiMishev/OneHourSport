@@ -6,9 +6,8 @@
     using OneHourSport.Models;
     using PagedList;
     using Services.Contracts;
-    using System;
+
     using System.Collections.Generic;
-    using System.Data.Entity.Validation;
     using System.IO;
     using System.Linq;
     using System.Web;
@@ -68,7 +67,9 @@
                 .GetAllByCategory(category)
                 .ProjectTo<FieldDisplayViewModel>()
                 .ToList();
+
             this.ViewBag.category = category;
+
             return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
         }
 
