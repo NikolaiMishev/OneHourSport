@@ -8,6 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/kendo")
     @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/unobtrusive")
 
 </head>
 <body>
@@ -89,9 +91,9 @@
 
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/unobtrusive")
+    @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/jqueryui")
     @RenderSection("scripts", required: false)
 </body>
