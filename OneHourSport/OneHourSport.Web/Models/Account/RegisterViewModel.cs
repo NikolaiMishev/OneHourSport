@@ -6,7 +6,6 @@
 
     public class RegisterViewModel
     {
-
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -48,6 +47,7 @@
         [Display(Name = "Have Complex?")]
         public bool IsComplex { get; set; }
 
+        [Required]
         public HttpPostedFileBase ProfilePicture { get; set; }
     }
 }

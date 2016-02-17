@@ -1,6 +1,6 @@
 ﻿@using PagedList.Mvc;
 
-@model PagedList.IPagedList<OneHourSport.Web.Models.IPageable>
+@model PagedList.IPagedList<OneHourSport.Web.Models.Contracts.IPageable>
 
 <div class="row text-center">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount

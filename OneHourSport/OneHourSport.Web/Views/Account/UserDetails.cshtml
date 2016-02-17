@@ -44,21 +44,10 @@
                 </div>
                 <div class="col-md-3">
                     @Html.Label("Skills")
-                    <div class="row text-left">
-                        @Html.Label("Football"):
-                        @Html.DisplayTextFor(m => m.FootBallVotes)
-                    </div>
-                    <div class="row text-left">
-                        @Html.Label("VolayBall"):
-                        @Html.DisplayTextFor(m => m.VolayBallVotes)
-                    </div>
-                    <div class="row text-left">
-                        @Html.Label("BasketBall"):
-                        @Html.DisplayTextFor(m => m.BasketBallVotes)
-                    </div>
-                    <div class="row text-left">
-                        @Html.Label("Tennis"):
-                        @Html.DisplayTextFor(m => m.TennisVotes)
+                    <div class="row text-center" id="skillsContainer">
+                        <div id="loadingSkills" hidden="hidden">
+                            <h1>Loading...</h1>
+                        </div>
                     </div>
                 </div>
                 @if (Model.UserName == this.User.Identity.Name)
@@ -77,3 +66,52 @@
         }
     </div>
 </div>
+@section Scripts{
+    <script type="text/javascript">
+        var loading = $("#loadingSkills");
+        $(document).ajaxStart(function () {
+            loading.show();
+        });
+
+        $(document).ajaxStop(function () {
+            loading.hide();
+        });
+
+        document.endoseSkill = function (resieverUsername, category) {
+            var data = {
+                resieverUsername: resieverUsername,
+                category: category
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Content("~/Skills/EndorseSkill")',
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                success: function (data) {
+                    getSkills();
+                }
+            });
+        };
+
+        var getSkills = function () {
+
+            var data = {
+                username: '@Model.UserName'
+            };
+
+            $.ajax({
+                url: '@Url.Content("~/Skills/GetUserSkills")',
+                data: data,
+                contentType: "application/json",
+                success: function (data) {
+                    $('#skillsContainer').html(data);
+                }
+            });
+        }
+
+        $(document).ready(getSkills);
+
+    </script>
+
+
+}

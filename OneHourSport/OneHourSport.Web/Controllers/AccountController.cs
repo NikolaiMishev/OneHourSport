@@ -13,6 +13,8 @@ using OneHourSport.Models;
 using AutoMapper.QueryableExtensions;
 using System.IO;
 using OneHourSport.Services.Contracts;
+using System.Collections.Generic;
+using OneHourSport.Web.Models.Account.UserSkill;
 
 namespace OneHourSport.Web.Controllers
 {
@@ -55,12 +57,13 @@ namespace OneHourSport.Web.Controllers
             {
                 return this.View();
             }
-            var result = this.userService
+
+            var model = this.userService
                 .GetByUsername(username)
                 .ProjectTo<UserDetailsViewModel>()
                 .FirstOrDefault();
-
-            return this.View(result);
+           
+            return this.View(model);
         }
 
         public ApplicationUserManager UserManager

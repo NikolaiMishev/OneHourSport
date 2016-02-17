@@ -1,0 +1,29 @@
+﻿@model ICollection<OneHourSport.Web.Models.Account.UserSkill.SkillViewModel>
+
+@using OneHourSport.Common.Constants
+@{
+    Layout = null;
+    var allCategories = Enum.GetValues(typeof(SportCategory));
+    var usedCategories = new List<SportCategory>();
+    var isNotTheSameUser = this.ViewBag.username != this.User.Identity.Name;
+}
+
+@foreach (SportCategory category in allCategories)
+{
+    usedCategories.Add(category);
+    var currentSkillsValue = Model.Where(x => x.Category == category).Count();
+    var canBeEndorsed = Model.Where(x => x.Category == category && x.CreatorUsername == this.User.Identity.Name).Count() <= 0;
+
+    @Html.Label(category.ToString()) 
+    if (canBeEndorsed && isNotTheSameUser)
+    {
+        @* Add endosment action *@
+        <button class="text-right btn btn-link" onclick="endoseSkill('@this.ViewBag.username','@category')" style="font-size: 1.5em;margin-left: 5px;" title="Endorse">+</button>
+    }
+    <div class="progress text-right">
+        <div class="progress-bar" role="progressbar" aria-valuenow="@currentSkillsValue"
+             aria-valuemin="0" aria-valuemax="100" style="color: black;width:@currentSkillsValue%">
+            @currentSkillsValue%
+        </div>
+    </div>
+}

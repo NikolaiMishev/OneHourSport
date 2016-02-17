@@ -98,10 +98,14 @@
         [HttpGet]
         public ActionResult CheckComplex()
         {
+            if (!this.User.IsInRole(GlobalConstants.ComplexRole))
+            {
+                return View("~/Views/Shared/Unauthorized.cshtml");
+            }
             var user = this.userService
             .GetByUsername(this.User.Identity.Name)
             .FirstOrDefault();
-
+            
             if (user.SportComplex == null)
             {
                 return RedirectToAction("Create");
@@ -130,7 +134,14 @@
 
             result.MyFields = complexFields;
 
-            var isMine = this.userService.GetAll().Where(x => x.UserName == this.User.Identity.Name).FirstOrDefault().SportComplex.Id == id;
+            var userToDisplay = this.userService.GetAll().Where(x => x.UserName == this.User.Identity.Name).FirstOrDefault();
+
+            var isMine = false;
+
+            if (userToDisplay.IsComplex)
+            {
+                isMine = userToDisplay.SportComplex.Id == id;
+            }
 
             result.IsMine = isMine;
 
@@ -148,6 +159,11 @@
         [HttpGet]
         public ActionResult Create()
         {
+            if (!this.User.IsInRole(GlobalConstants.ComplexRole))
+            {
+                return View("~/Views/Shared/Unauthorized.cshtml");
+            }
+
             return this.View();
         }
 

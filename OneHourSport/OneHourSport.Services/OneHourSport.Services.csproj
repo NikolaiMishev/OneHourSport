@@ -66,6 +66,7 @@
     <Compile Include="Contracts\IOccupiedHourService.cs" />
     <Compile Include="Contracts\IPictureService.cs" />
     <Compile Include="Contracts\ISheduleService.cs" />
+    <Compile Include="Contracts\ISkillService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="FieldService.cs" />
     <Compile Include="GameService.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="PictureService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SheduleService.cs" />
+    <Compile Include="SkillService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

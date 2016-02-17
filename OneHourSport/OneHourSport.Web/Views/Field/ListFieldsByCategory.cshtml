@@ -7,7 +7,7 @@
 @foreach (var item in Model)
 {
     item.Index = index;
-    Html.RenderPartial("~/Views/Field/_FieldDisplayPartial.cshtml.cshtml", item);
+    Html.RenderPartial("~/Views/Field/_FieldDisplayPartial.cshtml", item);
     index++;
 }
 

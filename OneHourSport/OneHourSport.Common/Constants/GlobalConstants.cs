@@ -2,8 +2,10 @@
 {
     public class GlobalConstants
     {
-        public const string UserRole = "User";
-        public const string AdminRole = "Admin";
+        public const string UserRole = "user";
+        public const string AdminRole = "admin";
+        public const string ComplexRole = "complex";
+
 
         public const string SheduleFolderPathPrefix = "~/Views/Shedule/";
 

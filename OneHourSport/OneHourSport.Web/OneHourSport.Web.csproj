@@ -212,6 +212,7 @@
     <Compile Include="Controllers\OccupiedHourController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\SheduleController.cs" />
+    <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +252,7 @@
     <Compile Include="Models\OccupiedHour\OccupiedHourViewModel.cs" />
     <Compile Include="Models\Picture\PictureViewModel.cs" />
     <Compile Include="Models\Shedule\SheduleViewModel.cs" />
+    <Compile Include="Models\Account\UserSkill\SkillViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -373,6 +375,8 @@
     <Content Include="Views\Complex\EditComplex.cshtml" />
     <Content Include="Views\Field\EditField.cshtml" />
     <Content Include="Views\Shared\_PagingPartial.cshtml" />
+    <Content Include="Views\Account\UserSkills\_SkillsPartial.cshtml" />
+    <Content Include="Views\Shared\Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

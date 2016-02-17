@@ -21,7 +21,7 @@
             <div class="col-md-6 text-left">
                 <div class="row">
                     @Html.Label("A part of ")
-                    @Html.ActionLink(Model.SportComplexName, "ComplexDetails", "Complex")
+                    @Html.ActionLink(Model.SportComplexName, "ComplexDetails", "Complex", new { id = Model.SportComplexId }, null)
                 </div>
                 <div class="row">
                     @Html.Label("Comments: ")

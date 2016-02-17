@@ -7,7 +7,7 @@
 @foreach (var complex in Model)
 {
     complex.Index = index;
-    Html.RenderPartial("~/Views/Complex/_ComplexDisplayPartial.cshtml.cshtml", complex);
+    Html.RenderPartial("~/Views/Complex/_ComplexDisplayPartial.cshtml", complex);
     index++;
 }
 
