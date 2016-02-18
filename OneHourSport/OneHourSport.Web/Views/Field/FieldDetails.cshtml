@@ -7,6 +7,7 @@
 <div class="container">
     <div class="row text-center">
         <br />
+
         <div class="myBox container">
             <div class="row text-center profileBackground">
                 Sport Field - @Model.Name
@@ -80,6 +81,7 @@
                     <div class="row form-group">
                         @Html.AntiForgeryToken()
 
+                        
                         <div class="col-md-offset-2 col-md-4">
                             @Html.TextArea("text", new { @class = "form-control", placeholder = "Text", minlength = 5, required = "required" })
                             @Html.Hidden("fieldId", Model.Id)
@@ -137,8 +139,8 @@
                 $.ajax({
                     type: "POST",
                     url: '@Url.Content("~/OccupiedHour/CreateOccupiedHour")',
-                    data: JSON.stringify(data),
-                    contentType: "application/json",
+                    data: data,
+                    contentType: "application/x-www-form-urlencoded",
                     success: function (data) {
                         console.log("SUccess");
                         $("#datePicker").trigger("change");
@@ -147,7 +149,9 @@
             };
 
             document.saveHour = function (data) {
-
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                data.__RequestVerificationToken = token;
+                console.log(data);
                 createOccupiedHour(data);
             }
         });

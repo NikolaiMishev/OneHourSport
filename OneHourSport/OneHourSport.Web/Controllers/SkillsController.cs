@@ -21,6 +21,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EndorseSkill(string resieverUsername, SportCategory category)
         {
             this.skillService.Create(category, this.User.Identity.Name, resieverUsername);

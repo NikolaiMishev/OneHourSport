@@ -8,7 +8,7 @@
         <br />
         @if (Model != null)
         {
-
+            @Html.AntiForgeryToken()
             <div class="myBox container">
                 <div class="row text-center profileBackground">
                     Profile Information for @Model.UserName
@@ -78,15 +78,21 @@
         });
 
         document.endoseSkill = function (resieverUsername, category) {
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            console.log(token);
             var data = {
+                __RequestVerificationToken: token,
                 resieverUsername: resieverUsername,
                 category: category
             };
+
+            console.log(data);
             $.ajax({
                 type: "POST",
                 url: '@Url.Content("~/Skills/EndorseSkill")',
-                data: JSON.stringify(data),
-                contentType: "application/json",
+                data: data,
+                contentType: "application/x-www-form-urlencoded",
                 success: function (data) {
                     getSkills();
                 }
@@ -112,6 +118,4 @@
         $(document).ready(getSkills);
 
     </script>
-
-
 }

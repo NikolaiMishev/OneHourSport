@@ -4,5 +4,5 @@
 
 <div class="row text-center">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-    @Html.PagedListPager(Model, page => Url.Action("ListFieldsByCategory", new { page, category = ViewBag.category }))
+    @Html.PagedListPager(Model, page => Url.Action(ViewBag.action, new { page, category = ViewBag.category }))
 </div>

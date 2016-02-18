@@ -15,6 +15,7 @@ using System.IO;
 using OneHourSport.Services.Contracts;
 using System.Collections.Generic;
 using OneHourSport.Web.Models.Account.UserSkill;
+using OneHourSport.Common.Constants;
 
 namespace OneHourSport.Web.Controllers
 {
@@ -87,7 +88,6 @@ namespace OneHourSport.Web.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -168,7 +168,6 @@ namespace OneHourSport.Web.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
@@ -209,7 +208,11 @@ namespace OneHourSport.Web.Controllers
 
                 if (model.IsComplex)
                 {
-                    UserManager.AddToRole(user.Id, "complex");
+                    UserManager.AddToRole(user.Id, GlobalConstants.ComplexRole);
+                }
+                else
+                {
+                    UserManager.AddToRole(user.Id, GlobalConstants.UserRole);
                 }
 
                 if (result.Succeeded)

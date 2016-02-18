@@ -5,11 +5,11 @@
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
     using System;
-
+    using Common.Constants;
     public class OneHourSportDbContext : IdentityDbContext<User>, IOneHourSportDbContext
     {
         public OneHourSportDbContext() 
-            : base("OneHourSportConnectionString", throwIfV1Schema: false)
+            : base(GlobalConstants.ConnectionString, throwIfV1Schema: false)
         {
         }
 

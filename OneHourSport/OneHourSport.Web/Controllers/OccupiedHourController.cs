@@ -18,6 +18,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateOccupiedHour(DateTime date, int hourFrom, int fieldId, string username)
         {
             //TODO make it onl for ajax

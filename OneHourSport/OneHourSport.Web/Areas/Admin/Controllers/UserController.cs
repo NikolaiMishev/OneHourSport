@@ -8,6 +8,7 @@
     using OneHourSport.Models;
     using OneHourSport.Data;
 
+    [Authorize(Roles = "admin")]
     public class UserController : Controller
     {
         private OneHourSportDbContext db = new OneHourSportDbContext();
@@ -40,11 +41,20 @@
             {
                 var entity = new User
                 {
+                    Id = user.Id,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     IsComplex = user.IsComplex,
                     PhoneNumber = user.PhoneNumber,
                     Email = user.Email,
+                    EmailConfirmed = user.EmailConfirmed,
+                    PasswordHash = user.PasswordHash,
+                    SecurityStamp = user.SecurityStamp,
+                    PhoneNumberConfirmed = user.PhoneNumberConfirmed,
+                    TwoFactorEnabled = user.TwoFactorEnabled,
+                    LockoutEndDateUtc = user.LockoutEndDateUtc,
+                    LockoutEnabled = user.LockoutEnabled,
+                    AccessFailedCount = user.AccessFailedCount,
                     UserName = user.UserName
                 };
 
@@ -80,8 +90,8 @@
                     UserName = user.UserName
                 };
 
-                //db.Users.Attach(entity);
-                db.Users.Remove(user);
+                db.Users.Attach(entity);
+                db.Users.Remove(entity);
                 db.SaveChanges();
             }
 

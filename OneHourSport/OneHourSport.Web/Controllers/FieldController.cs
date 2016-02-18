@@ -69,6 +69,8 @@
                 .ToList();
 
             this.ViewBag.category = category;
+            this.ViewBag.action = "ListFieldsByCategory";
+
 
             return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
         }
