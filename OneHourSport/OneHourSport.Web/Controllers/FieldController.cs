@@ -83,6 +83,10 @@
                 .ProjectTo<FieldDetailsViewModel>()
                 .FirstOrDefault();
 
+            var canBeRated = field.Ratings.Where(x => x.Creator.UserName == this.User.Identity.Name).FirstOrDefault() == null;
+
+            field.CanBeRatedByUser = canBeRated;
+
             return this.View(field);
         }
 

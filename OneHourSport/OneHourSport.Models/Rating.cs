@@ -16,13 +16,11 @@
         public int Value { get; set; }
 
         public string CreatorId { get; set; }
-
-        [Required]
+        
         public virtual User Creator { get; set; }
-
-        public string RecieverId { get; set; }
-
-        [Required]
-        public virtual User Reciever { get; set; }
+        
+        public int SportFieldId { get; set; }
+        
+        public virtual SportField SportField { get; set; }
     }
 }

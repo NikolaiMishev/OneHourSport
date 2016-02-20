@@ -18,6 +18,14 @@ namespace OneHourSport.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/rating").Include(
+                        "~/Scripts/ratingsjs/js/star-rating.min.js",
+                        "~/Scripts/ratingsjs/js/star-rating_locale_LANG.js"));
+
+            bundles.Add(new StyleBundle("~/Content/rating").Include(
+                    "~/Content/ratingscss/css/star-rating.css",
+                    "~/Content/ratingscss/css/theme-krajee-svg.css"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

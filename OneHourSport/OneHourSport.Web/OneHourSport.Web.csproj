@@ -217,6 +217,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OccupiedHourController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SheduleController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -462,6 +463,11 @@
     <Content Include="Content\kendo\Uniform\sprite.png" />
     <Content Include="Content\kendo\Uniform\sprite_2x.png" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\ratingscss\css\star-rating.css" />
+    <Content Include="Content\ratingscss\css\star-rating.min.css" />
+    <Content Include="Content\ratingscss\css\theme-krajee-svg.css" />
+    <Content Include="Content\ratingscss\css\theme-krajee-svg.min.css" />
+    <Content Include="Content\ratingscss\img\loading.gif" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -1008,6 +1014,9 @@
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-HK.min.js" />
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-TW.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ratingsjs\js\star-rating.js" />
+    <Content Include="Scripts\ratingsjs\js\star-rating.min.js" />
+    <Content Include="Scripts\ratingsjs\js\star-rating_locale_LANG.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />

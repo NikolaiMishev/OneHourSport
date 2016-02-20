@@ -7,7 +7,9 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
-
+    using AutoMapper.QueryableExtensions;
+    using Models.Field;
+    using Models.Complex;
     public class HomeController : Controller
     {
         private IUserService userService;
@@ -26,8 +28,15 @@
 
         public ActionResult Index()
         {
-            var topFields = this.fieldService.GetTopThree().ToList();
-            var topComplexes = this.complexService.GetTopThree().ToList();
+            var topFields = this.fieldService
+                .GetTopThree()
+                .ProjectTo<FieldDisplayViewModel>()
+                .ToList();
+
+            var topComplexes = this.complexService
+                .GetTopThree()
+                .ProjectTo<ComplexDisplayViewModel>()
+                .ToList();
 
             var model = new HomeTop
             {

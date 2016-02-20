@@ -16,7 +16,9 @@
         public int Id { get; set; }
         
         public string Name { get; set; }
-        
+
+        public bool CanBeRatedByUser { get; set; }
+
         public string Description { get; set; }
         
         public decimal PricePerHour { get; set; }
@@ -37,6 +39,8 @@
 
         public ICollection<CommentViewModel> Comments { get; set; }
 
+        public ICollection<Rating> Ratings { get; set; }
+
         public int Rating { get; set; }
 
         public int WorkHoursCount { get; set; }
@@ -52,6 +56,7 @@
                 .ForMember(r => r.WorkHourFrom, opts => opts.MapFrom(r => r.SportComplex.WorkHourFrom))
                 .ForMember(r => r.WorkHourTo, opts => opts.MapFrom(r => r.SportComplex.WorkHourTo))
                 .ForMember(r => r.WorkHoursCount, opts => opts.MapFrom(r => r.SportComplex.WorkHourTo - r.SportComplex.WorkHourFrom));
+
 
         }
     }

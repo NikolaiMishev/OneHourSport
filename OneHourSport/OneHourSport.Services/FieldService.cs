@@ -48,19 +48,20 @@
             var result = this.fields
                 .All()
                 .Where(x => x.Category == category)
-                .OrderBy(x => x.Ratings.Sum(y => y.Value));
+                .OrderByDescending(x => (int)Math.Ceiling((double)x.Ratings.Sum(r => r.Value) / x.Ratings.Count()));
 
             return result;
         }
 
         public IQueryable<SportField> GetTopThree()
         {
-            return this.fields
+            var result = this.fields
                 .All()
-                .OrderBy(x => x.Ratings
-                .Sum(r => r.Value))
+                .OrderByDescending(x => (int)Math.Ceiling((double)x.Ratings.Sum(r => r.Value) / x.Ratings.Count()))
                 .Skip(0)
                 .Take(3);
+
+            return result;
         }
     }
 }

@@ -54,6 +54,11 @@ namespace OneHourSport.Web.Controllers
         public ActionResult UserDetails(string username)
         {
             var userToSee = this.userService.GetByUsername(username).FirstOrDefault();
+            if (userToSee == null)
+            {
+                return this.HttpNotFound();
+            }
+
             if (userToSee.UserName == "admin")
             {
                 return this.View();
