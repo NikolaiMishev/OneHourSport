@@ -93,7 +93,7 @@
                 .ToList();
             this.ViewBag.action = "AllComplexes";
 
-            return this.View(result.ToPagedList(page, 1/*GlobalConstants.PageSize*/));
+            return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
         }
 
         [HttpGet]
