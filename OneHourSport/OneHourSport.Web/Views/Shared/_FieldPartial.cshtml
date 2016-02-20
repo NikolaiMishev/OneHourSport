@@ -12,3 +12,19 @@
     i++;
     <hr />
 }
+@section styles{
+    @Styles.Render("~/Content/rating")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/rating")
+    <script type="text/javascript">
+        $(document).on('ready', function () {
+            $('.rateClass').rating('refresh', { displayOnly: true });
+            console.log("HIHIHIHIHHI");
+            //$('#2-xs').rating('refresh', { displayOnly: true });
+            //$('#3-xs').rating('refresh', { displayOnly: true });
+
+        });
+    </script>
+}

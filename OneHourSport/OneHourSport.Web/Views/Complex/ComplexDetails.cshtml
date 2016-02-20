@@ -72,3 +72,18 @@
         </div>
     </div>
 </div>
+
+
+@section styles{
+    @Styles.Render("~/Content/rating")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/rating")
+    <script type="text/javascript">
+        $(document).on('ready', function () {
+            $('.rateClass').rating('refresh', { displayOnly: true });
+        });
+
+    </script>
+}

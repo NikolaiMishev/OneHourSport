@@ -60,7 +60,7 @@
                 <br />
                 <br />
                 <div>
-                    <input id="@index-xs" value="@item.Rating" class="rating-loading" data-max="5" data-step="1" data-size="xs">
+                    <input id="@index-xs" value="@item.Rating" class="rating-loading ratingTOBe" data-max="5" data-step="1" data-size="xs">
                 </div>
                 <div>
                     @Html.Label("Category: ")
@@ -84,10 +84,9 @@
     @Scripts.Render("~/bundles/rating")
     <script type="text/javascript">
         $(document).on('ready', function () {
-            $('#1-xs').rating('refresh', { displayOnly: true });
-            $('#2-xs').rating('refresh', { displayOnly: true });
-
-            $('#3-xs').rating('refresh', { displayOnly: true });
+            $('.ratingTOBe').rating('refresh', { displayOnly: true });
+            //$('#2-xs').rating('refresh', { displayOnly: true });
+            //$('#3-xs').rating('refresh', { displayOnly: true });
 
         });
     </script>
