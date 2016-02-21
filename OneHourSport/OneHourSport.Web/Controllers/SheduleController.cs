@@ -1,14 +1,15 @@
-﻿using OneHourSport.Services.Contracts;
-using OneHourSport.Web.Models.Shedule;
-using System;
-namespace OneHourSport.Web.Controllers
+﻿namespace OneHourSport.Web.Controllers
 {
+    using System;
     using System.Linq;
+    using System.Net;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
     using OneHourSport.Web.Models.OccupiedHour;
     using OneHourSport.Common.Constants;
+    using OneHourSport.Services.Contracts;
+    using OneHourSport.Web.Models.Shedule;
 
     [Authorize]
     public class SheduleController : Controller
@@ -27,6 +28,12 @@ namespace OneHourSport.Web.Controllers
         [ActionName("GetShedule")]
         public ActionResult Shedule(DateTime date, int fieldId)
         {
+            if (!Request.IsAjaxRequest())
+            {
+                Response.StatusCode = (int)HttpStatusCode.Forbidden;
+                return this.Content("This action can be invoke only by AJAX call");
+            }
+
             var hours = this.sheduleService
                 .GetAllHoursByDateAndField(date, fieldId)
                 .ProjectTo<OccupiedHourViewModel>()
@@ -45,7 +52,7 @@ namespace OneHourSport.Web.Controllers
                 CurrentUserUsername = this.User.Identity.Name
             };
 
-            return PartialView(GlobalConstants.SheduleFolderPathPrefix + "_ShedulePartial.cshtml", model);
+            return this.PartialView(GlobalConstants.SheduleFolderPathPrefix + "_ShedulePartial.cshtml", model);
         }
     }
 }
