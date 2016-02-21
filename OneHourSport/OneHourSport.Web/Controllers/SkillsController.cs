@@ -38,13 +38,13 @@
         [HttpGet]
         public ActionResult GetUserSkills(string username)
         {
-           
             var skills = this.skillService
                 .GetByUserName(username)
                 .ProjectTo<SkillViewModel>()
                 .ToList();
 
             this.ViewBag.username = username;
+
             return this.PartialView("~/Views/Account/UserSkills/_SkillsPartial.cshtml", skills);
         }
     }

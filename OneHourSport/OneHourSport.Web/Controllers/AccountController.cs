@@ -1,29 +1,33 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using OneHourSport.Web.Models.Account;
-using OneHourSport.Models;
-using AutoMapper.QueryableExtensions;
-using System.IO;
-using OneHourSport.Services.Contracts;
-using System.Collections.Generic;
-using OneHourSport.Web.Models.Account.UserSkill;
-using OneHourSport.Common.Constants;
-
-namespace OneHourSport.Web.Controllers
+﻿namespace OneHourSport.Web.Controllers
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using OneHourSport.Web.Models.Account;
+    using OneHourSport.Models;
+    using AutoMapper.QueryableExtensions;
+    using System.IO;
+    using OneHourSport.Services.Contracts;
+    using System.Collections.Generic;
+    using OneHourSport.Web.Models.Account.UserSkill;
+    using OneHourSport.Common.Constants;
+    using OneHourSport.Web.Helpers;
+
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
+
         private ApplicationUserManager _userManager;
+
+        private ImageConvertor extractor = new ImageConvertor();
 
         public IUserService userService;
 
@@ -165,7 +169,6 @@ namespace OneHourSport.Web.Controllers
             }
         }
 
-        //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
@@ -181,22 +184,7 @@ namespace OneHourSport.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Picture image = null;
-
-                if (model.ProfilePicture != null)
-                {
-                    using (var memory = new MemoryStream())
-                    {
-                        model.ProfilePicture.InputStream.CopyTo(memory);
-                        var content = memory.GetBuffer();
-
-                        image = new Picture
-                        {
-                            Content = content,
-                            FileExtension = model.ProfilePicture.FileName.Split(new[] { '.' }).Last()
-                        };
-                    }
-                }
+                var image = this.extractor.ExtractPicture(model.ProfilePicture);
 
                 var user = new User
                 {

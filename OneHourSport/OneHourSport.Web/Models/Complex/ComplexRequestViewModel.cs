@@ -1,13 +1,12 @@
 ﻿namespace OneHourSport.Web.Models.Complex
 {
+    using System.Web;
+    using System.ComponentModel.DataAnnotations;
+
+    using AutoMapper;
     using Infrastructure;
     using OneHourSport.Models;
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web;
-    using AutoMapper;
-    using System.Linq;
-    using System.IO;
+   
     public class ComplexRequestViewModel : IMapFrom<SportComplex>, IHaveCustomMappings
     {
         [Required]

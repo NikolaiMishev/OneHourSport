@@ -2,13 +2,13 @@
 {
     using AutoMapper.QueryableExtensions;
     using Common.Constants;
+    using Helpers;
     using Models.Field;
     using OneHourSport.Models;
     using PagedList;
     using Services.Contracts;
 
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
@@ -19,6 +19,8 @@
         private IFieldService fieldService;
 
         private IComplexService complexService;
+
+        private ImageConvertor extractor = new ImageConvertor();
 
         public FieldController(IFieldService fieldService, IComplexService complexService)
         {
@@ -53,13 +55,14 @@
             dbModel.Name = model.Name;
             dbModel.Description = model.Description;
             dbModel.PricePerHour = model.PricePerHour;
-            
+
             this.fieldService.Update(dbModel);
-            
+
             return RedirectToAction(GlobalConstants.FieldDetailsActionName, new { id = dbModel.Id });
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [ActionName("ListFieldsByCategory")]
         public ActionResult ListFieldsByCategory(SportCategory category, int page = 1)
         {
@@ -121,24 +124,10 @@
         private List<Picture> ExtractFieldPictures(IEnumerable<HttpPostedFileBase> pics)
         {
             var dbImages = new List<Picture>();
-            foreach (var item in pics)
+            foreach (var picture in pics)
             {
-                Picture image = null;
-                if (item != null)
-                {
-                    using (var memory = new MemoryStream())
-                    {
-                        item.InputStream.CopyTo(memory);
-                        var content = memory.GetBuffer();
-
-                        image = new Picture
-                        {
-                            Content = content,
-                            FileExtension = item.FileName.Split(new[] { '.' }).Last()
-                        };
-                    }
-                    dbImages.Add(image);
-                }
+                var image = this.extractor.ExtractPicture(picture);
+                dbImages.Add(image);
             }
             return dbImages;
         }

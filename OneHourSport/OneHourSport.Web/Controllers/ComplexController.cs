@@ -1,18 +1,19 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
-    using Models.Complex;
-    using Models.Field;
-    using OneHourSport.Models;
-    using Services.Contracts;
-
     using System.IO;
     using System.Linq;
     using System.Web.Mvc;
 
+    using Models.Complex;
+    using Models.Field;
+    using OneHourSport.Models;
+    using Services.Contracts;
+    
     using AutoMapper.QueryableExtensions;
     using PagedList;
 
     using Common.Constants;
+    using Helpers;
 
     [Authorize]
     public class ComplexController : Controller
@@ -23,6 +24,7 @@
 
         private IUserService userService;
 
+        private ImageConvertor extractor = new ImageConvertor();
 
         public ComplexController(IComplexService complexService, IUserService userService, IFieldService fieldService)
         {
@@ -178,23 +180,9 @@
                 return this.View(model);
             }
             var modelAsDb = AutoMapper.Mapper.Map<ComplexRequestViewModel, OneHourSport.Models.SportComplex>(model);
+            
+            modelAsDb.Picture = this.extractor.ExtractPicture(model.ProfilePicture);
 
-            Picture image = null;
-            if (model.ProfilePicture != null)
-            {
-                using (var memory = new MemoryStream())
-                {
-                    model.ProfilePicture.InputStream.CopyTo(memory);
-                    var content = memory.GetBuffer();
-
-                    image = new Picture
-                    {
-                        Content = content,
-                        FileExtension = model.ProfilePicture.FileName.Split(new[] { '.' }).Last()
-                    };
-                }
-            }
-            modelAsDb.Picture = image;
             var currentUser = this.userService.GetByUsername(this.User.Identity.Name).FirstOrDefault();
             var complexId = this.complexService.Create(modelAsDb);
 
