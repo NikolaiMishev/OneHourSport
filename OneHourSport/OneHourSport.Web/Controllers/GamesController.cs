@@ -6,7 +6,8 @@
     using Services.Contracts;
     using AutoMapper.QueryableExtensions;
     using Models.Game;
-
+    using PagedList;
+    using Common.Constants;
     [Authorize]
     public class GamesController : Controller
     {
@@ -19,7 +20,7 @@
 
         [HttpGet]
         [ActionName("LastGames")]
-        public ActionResult GetLastGames()
+        public ActionResult GetLastGames(int page = 1)
         {
             var username = this.User.Identity.Name;
 
@@ -28,7 +29,9 @@
                 .ProjectTo<GameViewModel>()
                 .ToList();
 
-            return this.View(result);
+            this.ViewBag.action = "LastGames";
+
+            return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
         }
     }
 }

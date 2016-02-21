@@ -1,4 +1,4 @@
-﻿@model ICollection<OneHourSport.Web.Models.Game.GameViewModel>
+﻿@model PagedList.IPagedList<OneHourSport.Web.Models.Game.GameViewModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,8 +8,8 @@
         <br />
         <div class="myBox container">
             <div class="row text-center lastGamesBackground">
-                
-                    Last Played Games
+
+                Last Played Games
             </div>
             <hr />
             <div>
@@ -26,9 +26,9 @@
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
-            {
-                if (item.Date > DateTime.Now)
-                {
+                        {
+                            if (item.Date.Date > DateTime.Now.Date || (item.Date.Date == DateTime.Now.Date && DateTime.Now.Hour < item.HourFrom))
+                            {
                                 <tr class="success">
                                     <td>@item.Date.Date.ToShortDateString()</td>
                                     <td>@item.HourFrom</td>
@@ -55,3 +55,4 @@
         </div>
     </div>
 </div>
+@Html.Partial("_PagingPartial", Model)

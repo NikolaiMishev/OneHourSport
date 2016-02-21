@@ -3,8 +3,9 @@
     using OneHourSport.Web.Infrastructure;
     using System;
     using AutoMapper;
+    using Contracts;
 
-    public class GameViewModel : IMapFrom<OneHourSport.Models.OccupiedHour>, IHaveCustomMappings
+    public class GameViewModel : IMapFrom<OneHourSport.Models.OccupiedHour>, IHaveCustomMappings, IPageable
     {
         public DateTime Date { get; set; }
 
