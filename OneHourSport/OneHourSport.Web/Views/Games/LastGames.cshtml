@@ -33,7 +33,7 @@
                                     <td>@item.Date.Date.ToShortDateString()</td>
                                     <td>@item.HourFrom</td>
                                     <td>@item.HourTo</td>
-                                    <td><a href="@Url.Action("FieldDetails", "Field",new { id = item.SportFieldId })">@item.FieldName</a></td>
+                                    <td><a href="@Url.Action("FieldDetails", "Field",new { area = string.Empty, id = item.SportFieldId })">@item.FieldName</a></td>
                                     <td>To be played</td>
                                 </tr>
                             }
@@ -43,7 +43,7 @@
                                     <td>@item.Date.Date.ToShortDateString()</td>
                                     <td>@item.HourFrom</td>
                                     <td>@item.HourTo</td>
-                                    <td><a href="@Url.Action("FieldDetails", "Field",new { id = item.SportFieldId })">@item.FieldName</a></td>
+                                    <td><a href="@Url.Action("FieldDetails", "Field",new { area = string.Empty, id = item.SportFieldId })">@item.FieldName</a></td>
                                     <td>Finished</td>
                                 </tr>
                             }

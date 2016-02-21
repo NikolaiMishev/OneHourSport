@@ -209,6 +209,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ComplexAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FieldAdminController.cs" />
+    <Compile Include="Areas\Admin\Models\Complex\ComplexInputModel.cs" />
+    <Compile Include="Areas\Admin\Models\Complex\ComplexViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Field\FieldInputModel.cs" />
     <Compile Include="Areas\Admin\Models\Field\FieldViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -1191,6 +1193,7 @@
     <Content Include="Scripts\kendo\kendo.view.min.js.map" />
     <Content Include="Scripts\kendo\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\kendo.window.min.js.map" />
+    <Content Include="Views\Shared\EditorTemplates\ComplexViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

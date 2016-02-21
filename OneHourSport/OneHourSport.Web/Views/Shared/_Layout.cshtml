@@ -22,10 +22,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href='@Url.Action("Index", "Home")'>
+                <a href='@Url.Action("Index", "Home", new { area = string.Empty }, null)'>
                     <img src="@Url.Content("~/Content/defaults/logo .png")" class="logo pull-left" title="logo" />
                 </a>
-                @*@Html.ActionLink("OneHourSport", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -34,23 +33,28 @@
                         {
                             if (User.IsInRole("admin"))
                             {
-                                //TODO finish admin paths
-                                <li>@Html.ActionLink("Manage Fields", "FieldsAdmin", "FieldAdmin", new { area = "admin" }, null)</li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Fields", "FieldsAdmin", "FieldAdmin", new { area = "admin" }, null)</li>
+                                        <li>@Html.ActionLink("Complex", "AdminComplex", "ComplexAdmin", new { area = "admin" }, null)</li>
+                                    </ul>
+                                </li>
                             }
                             else if (this.User.IsInRole("complex"))
                             {
-                                <li>@Html.ActionLink("My Complex", "CheckComplex", "Complex")</li>
+                                <li>@Html.ActionLink("My Complex", "CheckComplex", "Complex", new { area = string.Empty }, null)</li>
 
-                                <li>@Html.ActionLink("Last Games", "LastGames", "Games")</li>
-                                <li>@Html.ActionLink("All Complexes", "AllComplexes", "Complex")</li>
+                                <li>@Html.ActionLink("Last Games", "LastGames", "Games", new { area = string.Empty }, null)</li>
+                                <li>@Html.ActionLink("All Complexes", "AllComplexes", "Complex", new { area = string.Empty }, null)</li>
 
 
                             }
                             else
                             {
-                                <li>@Html.ActionLink("All Complexes", "AllComplexes", "Complex", new { page = 1 }, null)</li>
+                                <li>@Html.ActionLink("All Complexes", "AllComplexes", "Complex", new { area = string.Empty, page = 1 }, null)</li>
 
-                                <li>@Html.ActionLink("Last Games", "LastGames", "Games")</li>
+                                <li>@Html.ActionLink("Last Games", "LastGames", "Games", new { area = string.Empty }, null)</li>
                             }
                         }
                     }
@@ -61,22 +65,22 @@
     </div>
     <div class="container miniMenu">
         <div class="col-md-2 col-sm-offset-1">
-            <a href='@Url.Action("ListFieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.FootBall} )'>
-                <img src="@Url.Content("~/Content/defaults/football.png")" class="img-responsive sportImageSmall" title="Football"/>
+            <a href='@Url.Action("ListFieldsByCategory", "Field", new { area = string.Empty, category = OneHourSport.Common.Constants.SportCategory.FootBall} )'>
+                <img src="@Url.Content("~/Content/defaults/football.png")" class="img-responsive sportImageSmall" title="Football" />
             </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            <a href='@Url.Action("ListFieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.Tennis} )'>
+            <a href='@Url.Action("ListFieldsByCategory", "Field", new { area = string.Empty, category = OneHourSport.Common.Constants.SportCategory.Tennis} )'>
                 <img src="@Url.Content("~/Content/defaults/tennis.png")" class="img-responsive sportImageSmall" title="Tennis" />
             </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            <a href='@Url.Action("ListFieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.VoleyBall} )'>
+            <a href='@Url.Action("ListFieldsByCategory", "Field", new { area = string.Empty, category = OneHourSport.Common.Constants.SportCategory.VoleyBall} )'>
                 <img src="@Url.Content("~/Content/defaults/volleyball.png")" class="img-responsive sportImageSmall" title="Volleyball" />
             </a>
         </div>
         <div class="col-md-2 col-sm-offset-1">
-            <a href='@Url.Action("ListFieldsByCategory", "Field", new { category = OneHourSport.Common.Constants.SportCategory.BasketBall} )'>
+            <a href='@Url.Action("ListFieldsByCategory", "Field", new { area = string.Empty, category = OneHourSport.Common.Constants.SportCategory.BasketBall} )'>
                 <img src="@Url.Content("~/Content/defaults/basketball.png")" class="img-responsive sportImageSmall" title="Basketball" />
             </a>
         </div>
@@ -86,8 +90,8 @@
         <hr />
         <footer class="panel-footer text-center" id="wrap">
             <p>&copy; 2016 - Telerik Academy</p>
-            <p>ASP.NET MVC Application by (<a href="http://telerikacademy.com/Users/nikolai.mishev.5"  target="_blank">Nikolay Mishev</a>)</p>
-            <p><a href="https://github.com/NikolaiMishev/OneHourSport"  target="_blank">OneHourSport System 1.0</a></p>
+            <p>ASP.NET MVC Application by (<a href="http://telerikacademy.com/Users/nikolai.mishev.5" target="_blank">Nikolay Mishev</a>)</p>
+            <p><a href="https://github.com/NikolaiMishev/OneHourSport" target="_blank">OneHourSport System 1.0</a></p>
         </footer>
 
     </div>

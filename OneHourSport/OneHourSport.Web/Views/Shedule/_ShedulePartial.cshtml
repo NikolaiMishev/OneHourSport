@@ -10,11 +10,11 @@
         <h3 id="currentDate">@Model.Date.ToShortDateString()</h3>
     </div>
     <div class="col-md-6">
-        @* value="@DateTime.Today.ToString("yyyy-MM-dd")" *@
         <br />  
         @(Html.Kendo().DatePicker()
             .Name("datePicker")
             .Format("yyyy-MM-dd")
+            .Min(DateTime.Today.Date)
             .Value(@Model.Date.ToString("yyyy-MM-dd"))
             .HtmlAttributes(new { style = "width:70%;" })
         )
@@ -57,7 +57,7 @@
                     <td>@i</td>
                     <td>@currentHourFrom</td>
                     <td>@currentHourTo</td>
-                    <td><a href="@Url.Action("UserDetails", "Account", new { username = OccupiedByUsername })">@OccupiedByUsername</a></td>
+                    <td><a href="@Url.Action("UserDetails", "Account", new { area = string.Empty, username = OccupiedByUsername })">@OccupiedByUsername</a></td>
                     <td>X</td>
                 </tr>
             }

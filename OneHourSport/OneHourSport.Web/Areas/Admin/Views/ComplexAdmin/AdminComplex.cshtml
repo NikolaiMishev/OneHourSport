@@ -1,0 +1,30 @@
+﻿
+@(Html.Kendo().Grid<OneHourSport.Web.Areas.Admin.Models.Complex.ComplexViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Name);
+          columns.Bound(c => c.Description);
+          columns.Bound(c => c.WorkHourFrom);
+          columns.Bound(c => c.WorkHourTo);
+          columns.Bound(c => c.Address);
+          columns.Bound(c => c.CityName);
+
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("SportComplexes_Read", "ComplexAdmin"))
+          .Update(update => update.Action("SportComplexes_Update", "ComplexAdmin"))
+          .Destroy(destroy => destroy.Action("SportComplexes_Destroy", "ComplexAdmin"))
+      )
+)

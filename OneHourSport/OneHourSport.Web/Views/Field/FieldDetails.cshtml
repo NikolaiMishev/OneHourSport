@@ -45,7 +45,7 @@
                     </div>
                     <div class="row">
                         @Html.Label("A part of:")
-                        @Html.ActionLink(Model.SportComplex.Name, "ComplexDetails", "Complex", new { id = Model.SportComplex.Id }, null)
+                        @Html.ActionLink(Model.SportComplex.Name, "ComplexDetails", "Complex", new { area = string.Empty, id = Model.SportComplex.Id }, null)
                     </div>
                     <div class="row">
                         @Html.Label("Price per hour:")
@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="row text-center menuHoursBackground">
-                @Ajax.ActionLink("Schedule", "GetShedule", "Shedule", new { date = DateTime.Now.Date, fieldId = Model.Id },
+                @Ajax.ActionLink("Schedule", "GetShedule", "Shedule", new { area = string.Empty, date = DateTime.Now.Date, fieldId = Model.Id },
                 new AjaxOptions
                 {
                     InsertionMode = InsertionMode.Replace,

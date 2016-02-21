@@ -16,7 +16,7 @@
             <div class="holder col-sm-3">
                 <div id="image-@index" class="image-lightbox">
                     <span class="close"><a href="#">X</a></span>
-                    <img src="@Url.Action("GetImage", "Picture", new { id = pic.PictureId })" alt="Image" class="" />
+                    <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = pic.PictureId })" alt="Image" class="" />
                     <a class="expand" href="#image-@index"></a>
                 </div>
             </div>

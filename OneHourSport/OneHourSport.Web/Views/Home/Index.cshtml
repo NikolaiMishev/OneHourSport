@@ -18,8 +18,8 @@
         <div class="col-md-4">
             @* Image goes here *@
             <div class="col-md-5">
-                <h4><a href="@Url.Action("ComplexDetails", "Complex",new { id = item.Id })" class="">@item.Name</a></h4>
-                <img src="@Url.Action("GetImage", "Picture", new { id = item.PictureId })" class="img-responsive homedisplayImage" />
+                <h4><a href="@Url.Action("ComplexDetails", "Complex",new { area = string.Empty, id = item.Id })" class="">@item.Name</a></h4>
+                <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = item.PictureId })" class="img-responsive homedisplayImage" />
             </div>
             @* Info gose here *@
             <div class="col-md-7">
@@ -52,8 +52,8 @@
         <div class="col-md-4">
             @* Image goes here *@
             <div class="col-md-5">
-                <h4><a href="@Url.Action("FieldDetails", "Field",new { id = item.Id })">@item.Name</a></h4>
-                <img src="@Url.Action("GetImage", "Picture", new { id = item.PictureId })" class="img-responsive homedisplayImage" />
+                <h4><a href="@Url.Action("FieldDetails", "Field",new { area = string.Empty, id = item.Id })">@item.Name</a></h4>
+                <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = item.PictureId })" class="img-responsive homedisplayImage" />
             </div>
             @* Info gose here *@
             <div class="col-md-7">
@@ -85,8 +85,6 @@
     <script type="text/javascript">
         $(document).on('ready', function () {
             $('.ratingTOBe').rating('refresh', { displayOnly: true });
-            //$('#2-xs').rating('refresh', { displayOnly: true });
-            //$('#3-xs').rating('refresh', { displayOnly: true });
 
         });
     </script>

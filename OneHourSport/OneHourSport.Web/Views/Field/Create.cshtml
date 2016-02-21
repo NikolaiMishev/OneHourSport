@@ -5,7 +5,7 @@
 }
 
 
-@using (Html.BeginForm("Create", "Field", new { complexId = this.ViewBag.ComplexId }, FormMethod.Post,new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Field", new { area = string.Empty, complexId = this.ViewBag.ComplexId }, FormMethod.Post,new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h4>Add a Field here!</h4>
