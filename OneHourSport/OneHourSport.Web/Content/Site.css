@@ -289,3 +289,8 @@ div#image-1:target, div#image-2:target, div#image-3:target {
 .scrollToTop:hover{
 	text-decoration:none;
 }
+#loadingImg{
+    background-image: url("defaults/loading.gif");
+    height: 250px;
+    width: 250px;
+}

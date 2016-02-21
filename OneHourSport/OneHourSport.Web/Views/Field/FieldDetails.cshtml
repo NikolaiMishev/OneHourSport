@@ -79,7 +79,7 @@
 
             </div>
             <div id="loadingShedule" hidden="hidden">
-                <h1>Loading...</h1>
+                <img src="~/Content/defaults/loading.gif" id="loadingImg" />
             </div>
             <div class="shedule" id="sheduleContainer">
 
@@ -136,8 +136,6 @@
                     data: data,
                     contentType: "application/x-www-form-urlencoded",
                     success: function (data) {
-                        console.log("SUccess rate");
-                        console.log(data);
                         $('#rating').rating("refresh", { displayOnly: true, step: 1, value: parseInt(data) });
                         $('#ratinglabel').empty().text('You rated this field!');
                     }
@@ -159,7 +157,6 @@
                     contentType: "application/json",
                     success: function (data) {
                         $('#sheduleContainer').html(data);
-                        console.log("asdasdas");
 
                     }
                 });
@@ -183,7 +180,6 @@
                     data: data,
                     contentType: "application/x-www-form-urlencoded",
                     success: function (data) {
-                        console.log("SUccess");
                         $("#datePicker").trigger("change");
                     }
                 });
@@ -192,7 +188,6 @@
             document.saveHour = function (data) {
                 var token = $('input[name="__RequestVerificationToken"]').val();
                 data.__RequestVerificationToken = token;
-                console.log(data);
                 createOccupiedHour(data);
             }
         });

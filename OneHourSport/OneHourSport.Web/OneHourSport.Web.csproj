@@ -278,6 +278,7 @@
     <Content Include="Content\defaults\backraoun.png" />
     <Content Include="Content\defaults\basketball.png" />
     <Content Include="Content\defaults\football.png" />
+    <Content Include="Content\defaults\loading.gif" />
     <Content Include="Content\defaults\logo .png" />
     <Content Include="Content\defaults\tennis.png" />
     <Content Include="Content\defaults\userPicDefault.jpg" />
