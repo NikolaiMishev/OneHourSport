@@ -3,14 +3,22 @@
 
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { area = string.Empty, id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Hi, "+User.Identity.GetUserName()+"!", "UserDetails", "Account", routeValues: new { username = User.Identity.GetUserName() }, htmlAttributes: new { title = "Manage" })
+                @if (this.User.IsInRole("admin"))
+                {
+                    <a>Hi, Admin!</a>
+                }
+                else
+                {
+                    @Html.ActionLink("Hi, " + User.Identity.GetUserName() + "!", "UserDetails", "Account", routeValues: new { area = string.Empty, username = User.Identity.GetUserName() }, htmlAttributes: new { title = "Manage" })
+
+                }
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
@@ -19,8 +27,8 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "registerLink" })</li>
         <li><a class="disabled">|</a></li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

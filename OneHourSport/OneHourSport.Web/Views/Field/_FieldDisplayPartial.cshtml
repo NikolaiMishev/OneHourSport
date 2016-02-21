@@ -14,14 +14,14 @@
             <br />
             <div class="col-md-3 col-md-offset-1">
                 <div class="">
-                    <img src="@Url.Action("GetImage", "Picture", new { id = Model.PictureId })" alt="@Model.Name" class="displayImage myBox img-responsive" />
+                    <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = Model.PictureId })" alt="@Model.Name" class="displayImage myBox img-responsive" />
                 </div>
             </div>
 
             <div class="col-md-6 text-left">
                 <div class="row">
                     @Html.Label("A part of ")
-                    @Html.ActionLink(Model.SportComplexName, "ComplexDetails", "Complex", new { id = Model.SportComplexId }, null)
+                    @Html.ActionLink(Model.SportComplexName, "ComplexDetails", "Complex", new { area = string.Empty, id = Model.SportComplexId }, null)
                 </div>
                 <div class="row">
                     @Html.Label("Comments: ")
@@ -29,25 +29,25 @@
                 </div>
                 <div class="row">
                     @Html.Label("Category: ")
-                    @Html.ActionLink(Model.Category.ToString(), "ListFieldsByCategory", "Field", new { category = Model.Category }, null)
+                    @Html.ActionLink(Model.Category.ToString(), "ListFieldsByCategory", "Field", new { area = string.Empty, category = Model.Category }, null)
                 </div>
                 <div class="row">
                     @Html.Label("Location: ")
                     @Html.DisplayTextFor(m => Model.Location)
                 </div>
                 <div class="row">
-                    Rating ;}
+                    <input id="@Model.Id-xs" value="@Model.Rating" class="rating-loading rateClass" data-max="5" data-step="1" data-size="xs">
                 </div>
             </div>
             <div class="col-md-2">
                 @if (Model.IsMine)
                 {
                     <div class="detailsBtn">
-                        @Html.ActionLink("Delete", "Delete", "Field", new { complexId = Model.Id }, new { @class = "btn btn-danger pull-right" })
+                        @Html.ActionLink("Delete", "Delete", "Field", new { area = string.Empty, complexId = Model.Id }, new { @class = "btn btn-danger pull-right" })
                     </div>
 
                     <div class="detailsBtn">
-                        @Html.ActionLink("Edit", "EditField", "Field", new { fieldId = Model.Id }, new { @class = "btn btn-warning pull-right" })
+                        @Html.ActionLink("Edit", "EditField", "Field", new { area = string.Empty, fieldId = Model.Id }, new { @class = "btn btn-warning pull-right" })
                     </div>
                 }
             </div>

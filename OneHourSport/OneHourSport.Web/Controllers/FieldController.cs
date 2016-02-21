@@ -69,6 +69,8 @@
                 .ToList();
 
             this.ViewBag.category = category;
+            this.ViewBag.action = "ListFieldsByCategory";
+
 
             return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
         }
@@ -80,6 +82,10 @@
                 .GetById(id)
                 .ProjectTo<FieldDetailsViewModel>()
                 .FirstOrDefault();
+
+            var canBeRated = field.Ratings.Where(x => x.Creator.UserName == this.User.Identity.Name).FirstOrDefault() == null;
+
+            field.CanBeRatedByUser = canBeRated;
 
             return this.View(field);
         }

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Home Page";
+    var index = 1;
 }
 
 <div class="">
@@ -17,8 +18,8 @@
         <div class="col-md-4">
             @* Image goes here *@
             <div class="col-md-5">
-                <h4><a href="@Url.Action("ComplexDetails", "Complex",new { id = item.Id })" class="">@item.Name</a></h4>
-                <img src="@Url.Action("GetImage", "Picture", new { id = item.Picture.Id })" class="img-responsive homedisplayImage" />
+                <h4><a href="@Url.Action("ComplexDetails", "Complex",new { area = string.Empty, id = item.Id })" class="">@item.Name</a></h4>
+                <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = item.PictureId })" class="img-responsive homedisplayImage" />
             </div>
             @* Info gose here *@
             <div class="col-md-7">
@@ -27,14 +28,19 @@
 
                 <div>
                     @Html.Label("City: ")
-                    @Html.DisplayFor(m => item.City.Name)
+                    @Html.DisplayFor(m => item.CityName)
                 </div>
                 <div>
                     @Html.Label("Address: ")
                     @Html.DisplayFor(m => item.Address)
                 </div>
+                <div>
+                    @Html.Label("Visits: ")
+                    @Html.DisplayFor(m => item.Visits)
+                </div>
             </div>
         </div>
+
     }
 </div>
 
@@ -45,23 +51,20 @@
 </div>
 
 <div class="row">
-    @* Render partial home *@
     @foreach (var item in Model.TopFields)
     {
         <div class="col-md-4">
             @* Image goes here *@
             <div class="col-md-5">
-                <h4><a href="@Url.Action("FieldDetails", "Field",new { id = item.Id })" class="">@item.Name</a></h4>
-                <img src="@Url.Action("GetImage", "Picture", new { id = item.Pictures.First().Id })" class="img-responsive homedisplayImage" />
+                <h4><a href="@Url.Action("FieldDetails", "Field",new { area = string.Empty, id = item.Id })">@item.Name</a></h4>
+                <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = item.PictureId })" class="img-responsive homedisplayImage" />
             </div>
             @* Info gose here *@
             <div class="col-md-7">
                 <br />
                 <br />
-
                 <div>
-                    @Html.Label("Rating: ")
-                    @Html.DisplayFor(m => item.Ratings.Count)
+                    <input id="@index-xs" value="@item.Rating" class="rating-loading ratingTOBe" data-max="5" data-step="1" data-size="xs">
                 </div>
                 <div>
                     @Html.Label("Category: ")
@@ -73,5 +76,20 @@
                 </div>
             </div>
         </div>
+        index++;
+
     }
 </div>
+@section styles{
+    @Styles.Render("~/Content/rating")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/rating")
+    <script type="text/javascript">
+        $(document).on('ready', function () {
+            $('.ratingTOBe').rating('refresh', { displayOnly: true });
+
+        });
+    </script>
+    }

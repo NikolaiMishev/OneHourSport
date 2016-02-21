@@ -494,4 +494,6 @@
 /// <reference path="kendo/messages/kendo.messages.zh-hk.min.js" />
 /// <reference path="kendo/messages/kendo.messages.zh-tw.min.js" />
 /// <reference path="modernizr-2.6.2.js" />
+/// <reference path="ratingsjs/js/star-rating.js" />
+/// <reference path="ratingsjs/js/star-rating_locale_lang.js" />
 /// <reference path="respond.js" />

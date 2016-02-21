@@ -4,11 +4,18 @@
     using OneHourSport.Models;
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
+    using System;
+    using Common.Constants;
     public class OneHourSportDbContext : IdentityDbContext<User>, IOneHourSportDbContext
     {
         public OneHourSportDbContext() 
-            : base("OneHourSportConnectionString", throwIfV1Schema: false)
+            : base(GlobalConstants.ConnectionString, throwIfV1Schema: false)
         {
+        }
+
+        DbSet<TEntity> IOneHourSportDbContext.Set<TEntity>()
+        {
+            return base.Set<TEntity>();
         }
 
         public override IDbSet<User> Users { get; set; }
@@ -36,10 +43,9 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
     }
 }

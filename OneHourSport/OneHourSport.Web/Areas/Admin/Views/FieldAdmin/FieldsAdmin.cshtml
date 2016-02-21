@@ -1,0 +1,33 @@
+﻿
+<div class="row text-center">
+    <h3>Fields</h3>
+</div>
+<br />  
+@(Html.Kendo().Grid<OneHourSport.Web.Areas.Admin.Models.Field.FieldViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Name);
+        columns.Bound(c => c.Description);
+        columns.Bound(c => c.PricePerHour);
+        columns.Bound(c => c.isAprooved);
+        columns.Bound(c => c.isCovered);
+        columns.Bound(c => c.Category);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable(s => s.Height(400))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("SportFields_Read", "FieldAdmin"))
+          .Update(update => update.Action("SportFields_Update", "FieldAdmin"))
+          .Destroy(destroy => destroy.Action("SportFields_Destroy", "FieldAdmin"))
+      )
+)

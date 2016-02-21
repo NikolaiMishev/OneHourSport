@@ -9,7 +9,7 @@ namespace OneHourSport.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                         "~/Scripts/kendo/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                        "~/Scripts/kendo/kendo.web.min.js",
@@ -17,6 +17,14 @@ namespace OneHourSport.Web
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/rating").Include(
+                        "~/Scripts/ratingsjs/js/star-rating.min.js",
+                        "~/Scripts/ratingsjs/js/star-rating_locale_LANG.js"));
+
+            bundles.Add(new StyleBundle("~/Content/rating").Include(
+                    "~/Content/ratingscss/css/star-rating.css",
+                    "~/Content/ratingscss/css/theme-krajee-svg.css"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

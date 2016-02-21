@@ -2,6 +2,8 @@
 {
     public class GlobalConstants
     {
+        public const string ConnectionString = "OneHourSportConnectionString";
+
         public const string UserRole = "user";
         public const string AdminRole = "admin";
         public const string ComplexRole = "complex";

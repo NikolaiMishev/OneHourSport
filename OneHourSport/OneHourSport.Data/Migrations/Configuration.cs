@@ -1,13 +1,12 @@
 namespace OneHourSport.Data.Migrations
 {
+    using Models;
+    using Common.Constants;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
-    using System;
-    using System.Data.Entity;
+
     using System.Data.Entity.Migrations;
-    using System.IO;
-    using System.Linq;
 
     public sealed class Configuration : DbMigrationsConfiguration<OneHourSportDbContext>
     {
@@ -16,7 +15,7 @@ namespace OneHourSport.Data.Migrations
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
         }
-
+        
         protected override void Seed(OneHourSportDbContext context)
         {
             context.Configuration.LazyLoadingEnabled = true;
@@ -26,67 +25,39 @@ namespace OneHourSport.Data.Migrations
 
             userManager.PasswordValidator = new MinimumLengthValidator(5);
 
-            if (!roleManager.RoleExists("admin"))
+            if (!roleManager.RoleExists(GlobalConstants.AdminRole))
             {
-                roleManager.Create(new IdentityRole("admin"));
+                roleManager.Create(new IdentityRole(GlobalConstants.AdminRole));
             }
 
-            if (!roleManager.RoleExists("complex"))
+            if (!roleManager.RoleExists(GlobalConstants.ComplexRole))
             {
-                roleManager.Create(new IdentityRole("complex"));
+                roleManager.Create(new IdentityRole(GlobalConstants.ComplexRole));
+            }
+
+            if (!roleManager.RoleExists(GlobalConstants.UserRole))
+            {
+                roleManager.Create(new IdentityRole(GlobalConstants.UserRole));
             }
            
-            var user = new User
-            {
-                UserName = "admin",
-                Email = "admin@gmail.com",
-                PhoneNumber = "0888111222",
-                FirstName = "Admin",
-                LastName = "Admin",
-                 
-            };
-
             if (userManager.FindByName("admin") == null)
             {
+                var user = new User
+                {
+                    UserName = "admin",
+                    Email = "admin@gmail.com",
+                    PhoneNumber = "0888111222",
+                    FirstName = "Admin",
+                    LastName = "Admin",
+
+                };
+
                 var result = userManager.Create(user, "admin");
                 if (result.Succeeded)
                 {
-                    userManager.AddToRole(user.Id, "admin");
+                    userManager.AddToRole(user.Id, GlobalConstants.AdminRole);
                 }
             }
-
-
-
-
-
-            //context.Roles.AddOrUpdate(new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
-            //{
-            //    Name = "complex"
-            //});
-
-            //context.Roles.AddOrUpdate(new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
-            //{
-            //    Name = "admin"
-            //});
-
-            //context.Users.AddOrUpdate(new Models.User
-            //{
-            //     Email = "admin@site.com",
-
-            //})
-
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
         }
     }
 }

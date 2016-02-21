@@ -8,13 +8,13 @@
         <br />
         <div class="container">
             <div class="row col-lg-offset-1">
-                <h3><span style="background-color: #80A4A5; margin-right:10px;">@Model.Index</span><a href="@Url.Action("ComplexDetails", "Complex",new { id = Model.Id })">@Model.Name</a></h3>
+                <h3><span style="background-color: #80A4A5; margin-right:10px;">@Model.Index</span><a href="@Url.Action("ComplexDetails", "Complex", new { area = string.Empty, id = Model.Id })">@Model.Name</a></h3>
 
             </div>
             <br />
             <div class="col-md-3 col-md-offset-1">
                 <div class="">
-                    <img src="@Url.Action("GetImage", "Picture", new { id = Model.PictureId })" alt="@Model.Name" class="displayImage myBox img-responsive" />
+                    <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = Model.PictureId })" alt="@Model.Name" class="displayImage myBox img-responsive" />
                 </div>
             </div>
 
@@ -36,6 +36,10 @@
                 <div class="row">
                     @Html.Label("City: ")
                     @Html.DisplayTextFor(m => Model.CityName)
+                </div>
+                <div class="row">
+                    @Html.Label("Visits: ")
+                    @Html.DisplayTextFor(m => Model.Visits)
                 </div>
             </div>
         </div>

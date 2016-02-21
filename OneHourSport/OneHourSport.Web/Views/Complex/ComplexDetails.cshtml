@@ -14,7 +14,7 @@
             <div class="col-md-3 col-md-offset-1">
                 @Html.Label("Picture")
                 <div class="myBox">
-                    <img src="@Url.Action("GetImage", "Picture", new { id = Model.PictureId })" alt="@Model.Name" class="profilePicture img-responsive" />
+                    <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = Model.PictureId })" alt="@Model.Name" class="profilePicture img-responsive" />
                 </div>
             </div>
             <div class="col-md-3 text-left col-md-offset-1">
@@ -53,11 +53,11 @@
             @if (Model.IsMine)
             {
                 <div class="detailsBtn">
-                    @Html.ActionLink("Add field", "Create", "Field", new { complexId = Model.Id }, new { @class = "btn btn-default pull-right" })
+                    @Html.ActionLink("Add field", "Create", "Field", new { area = string.Empty, complexId = Model.Id }, new { @class = "btn btn-default pull-right" })
                 </div>
              
                 <div class="detailsBtn">
-                    @Html.ActionLink("Edit", "EditComplex", "Complex", new { complexId = Model.Id }, new { @class = "btn btn-warning pull-right" })
+                    @Html.ActionLink("Edit", "EditComplex", "Complex", new { area = string.Empty, complexId = Model.Id }, new { @class = "btn btn-warning pull-right" })
                 </div>
             }
         </div>
@@ -72,3 +72,18 @@
         </div>
     </div>
 </div>
+
+
+@section styles{
+    @Styles.Render("~/Content/rating")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/rating")
+    <script type="text/javascript">
+        $(document).on('ready', function () {
+            $('.rateClass').rating('refresh', { displayOnly: true });
+        });
+
+    </script>
+}

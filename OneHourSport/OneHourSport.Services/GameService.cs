@@ -23,8 +23,7 @@
                 .All()
                 .Where(x => x.OccupiedBy.UserName == username)
                 .OrderByDescending(x => x.Date)
-                .Skip(0)
-                .Take(10);
+                .ThenByDescending(x => x.HourFrom);
 
             return result;
         }

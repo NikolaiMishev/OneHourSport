@@ -206,6 +206,16 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ComplexAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FieldAdminController.cs" />
+    <Compile Include="Areas\Admin\Models\Comment\CommentInputModel.cs" />
+    <Compile Include="Areas\Admin\Models\Comment\CommentViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Complex\ComplexInputModel.cs" />
+    <Compile Include="Areas\Admin\Models\Complex\ComplexViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Field\FieldInputModel.cs" />
+    <Compile Include="Areas\Admin\Models\Field\FieldViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ComplexController.cs" />
@@ -215,6 +225,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OccupiedHourController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SheduleController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -263,6 +274,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\defaults\arrowUp.png" />
     <Content Include="Content\defaults\backraoun.png" />
     <Content Include="Content\defaults\basketball.png" />
     <Content Include="Content\defaults\football.png" />
@@ -346,10 +358,6 @@
     <Content Include="Content\kendo\images\kendoui.svg" />
     <Content Include="Content\kendo\images\wp8_icons.png" />
     <Content Include="Content\kendo\images\wp8_inverseicons.png" />
-    <Content Include="Content\kendo\kendo.black.min.css" />
-    <Content Include="Content\kendo\kendo.black.mobile.min.css" />
-    <Content Include="Content\kendo\kendo.blueopal.min.css" />
-    <Content Include="Content\kendo\kendo.blueopal.mobile.min.css" />
     <Content Include="Content\kendo\kendo.bootstrap.min.css" />
     <Content Include="Content\kendo\kendo.bootstrap.mobile.min.css" />
     <Content Include="Content\kendo\kendo.common-bootstrap.core.min.css" />
@@ -371,28 +379,6 @@
     <Content Include="Content\kendo\kendo.dataviz.uniform.min.css" />
     <Content Include="Content\kendo\kendo.default.min.css" />
     <Content Include="Content\kendo\kendo.default.mobile.min.css" />
-    <Content Include="Content\kendo\kendo.flat.min.css" />
-    <Content Include="Content\kendo\kendo.flat.mobile.min.css" />
-    <Content Include="Content\kendo\kendo.highcontrast.min.css" />
-    <Content Include="Content\kendo\kendo.highcontrast.mobile.min.css" />
-    <Content Include="Content\kendo\kendo.metro.min.css" />
-    <Content Include="Content\kendo\kendo.metro.mobile.min.css" />
-    <Content Include="Content\kendo\kendo.metroblack.min.css" />
-    <Content Include="Content\kendo\kendo.metroblack.mobile.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.all.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.android.dark.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.android.light.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.blackberry.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.common.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.flat.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.ios.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.meego.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.wp8.min.css" />
-    <Content Include="Content\kendo\kendo.moonlight.min.css" />
-    <Content Include="Content\kendo\kendo.moonlight.mobile.min.css" />
-    <Content Include="Content\kendo\kendo.rtl.min.css" />
-    <Content Include="Content\kendo\kendo.silver.min.css" />
-    <Content Include="Content\kendo\kendo.silver.mobile.min.css" />
     <Content Include="Content\kendo\kendo.uniform.min.css" />
     <Content Include="Content\kendo\kendo.uniform.mobile.min.css" />
     <Content Include="Content\kendo\MetroBlack\editor.png" />
@@ -486,6 +472,11 @@
     <Content Include="Content\kendo\Uniform\sprite.png" />
     <Content Include="Content\kendo\Uniform\sprite_2x.png" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\ratingscss\css\star-rating.css" />
+    <Content Include="Content\ratingscss\css\star-rating.min.css" />
+    <Content Include="Content\ratingscss\css\theme-krajee-svg.css" />
+    <Content Include="Content\ratingscss\css\theme-krajee-svg.min.css" />
+    <Content Include="Content\ratingscss\img\loading.gif" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -529,6 +520,12 @@
     <Content Include="Content\kendo\HighContrast\Thumbs.db" />
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\FieldAdmin\FieldsAdmin.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\FieldViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\ComplexAdmin\AdminComplex.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentAdmin\AdminComments.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1029,6 +1026,9 @@
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-HK.min.js" />
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-TW.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ratingsjs\js\star-rating.js" />
+    <Content Include="Scripts\ratingsjs\js\star-rating.min.js" />
+    <Content Include="Scripts\ratingsjs\js\star-rating_locale_LANG.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -1067,7 +1067,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\UserDetails.cshtml" />
-    <Content Include="Views\Templates\DisplayTemplates\CustomString.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CustomString.cshtml" />
     <Content Include="Views\Complex\Create.cshtml" />
     <Content Include="Views\Complex\ComplexDetails.cshtml" />
     <Content Include="Views\Field\Create.cshtml" />
@@ -1198,10 +1198,16 @@
     <Content Include="Scripts\kendo\kendo.view.min.js.map" />
     <Content Include="Scripts\kendo\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\kendo.window.min.js.map" />
+    <Content Include="Views\Shared\EditorTemplates\ComplexViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommentsDate.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CommentViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\images\uploads\" />
+    <Folder Include="Views\Templates\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

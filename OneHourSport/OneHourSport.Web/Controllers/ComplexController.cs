@@ -88,9 +88,11 @@
         public ActionResult GetAllComplexes(int page = 1)
         {
             var result = this.complexService
-                .GetAllByPage(page)
+                .GetAll()
                 .ProjectTo<ComplexDisplayViewModel>()
                 .ToList();
+
+            this.ViewBag.action = "AllComplexes";
 
             return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
         }

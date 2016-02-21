@@ -8,7 +8,7 @@
         <br />
         @if (Model != null)
         {
-
+            @Html.AntiForgeryToken()
             <div class="myBox container">
                 <div class="row text-center profileBackground">
                     Profile Information for @Model.UserName
@@ -17,7 +17,7 @@
                 <div class="col-md-3 col-md-offset-1">
                     @Html.Label("Picture")
                     <div class="myBox">
-                        <img src="@Url.Action("GetImage", "Picture", new { id = Model.PictureId })" alt="@Model.UserName" class="profilePicture img-responsive" />
+                        <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = Model.PictureId })" alt="@Model.UserName" class="profilePicture img-responsive" />
                     </div>
                 </div>
                 <div class="col-md-3 text-left col-md-offset-1">
@@ -53,7 +53,7 @@
                 @if (Model.UserName == this.User.Identity.Name)
                 {
                     <div class="detailsBtn">
-                        @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default pull-right" })
+                        @Html.ActionLink("Change your password", "ChangePassword", "Manage", new { area = string.Empty }, new { @class = "btn btn-default pull-right" })
                     </div>
                 }
             </div>
@@ -78,15 +78,21 @@
         });
 
         document.endoseSkill = function (resieverUsername, category) {
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            console.log(token);
             var data = {
+                __RequestVerificationToken: token,
                 resieverUsername: resieverUsername,
                 category: category
             };
+
+            console.log(data);
             $.ajax({
                 type: "POST",
                 url: '@Url.Content("~/Skills/EndorseSkill")',
-                data: JSON.stringify(data),
-                contentType: "application/json",
+                data: data,
+                contentType: "application/x-www-form-urlencoded",
                 success: function (data) {
                     getSkills();
                 }
@@ -112,6 +118,4 @@
         $(document).ready(getSkills);
 
     </script>
-
-
 }

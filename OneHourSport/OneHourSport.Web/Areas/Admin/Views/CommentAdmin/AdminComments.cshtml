@@ -1,0 +1,32 @@
+﻿
+<div class="row text-center">
+    <h3>Comments</h3>
+</div>
+<br />
+@(Html.Kendo().Grid<OneHourSport.Web.Areas.Admin.Models.Comment.CommentViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Text);
+          columns.Bound(c => c.DateCreated).Format("{0:dd/MM/yyyy HH:MM}");
+          columns.Bound(c => c.CreatorName);
+          columns.Bound(c => c.FieldName);
+
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable(s => s.Height(400))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Comments_Read", "CommentAdmin"))
+          .Update(update => update.Action("Comments_Update", "CommentAdmin"))
+          .Destroy(destroy => destroy.Action("Comments_Destroy", "CommentAdmin"))
+      )
+)
