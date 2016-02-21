@@ -207,7 +207,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ComplexAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FieldAdminController.cs" />
+    <Compile Include="Areas\Admin\Models\Field\FieldInputModel.cs" />
+    <Compile Include="Areas\Admin\Models\Field\FieldViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ComplexController.cs" />
@@ -513,7 +516,9 @@
     <Content Include="Content\kendo\images\kendoui.woff" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\User\ManageUsers.cshtml" />
+    <Content Include="Areas\Admin\Views\FieldAdmin\FieldsAdmin.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\FieldViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\ComplexAdmin\AdminComplex.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1189,9 +1194,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Admin\Views\User\" />
     <Folder Include="Content\images\uploads\" />
+    <Folder Include="Views\ComplexAdmin\" />
+    <Folder Include="Views\FieldAdmin\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>

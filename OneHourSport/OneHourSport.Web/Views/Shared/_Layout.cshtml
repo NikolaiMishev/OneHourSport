@@ -35,7 +35,7 @@
                             if (User.IsInRole("admin"))
                             {
                                 //TODO finish admin paths
-                                <li>@Html.ActionLink("Admin Staff", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Manage Fields", "FieldsAdmin", "FieldAdmin", new { area = "admin" }, null)</li>
                             }
                             else if (this.User.IsInRole("complex"))
                             {
