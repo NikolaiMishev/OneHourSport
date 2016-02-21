@@ -37,7 +37,8 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li>@Html.ActionLink("Fields", "FieldsAdmin", "FieldAdmin", new { area = "admin" }, null)</li>
-                                        <li>@Html.ActionLink("Complex", "AdminComplex", "ComplexAdmin", new { area = "admin" }, null)</li>
+                                        <li>@Html.ActionLink("Complexes", "AdminComplex", "ComplexAdmin", new { area = "admin" }, null)</li>
+                                        <li>@Html.ActionLink("Comments", "AdminComments", "CommentAdmin", new { area = "admin" }, null)</li>
                                     </ul>
                                 </li>
                             }
@@ -95,7 +96,7 @@
         </footer>
 
     </div>
-
+    <a href="#" class="scrollToTop btn btn-default">Go Top</a>
 
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
@@ -103,3 +104,23 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.scrollToTop').fadeIn();
+            } else {
+                $('.scrollToTop').fadeOut();
+            }
+        });
+
+        //Click event to scroll to top
+        $('.scrollToTop').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 800);
+            return false;
+        });
+
+    });
+</script>

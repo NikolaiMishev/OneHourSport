@@ -14,6 +14,12 @@ namespace OneHourSport.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: "UserDetails",
+               url: "Account/UserDetails/{username}",
+               defaults: new { controller = "Account", action = "UserDetails"}
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

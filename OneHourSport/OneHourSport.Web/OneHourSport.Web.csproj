@@ -207,8 +207,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ComplexAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FieldAdminController.cs" />
+    <Compile Include="Areas\Admin\Models\Comment\CommentInputModel.cs" />
+    <Compile Include="Areas\Admin\Models\Comment\CommentViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Complex\ComplexInputModel.cs" />
     <Compile Include="Areas\Admin\Models\Complex\ComplexViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Field\FieldInputModel.cs" />
@@ -271,6 +274,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\defaults\arrowUp.png" />
     <Content Include="Content\defaults\backraoun.png" />
     <Content Include="Content\defaults\basketball.png" />
     <Content Include="Content\defaults\football.png" />
@@ -521,6 +525,7 @@
     <Content Include="Areas\Admin\Views\FieldAdmin\FieldsAdmin.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\FieldViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\ComplexAdmin\AdminComplex.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentAdmin\AdminComments.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1062,7 +1067,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\UserDetails.cshtml" />
-    <Content Include="Views\Templates\DisplayTemplates\CustomString.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CustomString.cshtml" />
     <Content Include="Views\Complex\Create.cshtml" />
     <Content Include="Views\Complex\ComplexDetails.cshtml" />
     <Content Include="Views\Field\Create.cshtml" />
@@ -1194,14 +1199,14 @@
     <Content Include="Scripts\kendo\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\kendo.window.min.js.map" />
     <Content Include="Views\Shared\EditorTemplates\ComplexViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommentsDate.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CommentViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Admin\Views\User\" />
     <Folder Include="Content\images\uploads\" />
-    <Folder Include="Views\ComplexAdmin\" />
-    <Folder Include="Views\FieldAdmin\" />
+    <Folder Include="Views\Templates\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>

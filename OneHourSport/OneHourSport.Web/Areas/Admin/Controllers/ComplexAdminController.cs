@@ -14,6 +14,8 @@
     using Data.Repositories;
     using Models.Complex;
     using AutoMapper.QueryableExtensions;
+
+    [Authorize(Roles = "admin")]
     public class ComplexAdminController : Controller
     {
         private IRepository<SportComplex> complexes;

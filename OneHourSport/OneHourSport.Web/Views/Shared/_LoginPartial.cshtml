@@ -10,7 +10,15 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Hi, "+User.Identity.GetUserName()+"!", "UserDetails", "Account", routeValues: new { area = string.Empty, username = User.Identity.GetUserName() }, htmlAttributes: new { title = "Manage" })
+                @if (this.User.IsInRole("admin"))
+                {
+                    <a>Hi, Admin!</a>
+                }
+                else
+                {
+                    @Html.ActionLink("Hi, " + User.Identity.GetUserName() + "!", "UserDetails", "Account", routeValues: new { area = string.Empty, username = User.Identity.GetUserName() }, htmlAttributes: new { title = "Manage" })
+
+                }
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>

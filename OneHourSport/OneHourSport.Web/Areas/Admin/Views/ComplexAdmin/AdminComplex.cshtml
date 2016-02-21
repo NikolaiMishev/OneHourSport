@@ -1,4 +1,8 @@
 ﻿
+<div class="row text-center">
+    <h3>Comlexes</h3>
+</div>
+<br />
 @(Html.Kendo().Grid<OneHourSport.Web.Areas.Admin.Models.Complex.ComplexViewModel>()
       .Name("grid")
       .Columns(columns =>
@@ -19,7 +23,7 @@
           sortable.SortMode(GridSortMode.SingleColumn);
       })
       .Filterable()
-      .Scrollable()
+      .Scrollable(s => s.Height(400))
       .DataSource(dataSource => dataSource
           .Ajax()
           .Model(model => model.Id(p => p.Id))

@@ -22,7 +22,7 @@
         {
             return this.complexes
                 .All()
-                .OrderBy(x => x.Fields.Count)
+                .OrderByDescending(r => r.Fields.Select(x => x.OccupiedHours.Count()).Sum())
                 .Skip(0)
                 .Take(3);
         }

@@ -91,6 +91,7 @@
                 .GetAll()
                 .ProjectTo<ComplexDisplayViewModel>()
                 .ToList();
+
             this.ViewBag.action = "AllComplexes";
 
             return this.View(result.ToPagedList(page, GlobalConstants.PageSize));
