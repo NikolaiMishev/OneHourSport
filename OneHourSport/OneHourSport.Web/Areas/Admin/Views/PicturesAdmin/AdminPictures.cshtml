@@ -1,0 +1,32 @@
+﻿
+<div class="row text-center">
+    <h3>Pictures</h3>
+
+</div>
+<br />  
+@(Html.Kendo().Grid<OneHourSport.Web.Models.Picture.PictureViewModel>()
+      .Name("pictureGrig")
+      .Columns(columns =>
+      {
+          columns.Bound(e => e.PictureId).ClientTemplate(
+
+              "<img src='" + Url.Action("GetImage", "Picture", new { area = string.Empty, id = "#= PictureId #" }) + "' alt='Some Image' />"
+              ).Width(340).Title("Picture");
+          columns.Command(command => { command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable(x => x.Height(400))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.PictureId))
+          .Read(read => read.Action("Pictures_Read", "PicturesAdmin"))
+          .Destroy(destroy => destroy.Action("Pictures_Destroy", "PicturesAdmin"))
+      )
+)

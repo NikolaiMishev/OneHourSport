@@ -6,6 +6,7 @@
     using System.Data.Entity.ModelConfiguration.Conventions;
     using System;
     using Common.Constants;
+
     public class OneHourSportDbContext : IdentityDbContext<User>, IOneHourSportDbContext
     {
         public OneHourSportDbContext() 
