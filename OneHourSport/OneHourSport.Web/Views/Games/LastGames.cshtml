@@ -8,8 +8,12 @@
         <br />
         <div class="myBox container">
             <div class="row text-center lastGamesBackground">
-
                 Last Played Games
+            </div>
+            <div class="row text-right cpojer-links">
+                @Html.ActionLink("All", "LastGames", "Games", new { area = string.Empty, toBePlayed = false, finished = false }, null)
+                @Html.ActionLink("Only Finnished", "LastGames", "Games", new { area = string.Empty, finished = true }, null)
+                @Html.ActionLink("Only To Be Played", "LastGames", "Games", new { area = string.Empty, toBePlayed = true }, null)
             </div>
             <hr />
             <div>

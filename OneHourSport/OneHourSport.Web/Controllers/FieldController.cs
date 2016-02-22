@@ -1,5 +1,6 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
+    using Areas.Admin.Models.Comment;
     using AutoMapper.QueryableExtensions;
     using Common.Constants;
     using Helpers;
@@ -90,12 +91,19 @@
         }
 
         [HttpGet]
-        public ActionResult FieldDetails(int id)
+        public ActionResult FieldDetails(int id, bool all = false)
         {
             var field = this.fieldService
                 .GetById(id)
                 .ProjectTo<FieldDetailsViewModel>()
                 .FirstOrDefault();
+
+            this.ViewBag.all = all;
+
+            if (all)
+            {
+                field.Comments = field.Comments.Skip(0).Take(5);
+            }
 
             var canBeRated = field.Ratings.Where(x => x.Creator.UserName == this.User.Identity.Name).FirstOrDefault() == null;
 

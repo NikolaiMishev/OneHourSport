@@ -38,7 +38,7 @@
 
         public IList<OccupiedHourViewModel> OccupiedHours { get; set; }
 
-        public ICollection<CommentViewModel> Comments { get; set; }
+        public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public ICollection<Rating> Ratings { get; set; }
 

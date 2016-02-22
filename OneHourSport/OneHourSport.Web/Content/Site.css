@@ -273,8 +273,6 @@ div#image-1:target, div#image-2:target, div#image-3:target {
     font-size: 1.9em;
 }
 .scrollToTop{
-	/*width:50px; 
-	height:80px;*/
 	padding:10px; 
 	text-align:center; 
 	font-weight: bold;
@@ -284,7 +282,6 @@ div#image-1:target, div#image-2:target, div#image-3:target {
 	top: 94%;
 	right:0%;
 	display:none;
-	/*background: url("defaults/arrowUp.png") no-repeat 0px 20px;*/
 }
 .scrollToTop:hover{
 	text-decoration:none;

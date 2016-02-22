@@ -76,7 +76,11 @@
 
             </div>
             <div>
+                <div>
+                    <h3 class="cpojer-links"><a href="#bottom">Leave a comment</a></h3>
+                </div>
                 @Html.Partial("_ListCommentsPartial", Model.Comments);
+                <div id="bottom"></div>
             </div>
             <div class="row col-md-10 col-md-offset-1">
                 @using (Html.BeginForm("Create", "Comment", new { area = string.Empty }, FormMethod.Post, new { @class = "", role = "form" }))
