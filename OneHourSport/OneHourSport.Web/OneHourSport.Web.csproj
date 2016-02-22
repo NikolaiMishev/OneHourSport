@@ -228,6 +228,7 @@
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SheduleController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,6 +270,7 @@
     <Compile Include="Models\Picture\PictureViewModel.cs" />
     <Compile Include="Models\Shedule\SheduleViewModel.cs" />
     <Compile Include="Models\Account\UserSkill\SkillViewModel.cs" />
+    <Compile Include="Models\Statistic\StatisticsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1203,6 +1205,7 @@
     <Content Include="Views\Shared\EditorTemplates\ComplexViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CommentsDate.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CommentViewModel.cshtml" />
+    <Content Include="Views\Statistics\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

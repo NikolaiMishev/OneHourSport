@@ -1,0 +1,44 @@
+﻿<div class="demo-section k-content wide">
+    @(Html.Kendo().Chart< OneHourSport.Web.Models.Statistic.StatisticsModel>()
+        .Name("chart")
+        .Title("Complex visitors")
+        .Legend(legend => legend
+            .Visible(false)
+        )
+        .ChartArea(chartArea => chartArea
+            .Background("transparent")
+        )
+        .Series(series =>
+        {
+            series.Bar(m => m.OldStats).Name("Last Year Visitors");
+            series.Bar(m => m.NewStats).Name("This Year Visitors");
+        })
+        .CategoryAxis(axis => axis
+            .Categories("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+            .MajorGridLines(lines => lines.Visible(false))
+        )
+        .ValueAxis(axis => axis
+            .Numeric()
+            .Max(1000)
+            .Line(line => line.Visible(false))
+            .MajorGridLines(lines => lines.Visible(true))
+        )
+        .Tooltip(tooltip => tooltip
+            .Visible(true)
+            .Template("#= series.name #: #= value #")
+        )
+    )
+</div>
+@section scripts{
+    @*<script type="text/javascript">
+    $(function() {
+        // Notice that the Name() of the chart is used to get its client-side instance
+        $(document).ready(function () {
+            debugger;
+            $("#chart").data("kendoChart");
+        })
+        var chart = $("#chart").data("kendoChart");
+    });
+</script>*@
+    
+    }

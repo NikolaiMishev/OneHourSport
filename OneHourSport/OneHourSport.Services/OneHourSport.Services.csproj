@@ -68,6 +68,7 @@
     <Compile Include="Contracts\IRatingService.cs" />
     <Compile Include="Contracts\ISheduleService.cs" />
     <Compile Include="Contracts\ISkillService.cs" />
+    <Compile Include="Contracts\IStatisticService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="FieldService.cs" />
     <Compile Include="GameService.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="RatingService.cs" />
     <Compile Include="SheduleService.cs" />
     <Compile Include="SkillService.cs" />
+    <Compile Include="StatisticService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

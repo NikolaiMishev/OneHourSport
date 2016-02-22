@@ -4,11 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - OneHourSport</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/kendo")
     @Styles.Render("~/Content/themes/base/css")
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/unobtrusive")
     @RenderSection("styles", required: false)
 
@@ -44,7 +45,15 @@
                             }
                             else if (this.User.IsInRole("complex"))
                             {
-                                <li>@Html.ActionLink("My Complex", "CheckComplex", "Complex", new { area = string.Empty }, null)</li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Complex <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Complex", "CheckComplex", "Complex", new { area = string.Empty }, null)</li>
+                                        <li>@Html.ActionLink("Statistics", "Statistics", "Statistics", new { area = string.Empty }, null)</li>
+
+                                    </ul>
+                                </li>
+                               
 
                                 <li>@Html.ActionLink("Last Games", "LastGames", "Games", new { area = string.Empty }, null)</li>
                                 <li>@Html.ActionLink("All Complexes", "AllComplexes", "Complex", new { area = string.Empty }, null)</li>
@@ -88,6 +97,7 @@
     </div>
     <div class="container body-content coolSideLines">
         @RenderBody()
+
         <hr />
         <footer class="panel-footer text-center" id="wrap">
             <p>&copy; 2016 - Telerik Academy</p>
@@ -99,8 +109,6 @@
     <a href="#" class="scrollToTop btn btn-default">Go Top</a>
 
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/kendo")
-    @Scripts.Render("~/bundles/jqueryui")
     @RenderSection("scripts", required: false)
 </body>
 </html>
