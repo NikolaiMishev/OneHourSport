@@ -8,13 +8,17 @@
       .Name("grid")
       .Columns(columns =>
       {
-        columns.Bound(c => c.Name);
-        columns.Bound(c => c.Description);
-        columns.Bound(c => c.PricePerHour);
-        columns.Bound(c => c.isAprooved);
-        columns.Bound(c => c.isCovered);
-        columns.Bound(c => c.Category);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+          columns.Bound(c => c.Name);
+          columns.Bound(c => c.Description);
+          columns.Bound(c => c.PricePerHour);
+          columns.Bound(c => c.isAprooved);
+          columns.Bound(c => c.isCovered);
+          columns.Bound(c => c.Category);
+          columns.Bound(c => c.CreatedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
+          columns.Bound(c => c.DeletedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
+          columns.Bound(c => c.IsDeleted);
+          columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
       .ColumnMenu()
       .Editable(editable => editable.Mode(GridEditMode.PopUp))

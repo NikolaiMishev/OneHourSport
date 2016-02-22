@@ -8,9 +8,12 @@
       .Columns(columns =>
       {
           columns.Bound(c => c.Text);
-          columns.Bound(c => c.DateCreated).Format("{0:dd/MM/yyyy HH:MM}");
           columns.Bound(c => c.CreatorName);
           columns.Bound(c => c.FieldName);
+          columns.Bound(c => c.CreatedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
+          columns.Bound(c => c.DeletedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
+          columns.Bound(c => c.IsDeleted);
+          columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
 
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })

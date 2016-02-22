@@ -32,7 +32,7 @@
         public ActionResult Comments_Read([DataSourceRequest]DataSourceRequest request)
         {
             var result = this.comments
-                  .All()
+                  .AllWithDeleted()
                   .ProjectTo<CommentViewModel>()
                   .ToList()
                   .ToDataSourceResult(request);
@@ -45,12 +45,12 @@
         {
             if (ModelState.IsValid)
             {
-                var entity = this.comments.GetById(comment.Id);
+                var entity = this.comments.AllWithDeleted().Where(x => x.Id == comment.Id).FirstOrDefault();
                 entity.Text = comment.Text;
                 
                 this.comments.SaveChanges();
             }
-            var postToDisplay = this.comments.All()
+            var postToDisplay = this.comments.AllWithDeleted()
                            .ProjectTo<CommentViewModel>()
                            .FirstOrDefault(x => x.Id == comment.Id);
 
@@ -60,7 +60,7 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Comments_Destroy([DataSourceRequest]DataSourceRequest request, Comment comment)
         {
-            var comentDb = this.comments.All().Where(x => x.Id == comment.Id).FirstOrDefault();
+            var comentDb = this.comments.AllWithDeleted().Where(x => x.Id == comment.Id).FirstOrDefault();
 
             this.comments.Delete(comentDb);
             this.comments.SaveChanges();

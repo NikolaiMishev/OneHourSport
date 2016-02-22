@@ -33,7 +33,7 @@
         public ActionResult SportComplexes_Read([DataSourceRequest]DataSourceRequest request)
         {
             var result = this.complexes
-                 .All()
+                 .AllWithDeleted()
                  .ProjectTo<ComplexViewModel>()
                  .ToList()
                  .ToDataSourceResult(request);
@@ -46,7 +46,7 @@
         {
             if (ModelState.IsValid)
             {
-                var entity = this.complexes.GetById(sportComplex.Id);
+                var entity = this.complexes.AllWithDeleted().Where(x => x.Id == sportComplex.Id).FirstOrDefault();
                 entity.Name = sportComplex.Name;
                 entity.Description = sportComplex.Description;
                 entity.WorkHourFrom = sportComplex.WorkHourFrom;
@@ -56,7 +56,7 @@
 
                 this.complexes.SaveChanges();
             }
-            var postToDisplay = this.complexes.All()
+            var postToDisplay = this.complexes.AllWithDeleted()
                            .ProjectTo<ComplexViewModel>()
                            .FirstOrDefault(x => x.Id == sportComplex.Id);
 
@@ -66,7 +66,7 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SportComplexes_Destroy([DataSourceRequest]DataSourceRequest request, SportComplex sportComplex)
         {
-            var complex = this.complexes.All().Where(x => x.Id == sportComplex.Id).FirstOrDefault();
+            var complex = this.complexes.AllWithDeleted().Where(x => x.Id == sportComplex.Id).FirstOrDefault();
 
             this.complexes.Delete(complex);
             this.complexes.SaveChanges();

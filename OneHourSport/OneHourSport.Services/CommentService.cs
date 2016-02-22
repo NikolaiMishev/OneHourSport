@@ -25,7 +25,7 @@
         {
             var user = this.users.All().Where(x => x.UserName == creatorUserName).FirstOrDefault();
 
-            var field = this.fields.GetById(fieldId);
+            var field = this.fields.All().Where(x => x.Id == fieldId).FirstOrDefault();
          var comment = new Comment
             {
                 Creator = user,
@@ -44,7 +44,7 @@
 
         public Comment GetById(int id)
         {
-            return this.comments.GetById(id);
+            return this.comments.All().Where(x => x.Id == id).FirstOrDefault();
         }
     }
 }

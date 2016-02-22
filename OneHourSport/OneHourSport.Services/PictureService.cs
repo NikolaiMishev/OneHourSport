@@ -27,7 +27,7 @@
 
         public Picture GetById(int id)
         {
-            return this.pictures.GetById(id);
+            return this.pictures.All().Where(x => x.Id == id).FirstOrDefault();
         }
     }
 }

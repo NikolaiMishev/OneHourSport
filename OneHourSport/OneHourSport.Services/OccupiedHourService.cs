@@ -27,7 +27,7 @@
 
         public void Create(DateTime date, int hourFrom, string occupiedByUserName, int fieldId)
         {
-            var field = this.fields.GetById(fieldId);
+            var field = this.fields.All().Where(x => x.Id == fieldId).FirstOrDefault();
 
             var occupiedBy = this.users
                 .All()

@@ -48,7 +48,7 @@
 
         public SportComplex GetByFieldId(int fieldId)
         {
-            var result = this.fields.GetById(fieldId).SportComplex;
+            var result = this.fields.All().Where(x => x.Id == fieldId).FirstOrDefault().SportComplex;
             return result;
         }
 

@@ -13,6 +13,10 @@
           columns.Bound(c => c.WorkHourTo);
           columns.Bound(c => c.Address);
           columns.Bound(c => c.CityName);
+          columns.Bound(c => c.CreatedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
+          columns.Bound(c => c.DeletedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
+          columns.Bound(c => c.IsDeleted);
+          columns.Bound(c => c.ModifiedOn).Format("{0:dd/MM/yyyy HH:MM}"); ;
 
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })

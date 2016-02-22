@@ -28,7 +28,7 @@
         public void CreateRating(int fieldId, string creatorUsername, int value)
         {
             var creator = this.userService.GetByUsername(creatorUsername).FirstOrDefault();
-            var field = this.fields.GetById(fieldId);
+            var field = this.fields.All().Where(x => x.Id == fieldId).FirstOrDefault();
 
             var rating = new Rating
             {

@@ -29,6 +29,11 @@
             return this.DbSet.AsQueryable().Where(x => !x.IsDeleted);
         }
 
+        public virtual IQueryable<T> AllWithDeleted()
+        {
+            return this.DbSet.AsQueryable();
+        }
+
         public virtual T GetById(object id)
         {
             // TODO something is funny around here

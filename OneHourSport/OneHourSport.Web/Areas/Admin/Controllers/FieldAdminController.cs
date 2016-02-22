@@ -30,7 +30,7 @@
         public ActionResult SportFields_Read([DataSourceRequest]DataSourceRequest request)
         {
             var result = this.fields
-                .All()
+                .AllWithDeleted()
                 .ProjectTo<FieldViewModel>()
                 .ToList()
                 .ToDataSourceResult(request);
@@ -43,7 +43,7 @@
         {
             if (ModelState.IsValid)
             {
-                var entity = this.fields.GetById(sportField.Id);
+                var entity = this.fields.AllWithDeleted().Where(x => x.Id == sportField.Id).FirstOrDefault();
                 entity.Name = sportField.Name;
                 entity.Description = sportField.Description;
                 entity.isCovered = sportField.isCovered;
@@ -55,7 +55,7 @@
 
                 this.fields.SaveChanges();
             }
-            var postToDisplay = this.fields.All()
+            var postToDisplay = this.fields.AllWithDeleted()
                            .ProjectTo<FieldViewModel>()
                            .FirstOrDefault(x => x.Id == sportField.Id);
 
@@ -65,7 +65,7 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SportFields_Destroy([DataSourceRequest]DataSourceRequest request, SportField sportField)
         {
-            var field = this.fields.All().Where(x => x.Id == sportField.Id).FirstOrDefault();
+            var field = this.fields.AllWithDeleted().Where(x => x.Id == sportField.Id).FirstOrDefault();
 
             this.fields.Delete(field);
             this.fields.SaveChanges();

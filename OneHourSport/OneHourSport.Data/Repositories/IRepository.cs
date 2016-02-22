@@ -9,6 +9,8 @@
     {
         IQueryable<T> All();
 
+        IQueryable<T> AllWithDeleted();
+        
         T GetById(object id);
 
         void Add(T entity);
