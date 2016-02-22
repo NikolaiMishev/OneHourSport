@@ -16,14 +16,17 @@
         public string Name { get; set; }
 
         [Required]
+        [UIHint("DescriptionEdit")]
         [StringLength(2000, MinimumLength = 100)]
         public string Description { get; set; }
 
         [Required]
+        [UIHint("Number")]
         [Range(0, 24)]
         public int WorkHourFrom { get; set; }
 
         [Required]
+        [UIHint("Number")]
         [Range(0, 24)]
         public int WorkHourTo { get; set; }
 

@@ -9,20 +9,18 @@
             <div class="container">
                 <div class="text-left col-md-offset-1">
                     <div class="col-md-2">
-                        <h3><a href="@Url.Action("UserDetails", "Account", new { area = string.Empty, username = Model.CreatorName })">@Model.CreatorName</a></h3>
+                        <h3 class="cpojer-links"><a href="@Url.Action("UserDetails", "Account", new { area = string.Empty, username = Model.CreatorName })">@Model.CreatorName</a></h3>
                         <div class="text-left">
                             <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = Model.PictureId })" alt="@Model.DateCreated" class="commentImage myBox img-responsive" />
                         </div>
                     </div>
                     <div class="col-md-offset-1 col-md-5" style="margin-top: 60px;">
-                        <div class="myBox text-center">
-                            @Model.Text
-                        </div>
+                       @Html.DisplayFor(m => m.Text)
                     </div>
                 </div>
             </div>
             <div>
-                @Html.Label("Date created:") @Model.DateCreated
+                @Html.DisplayFor(m => m.DateCreated)
             </div>
         </div>
     </div>

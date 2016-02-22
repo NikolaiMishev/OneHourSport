@@ -8,7 +8,7 @@
         <br />
         <div class="container">
             <div class="row col-lg-offset-1">
-                <h3><span style="background-color: #80A4A5; margin-right:10px;">@Model.Index</span><a href="@Url.Action("FieldDetails", "Field",new { id = Model.Id })">@Model.Name</a></h3>
+                <h3 class="cpojer-links"><a href="@Url.Action("FieldDetails", "Field",new { id = Model.Id })">@Model.Name</a></h3>
 
             </div>
             <br />
@@ -21,7 +21,7 @@
             <div class="col-md-6 text-left">
                 <div class="row">
                     @Html.Label("A part of ")
-                    @Html.ActionLink(Model.SportComplexName, "ComplexDetails", "Complex", new { area = string.Empty, id = Model.SportComplexId }, null)
+                    @Html.ActionLink(Model.SportComplexName, "ComplexDetails", "Complex", new { area = string.Empty, id = Model.SportComplexId }, new { @class = "cpojer-links" })
                 </div>
                 <div class="row">
                     @Html.Label("Comments: ")
@@ -29,7 +29,7 @@
                 </div>
                 <div class="row">
                     @Html.Label("Category: ")
-                    @Html.ActionLink(Model.Category.ToString(), "ListFieldsByCategory", "Field", new { area = string.Empty, category = Model.Category }, null)
+                    @Html.ActionLink(Model.Category.ToString(), "ListFieldsByCategory", "Field", new { area = string.Empty, category = Model.Category }, new { @class = "cpojer-links" })
                 </div>
                 <div class="row">
                     @Html.Label("Location: ")

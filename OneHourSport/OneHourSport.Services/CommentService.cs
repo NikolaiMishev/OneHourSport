@@ -13,7 +13,7 @@
         private IRepository<SportField> fields;
 
         private IRepository<User> users;
-        
+
         public CommentService(IRepository<Comment> comments, IRepository<SportField> fields, IRepository<User> users)
         {
             this.comments = comments;
@@ -26,7 +26,7 @@
             var user = this.users.All().Where(x => x.UserName == creatorUserName).FirstOrDefault();
 
             var field = this.fields.All().Where(x => x.Id == fieldId).FirstOrDefault();
-         var comment = new Comment
+            var comment = new Comment
             {
                 Creator = user,
                 Field = field,

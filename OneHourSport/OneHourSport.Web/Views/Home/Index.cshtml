@@ -18,7 +18,7 @@
         <div class="col-md-4">
             @* Image goes here *@
             <div class="col-md-5">
-                <h4><a href="@Url.Action("ComplexDetails", "Complex",new { area = string.Empty, id = item.Id })" class="">@item.Name</a></h4>
+                <h4 class="cpojer-links"><a href="@Url.Action("ComplexDetails", "Complex",new { area = string.Empty, id = item.Id })" class="">@item.Name</a></h4>
                 <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = item.PictureId })" class="img-responsive homedisplayImage" />
             </div>
             @* Info gose here *@
@@ -56,7 +56,7 @@
         <div class="col-md-4">
             @* Image goes here *@
             <div class="col-md-5">
-                <h4><a href="@Url.Action("FieldDetails", "Field",new { area = string.Empty, id = item.Id })">@item.Name</a></h4>
+                <h4 class="cpojer-links"><a href="@Url.Action("FieldDetails", "Field",new { area = string.Empty, id = item.Id })">@item.Name</a></h4>
                 <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = item.PictureId })" class="img-responsive homedisplayImage" />
             </div>
             @* Info gose here *@

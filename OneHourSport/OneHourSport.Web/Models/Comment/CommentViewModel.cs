@@ -3,6 +3,7 @@
     using Infrastructure;
     using System;
     using AutoMapper;
+    using System.ComponentModel.DataAnnotations;
 
     public class CommentViewModel : IMapFrom<OneHourSport.Models.Comment>, IHaveCustomMappings
     {
@@ -14,9 +15,11 @@
 
         public string CreatorName { get; set; }
         
+        [UIHint("CommentText")]
         public string Text { get; set; }
         
-        public string DateCreated { get; set; }
+        [UIHint("CommentDate")]
+        public DateTime DateCreated { get; set; }
 
         public int FieldId { get; set; }
 
@@ -27,7 +30,7 @@
                 .ForMember(r => r.CreatorName, opts => opts.MapFrom(r => r.Creator.UserName))
                 .ForMember(r => r.FieldId, opts => opts.MapFrom(r => r.Field.Id))
                 .ForMember(r => r.PictureId, opts => opts.MapFrom(r => r.Creator.Picture.Id))
-                .ForMember(r => r.DateCreated, opts => opts.MapFrom(r => r.CreatedOn.ToString()));
+                .ForMember(r => r.DateCreated, opts => opts.MapFrom(r => r.CreatedOn));
 
 
         }

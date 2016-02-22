@@ -1071,7 +1071,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\UserDetails.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\CustomString.cshtml" />
     <Content Include="Views\Complex\Create.cshtml" />
     <Content Include="Views\Complex\ComplexDetails.cshtml" />
     <Content Include="Views\Field\Create.cshtml" />
@@ -1203,9 +1202,13 @@
     <Content Include="Scripts\kendo\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\kendo.window.min.js.map" />
     <Content Include="Views\Shared\EditorTemplates\ComplexViewModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\CommentsDate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommentDate.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CommentViewModel.cshtml" />
     <Content Include="Views\Statistics\Statistics.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommentText.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Description.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DescriptionEdit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
