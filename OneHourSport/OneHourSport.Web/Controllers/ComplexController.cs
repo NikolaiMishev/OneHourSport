@@ -134,7 +134,10 @@
                 .ProjectTo<FieldDisplayViewModel>()
                 .ToList();
 
-
+            if (result == null)
+            {
+                return this.HttpNotFound();
+            }
 
             result.MyFields = complexFields;
 

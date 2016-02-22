@@ -97,7 +97,10 @@
                 .GetById(id)
                 .ProjectTo<FieldDetailsViewModel>()
                 .FirstOrDefault();
-
+            if (field == null)
+            {
+                return this.HttpNotFound();
+            }
             this.ViewBag.all = all;
 
             if (all)
