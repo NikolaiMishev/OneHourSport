@@ -13,7 +13,8 @@ namespace OneHourSport.Web
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                        "~/Scripts/kendo/kendo.web.min.js",
-                       "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+                       "~/Scripts/kendo/kendo.aspnetmvc.min.js",
+                       "~/Scripts/kendo/kendo.dataviz.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
