@@ -82,7 +82,7 @@
             this.complexService.Update(dbModel);
 
 
-            return RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = dbModel.Id });
+            return this.RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = dbModel.Id });
         }
 
         [HttpGet]

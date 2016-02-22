@@ -39,6 +39,17 @@
             return this.View(model);
         }
 
+
+        public ActionResult Destroy(int fieldId)
+        {
+            var field = this.fieldService.GetById(fieldId).FirstOrDefault();
+            var complexId = field.SportComplexId;
+
+            this.fieldService.Destroy(field);
+
+            return this.RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = complexId });
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditField(FieldEditViewModel model)

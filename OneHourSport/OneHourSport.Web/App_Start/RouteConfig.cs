@@ -21,7 +21,7 @@ namespace OneHourSport.Web
 
             routes.MapRoute(
                name: "FieldsByCategory",
-               url: "Field/{category}",
+               url: "Field/ListFieldsByCategory/{category}",
                defaults: new { controller = "Field", action = "ListFieldsByCategory" }
            );
             routes.MapRoute(

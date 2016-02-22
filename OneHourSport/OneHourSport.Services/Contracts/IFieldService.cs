@@ -17,5 +17,7 @@
         int Create(SportField field);
 
         void Update(SportField field);
+
+        void Destroy(SportField field);
     }
 }

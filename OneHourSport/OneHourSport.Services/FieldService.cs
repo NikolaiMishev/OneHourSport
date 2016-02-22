@@ -1,12 +1,12 @@
 ﻿namespace OneHourSport.Services
 {
     using Contracts;
-    using System.Collections.Generic;
     using Models;
     using System;
     using System.Linq;
     using Data.Repositories;
     using Common.Constants;
+
     public class FieldService : IFieldService
     {
         private IRepository<SportField> fields;
@@ -42,7 +42,13 @@
             this.fields.Update(field);
             this.fields.SaveChanges();
         }
-        
+
+        public void Destroy(SportField field)
+        {
+            this.fields.Delete(field.Id);
+            this.fields.SaveChanges();
+        }
+
         public IQueryable<SportField> GetAllByCategory(SportCategory category)
         {
             var result = this.fields

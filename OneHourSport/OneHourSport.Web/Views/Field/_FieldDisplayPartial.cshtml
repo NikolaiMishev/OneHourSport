@@ -43,7 +43,7 @@
                 @if (Model.IsMine)
                 {
                     <div class="detailsBtn">
-                        @Html.ActionLink("Delete", "Delete", "Field", new { area = string.Empty, complexId = Model.Id }, new { @class = "btn btn-danger pull-right" })
+                        @Html.ActionLink("Delete", "Destroy", "Field", new { area = string.Empty, fieldId = Model.Id }, new { @class = "btn btn-danger pull-right" })
                     </div>
 
                     <div class="detailsBtn">
