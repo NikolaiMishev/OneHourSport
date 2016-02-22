@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="City.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="Contracts\IAuditInfo.cs" />
+    <Compile Include="Contracts\IDeletableEntity.cs" />
     <Compile Include="OccupiedHour.cs" />
     <Compile Include="Picture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

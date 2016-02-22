@@ -39,7 +39,7 @@
         public IQueryable<Comment> GetAllByFieldId(int id)
         {
             // TODO Check it
-            return this.comments.All().OrderByDescending(x => x.DateCreated).Where(x => x.FieldId == id);
+            return this.comments.All().OrderByDescending(x => x.CreatedOn).Where(x => x.FieldId == id);
         }
 
         public Comment GetById(int id)

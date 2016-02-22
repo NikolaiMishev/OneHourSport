@@ -4,8 +4,10 @@
     using System.Data.Entity;
     using System.Linq;
 
+    using Models.Contracts;
+    
     public class Repository<T> : IRepository<T>
-       where T : class
+       where T : class, IDeletableEntity, IAuditInfo
     {
         public Repository(IOneHourSportDbContext context)
         {
@@ -24,12 +26,20 @@
 
         public virtual IQueryable<T> All()
         {
-            return this.DbSet.AsQueryable();
+            return this.DbSet.AsQueryable().Where(x => !x.IsDeleted);
         }
 
         public virtual T GetById(object id)
         {
-            return this.DbSet.Find(id);
+            // TODO something is funny around here
+
+            var result = this.DbSet.Find(id);
+            if (result.IsDeleted)
+            {
+                return null;
+            }
+
+            return result;
         }
 
         public virtual void Add(T entity)
@@ -47,6 +57,7 @@
 
         public virtual void Update(T entity)
         {
+            entity.ModifiedOn = DateTime.UtcNow;
             var entry = this.Context.Entry(entity);
             if (entry.State == EntityState.Detached)
             {
@@ -56,7 +67,7 @@
             entry.State = EntityState.Modified;
         }
 
-        public virtual void Delete(T entity)
+        public virtual void HardDelete(T entity)
         {
             var entry = this.Context.Entry(entity);
             if (entry.State != EntityState.Deleted)
@@ -70,13 +81,13 @@
             }
         }
 
-        public virtual void Delete(object id)
+        public virtual void HardDelete(object id)
         {
             var entity = this.GetById(id);
 
             if (entity != null)
             {
-                this.Delete(entity);
+                this.HardDelete(entity);
             }
         }
 
@@ -99,6 +110,15 @@
         public void Dispose()
         {
             this.Context.Dispose();
+        }
+
+        public void Delete(T entity)
+        {
+            entity.IsDeleted = true;
+            entity.DeletedOn = DateTime.UtcNow;
+
+            var entry = this.Context.Entry(entity);
+            entry.State = EntityState.Modified;
         }
     }
 }

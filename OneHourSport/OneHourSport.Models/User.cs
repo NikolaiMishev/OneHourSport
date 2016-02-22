@@ -1,5 +1,6 @@
 ﻿namespace OneHourSport.Models
 {
+    using Contracts;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
@@ -8,7 +9,7 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    public class User : IdentityUser
+    public class User : IdentityUser, IDeletableEntity, IAuditInfo
     {
         private ICollection<OccupiedHour> hours;
 
@@ -18,7 +19,16 @@
         {
             this.hours = new HashSet<OccupiedHour>();
             this.skills = new HashSet<Skill>();
+            this.CreatedOn = DateTime.UtcNow;
         }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 2)]

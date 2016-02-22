@@ -60,7 +60,9 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Comments_Destroy([DataSourceRequest]DataSourceRequest request, Comment comment)
         {
-            this.comments.Delete(comment.Id);
+            var comentDb = this.comments.All().Where(x => x.Id == comment.Id).FirstOrDefault();
+
+            this.comments.Delete(comentDb);
             this.comments.SaveChanges();
 
             return Json(new[] { comment }.ToDataSourceResult(request, ModelState));

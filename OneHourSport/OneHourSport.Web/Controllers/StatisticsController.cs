@@ -30,7 +30,8 @@
             var model = new StatisticsModel
             {
                 NewStats = newStats,
-                OldStats = oldStats
+                OldStats = oldStats,
+                MaxUserVisits = 100
             };
 
             return this.View(model);

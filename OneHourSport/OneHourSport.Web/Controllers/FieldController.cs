@@ -47,7 +47,7 @@
 
             this.fieldService.Destroy(field);
 
-            return this.RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = complexId });
+            return this.RedirectToAction(GlobalConstants.ComplexDetailsActionName, "Complex", new { id = complexId });
         }
 
         [HttpPost]

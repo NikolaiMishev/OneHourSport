@@ -66,7 +66,9 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SportComplexes_Destroy([DataSourceRequest]DataSourceRequest request, SportComplex sportComplex)
         {
-            this.complexes.Delete(sportComplex.Id);
+            var complex = this.complexes.All().Where(x => x.Id == sportComplex.Id).FirstOrDefault();
+
+            this.complexes.Delete(complex);
             this.complexes.SaveChanges();
 
             return Json(new[] { sportComplex }.ToDataSourceResult(request, ModelState));

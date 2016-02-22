@@ -1,4 +1,5 @@
 ﻿@model OneHourSport.Web.Models.Statistic.StatisticsModel
+
 <div class="k-content wide">
     @(Html.Kendo().Chart()
         .Name("chart")
@@ -20,7 +21,7 @@
         )
         .ValueAxis(axis => axis
             .Numeric()
-            .Max(100)
+            .Max(Model.MaxUserVisits)
             .Line(line => line.Visible(false))
             .MajorGridLines(lines => lines.Visible(true))
         )

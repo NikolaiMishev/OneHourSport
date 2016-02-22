@@ -1,11 +1,12 @@
 ﻿namespace OneHourSport.Models
 {
     using Common.Constants;
+    using Contracts;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class SportField
+    public class SportField : IDeletableEntity, IAuditInfo
     {
         private ICollection<OccupiedHour> hours;
 
@@ -21,9 +22,18 @@
             this.comments = new HashSet<Comment>();
             this.ratings = new HashSet<Rating>();
             this.pictures = new HashSet<Picture>();
+            this.CreatedOn = DateTime.UtcNow;
         }
 
         public int Id { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 5)]

@@ -10,5 +10,7 @@
         public ICollection<int> NewStats { get; set; }
 
         public ICollection<int> OldStats { get; set; }
+
+        public int MaxUserVisits { get; set; }
     }
 }

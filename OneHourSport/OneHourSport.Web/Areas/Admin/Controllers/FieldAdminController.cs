@@ -65,7 +65,9 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SportFields_Destroy([DataSourceRequest]DataSourceRequest request, SportField sportField)
         {
-            this.fields.Delete(sportField.Id);
+            var field = this.fields.All().Where(x => x.Id == sportField.Id).FirstOrDefault();
+
+            this.fields.Delete(field);
             this.fields.SaveChanges();
             
             return Json(new[] { sportField }.ToDataSourceResult(request, ModelState));

@@ -28,7 +28,6 @@
 
         public IQueryable<SportField> GetAll()
         {
-            //Add .Where(x => x.isApprooved)
             return this.fields.All();
         }
 
@@ -45,7 +44,7 @@
 
         public void Destroy(SportField field)
         {
-            this.fields.Delete(field.Id);
+            this.fields.Delete(field);
             this.fields.SaveChanges();
         }
 
