@@ -1,6 +1,5 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
-    using System.IO;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -13,7 +12,6 @@
 
     using Common.Constants;
     using Helpers;
-    using AutoMapper;
     using Infrastructure;
 
     [Authorize]

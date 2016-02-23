@@ -125,7 +125,11 @@
   <ItemGroup>
     <Compile Include="ControllersTests\ErrorControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoutesTests\ComplexRoutesTests.cs" />
     <Compile Include="RoutesTests\FieldRoutesTests.cs" />
+    <Compile Include="RoutesTests\GameRoutesTests.cs" />
+    <Compile Include="RoutesTests\SkillsRoutesTests.cs" />
+    <Compile Include="RoutesTests\StatisticsRouteTests.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

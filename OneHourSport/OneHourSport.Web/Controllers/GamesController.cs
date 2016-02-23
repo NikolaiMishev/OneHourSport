@@ -1,16 +1,16 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
     using System.Collections.Generic;
 
     using Services.Contracts;
-    using AutoMapper.QueryableExtensions;
     using Models.Game;
     using PagedList;
     using Common.Constants;
-    using System;
     using Infrastructure;
+
     [Authorize]
     public class GamesController : Controller
     {
@@ -30,7 +30,6 @@
 
             if (toBePlayed)
             {
-                // item.Date.Date > DateTime.Now.Date || (item.Date.Date == DateTime.Now.Date && DateTime.Now.Hour < item.HourFrom)
                 result = this.games
                     .GetLastGames(username)
                     .To<GameViewModel>()
