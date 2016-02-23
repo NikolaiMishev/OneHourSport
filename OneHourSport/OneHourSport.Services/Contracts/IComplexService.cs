@@ -10,9 +10,9 @@
 
         IQueryable<SportComplex> GetTopThree();
         
-        IQueryable<SportComplex> GetById(int id);
+        IQueryable<SportComplex> GetById(string id);
 
-        int Create(SportComplex complex);
+        string Create(SportComplex complex);
 
         SportComplex GetByFieldId(int fieldId);
 

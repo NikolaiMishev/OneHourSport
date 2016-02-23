@@ -41,7 +41,7 @@
         {
             if (ModelState.IsValid)
             {
-                var entity = this.complexes.AllWithDeleted().Where(x => x.Id == sportComplex.Id).FirstOrDefault();
+                var entity = this.complexes.AllWithDeleted().Where(x => x.OwnerId == sportComplex.OwnerId).FirstOrDefault();
                 entity.Name = sportComplex.Name;
                 entity.Description = sportComplex.Description;
                 entity.WorkHourFrom = sportComplex.WorkHourFrom;
@@ -53,7 +53,7 @@
             }
             var complexToDisplay = this.complexes.AllWithDeleted()
                            .To<ComplexViewModel>()
-                           .FirstOrDefault(x => x.Id == sportComplex.Id);
+                           .FirstOrDefault(x => x.OwnerId == sportComplex.OwnerId);
 
             return Json(new[] { complexToDisplay }.ToDataSourceResult(request, ModelState));
         }
@@ -61,7 +61,7 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SportComplexes_Destroy([DataSourceRequest]DataSourceRequest request, SportComplex sportComplex)
         {
-            var complex = this.complexes.AllWithDeleted().Where(x => x.Id == sportComplex.Id).FirstOrDefault();
+            var complex = this.complexes.AllWithDeleted().Where(x => x.OwnerId == sportComplex.OwnerId).FirstOrDefault();
 
             this.complexes.Delete(complex);
             this.complexes.SaveChanges();

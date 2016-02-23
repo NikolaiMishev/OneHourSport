@@ -4,7 +4,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     public class SportComplex : IDeletableEntity, IAuditInfo
     {
         private ICollection<SportField> fields;
@@ -14,9 +14,12 @@
             this.CreatedOn = DateTime.UtcNow;
             this.fields = new HashSet<SportField>();
         }
+        
+        [Key, ForeignKey("Owner")]// a
+        public string OwnerId { get; set; }// a
 
-        public int Id { get; set; }
-
+        public virtual User Owner { get; set; }// a
+        
         public DateTime CreatedOn { get; set; }
 
         public DateTime? DeletedOn { get; set; }
@@ -42,9 +45,7 @@
         [Required]
         [Range(0, 24)]
         public int WorkHourTo { get; set; }
-
-        public string OwnerId { get; set; }
-        
+                
         [Required]
         public string Address { get; set; }
         

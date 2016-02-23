@@ -127,7 +127,7 @@
         }
 
         [HttpPost]
-        public ActionResult Create(int complexId, FieldRequestViewModel model)
+        public ActionResult Create(string complexId, FieldRequestViewModel model)
         {
             if (!ModelState.IsValid)
             {

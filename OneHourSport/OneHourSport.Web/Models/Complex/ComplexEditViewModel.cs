@@ -9,7 +9,7 @@
     {
         public HttpPostedFileBase EditPicture { get; set; }
 
-        public int Id { get; set; }
+        public string OwnerId { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 5)]

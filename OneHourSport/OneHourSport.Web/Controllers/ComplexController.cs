@@ -33,7 +33,7 @@
         }
 
         [HttpGet]
-        public ActionResult EditComplex(int complexId)
+        public ActionResult EditComplex(string complexId)
         {
             var model = this.complexService
                 .GetById(complexId)
@@ -52,7 +52,7 @@
                 return this.View(model);
             }
 
-            var dbModel = this.complexService.GetById(model.Id).FirstOrDefault();
+            var dbModel = this.complexService.GetById(model.OwnerId).FirstOrDefault();
                        
             dbModel.Picture = this.extractor.ExtractPicture(model.EditPicture);
             dbModel.Name = model.Name;
@@ -64,7 +64,7 @@
             this.complexService.Update(dbModel);
 
 
-            return this.RedirectToActionPermanent(GlobalConstants.ComplexDetailsActionName, new { id = dbModel.Id });
+            return this.RedirectToActionPermanent(GlobalConstants.ComplexDetailsActionName, new { id = dbModel.OwnerId });
         }
 
         [HttpGet]
@@ -98,12 +98,12 @@
 
             }
 
-            return RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = user.SportComplex.Id });
+            return RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = user.SportComplex.OwnerId });
         }
 
 
         [HttpGet]
-        public ActionResult ComplexDetails(int id)
+        public ActionResult ComplexDetails(string id)
         {
             var result = this.complexService
                 .GetById(id)
@@ -112,7 +112,7 @@
 
             var complexFields = this.fieldService
                 .GetAll()
-                .Where(x => x.SportComplex.Id == id)
+                .Where(x => x.SportComplex.OwnerId == id)
                 .To<FieldDisplayViewModel>()
                 .ToList();
 
@@ -129,7 +129,7 @@
 
             if (userToDisplay.IsComplex)
             {
-                isMine = userToDisplay.SportComplex.Id == id;
+                isMine = userToDisplay.SportComplex.OwnerId == id;
             }
 
             result.IsMine = isMine;

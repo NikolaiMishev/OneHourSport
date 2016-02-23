@@ -8,7 +8,7 @@
 
     public class ComplexInputModel
     {
-        public int Id { get; set; }
+        public string OwnerId { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 5)]

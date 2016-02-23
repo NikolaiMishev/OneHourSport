@@ -27,12 +27,12 @@
                 .Take(3);
         }
 
-        public int Create(SportComplex complex)
+        public string Create(SportComplex complex)
         {
             this.complexes.Add(complex);
             this.complexes.SaveChanges();
 
-            return this.complexes.All().Where(x => x.Description == complex.Description).FirstOrDefault().Id;
+            return this.complexes.All().Where(x => x.Description == complex.Description).FirstOrDefault().OwnerId;
             
         }
 
@@ -41,9 +41,9 @@
             return this.complexes.All();
         }
 
-        public IQueryable<SportComplex> GetById(int id)
+        public IQueryable<SportComplex> GetById(string id)
         {
-            return this.complexes.All().Where(x => x.Id == id);
+            return this.complexes.All().Where(x => x.OwnerId == id);
         }
 
         public SportComplex GetByFieldId(int fieldId)
