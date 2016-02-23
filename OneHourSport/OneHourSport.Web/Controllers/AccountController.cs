@@ -60,12 +60,12 @@
             var userToSee = this.userService.GetByUsername(username).FirstOrDefault();
             if (userToSee == null)
             {
-                return this.HttpNotFound();
+                return this.RedirectToAction("NotFound", "Error");
             }
 
             if (userToSee.UserName == "admin")
             {
-                return this.HttpNotFound();
+                return this.RedirectToAction("NotFound", "Error");
             }
 
             var model = this.userService

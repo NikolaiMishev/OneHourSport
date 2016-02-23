@@ -99,7 +99,7 @@
                 .FirstOrDefault();
             if (field == null)
             {
-                return this.HttpNotFound();
+                return this.RedirectToAction("NotFound", "Error");
             }
             this.ViewBag.all = all;
 

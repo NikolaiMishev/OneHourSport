@@ -136,7 +136,7 @@
 
             if (result == null)
             {
-                return this.HttpNotFound();
+                return this.RedirectToAction("NotFound", "Error");
             }
 
             result.MyFields = complexFields;
