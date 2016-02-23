@@ -11,8 +11,10 @@ namespace OneHourSport.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
             var autoMapperConfig = new AutoMapperConfig();
             autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
+
             DatabaseConfig.Initialize();
         }
     }
