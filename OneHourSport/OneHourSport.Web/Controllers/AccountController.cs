@@ -65,7 +65,7 @@
 
             if (userToSee.UserName == "admin")
             {
-                return this.View();
+                return this.HttpNotFound();
             }
 
             var model = this.userService

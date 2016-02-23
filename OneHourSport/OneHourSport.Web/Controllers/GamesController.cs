@@ -30,19 +30,22 @@
 
             if (toBePlayed)
             {
+                // item.Date.Date > DateTime.Now.Date || (item.Date.Date == DateTime.Now.Date && DateTime.Now.Hour < item.HourFrom)
                 result = this.games
-                .GetLastGames(username)
-                .Where(x => x.Date > DateTime.UtcNow)
-                .ProjectTo<GameViewModel>()
-                .ToList();
+                    .GetLastGames(username)
+                    .ProjectTo<GameViewModel>()
+                    .ToList()
+                    .Where(x => x.Date.Date > DateTime.Now.Date || (x.Date.Date == DateTime.Now.Date && DateTime.Now.Hour < x.HourFrom))
+                    .ToList();
             }
             else if (finished)
             {
-               result = this.games
-                .GetLastGames(username)
-               .Where(x => x.Date < DateTime.UtcNow)
-               .ProjectTo<GameViewModel>()
-               .ToList();
+                result = this.games
+                    .GetLastGames(username)
+                    .ProjectTo<GameViewModel>()
+                    .ToList()
+                    .Where(x => x.Date.Date < DateTime.Now.Date || (x.Date.Date == DateTime.Now.Date && DateTime.Now.Hour > x.HourFrom))
+                    .ToList();
             }
             else
             {
