@@ -237,6 +237,8 @@
     <Compile Include="Helpers\ImageConvertor.cs" />
     <Compile Include="Infrastructure\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\IMapFrom.cs" />
+    <Compile Include="Infrastructure\IMapTo.cs" />
+    <Compile Include="Infrastructure\QueryableExtensions.cs" />
     <Compile Include="Models\Account\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Account\ChangePasswordViewModel.cs" />
     <Compile Include="Models\Account\ConfigureTwoFactorViewModel.cs" />

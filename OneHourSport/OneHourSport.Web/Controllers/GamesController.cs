@@ -10,7 +10,7 @@
     using PagedList;
     using Common.Constants;
     using System;
-
+    using Infrastructure;
     [Authorize]
     public class GamesController : Controller
     {
@@ -33,7 +33,7 @@
                 // item.Date.Date > DateTime.Now.Date || (item.Date.Date == DateTime.Now.Date && DateTime.Now.Hour < item.HourFrom)
                 result = this.games
                     .GetLastGames(username)
-                    .ProjectTo<GameViewModel>()
+                    .To<GameViewModel>()
                     .ToList()
                     .Where(x => x.Date.Date > DateTime.Now.Date || (x.Date.Date == DateTime.Now.Date && DateTime.Now.Hour < x.HourFrom))
                     .ToList();
@@ -42,7 +42,7 @@
             {
                 result = this.games
                     .GetLastGames(username)
-                    .ProjectTo<GameViewModel>()
+                    .To<GameViewModel>()
                     .ToList()
                     .Where(x => x.Date.Date < DateTime.Now.Date || (x.Date.Date == DateTime.Now.Date && DateTime.Now.Hour > x.HourFrom))
                     .ToList();
@@ -51,7 +51,7 @@
             {
                 result = this.games
                 .GetLastGames(username)
-               .ProjectTo<GameViewModel>()
+               .To<GameViewModel>()
                .ToList();
             }
             

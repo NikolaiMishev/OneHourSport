@@ -20,7 +20,7 @@
 
         public int SportFieldId { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<OneHourSport.Models.OccupiedHour, OccupiedHourViewModel>("OccupiedHour")
                 .ForMember(r => r.OccupiedById, opts => opts.MapFrom(r => r.OccupiedBy.Id))

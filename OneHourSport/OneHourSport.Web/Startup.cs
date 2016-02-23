@@ -1,6 +1,7 @@
 ﻿using Microsoft.Owin;
 using OneHourSport.Common.Constants;
 using Owin;
+using System.Reflection;
 
 [assembly: OwinStartupAttribute(typeof(OneHourSport.Web.Startup))]
 namespace OneHourSport.Web
@@ -10,7 +11,8 @@ namespace OneHourSport.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            AutoMapperConfig.Execute();
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
             DatabaseConfig.Initialize();
         }
     }

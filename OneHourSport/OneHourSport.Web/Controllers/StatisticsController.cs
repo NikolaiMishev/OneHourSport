@@ -1,12 +1,10 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
     using Models.Statistic;
     using Services.Contracts;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
-    using System.Web.Mvc;
 
     [Authorize(Roles = "complex")]
     public class StatisticsController : Controller

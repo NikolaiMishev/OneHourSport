@@ -3,12 +3,12 @@
     using System.Net;
     using System.Linq;
     using System.Web.Mvc;
-
-    using AutoMapper.QueryableExtensions;
+    
     using Common.Constants;
     using Models.Account.UserSkill;
     using Services.Contracts;
-    
+    using Infrastructure;
+
     [Authorize]
     public class SkillsController : Controller
     {
@@ -40,7 +40,7 @@
         {
             var skills = this.skillService
                 .GetByUserName(username)
-                .ProjectTo<SkillViewModel>()
+                .To<SkillViewModel>()
                 .ToList();
 
             this.ViewBag.username = username;

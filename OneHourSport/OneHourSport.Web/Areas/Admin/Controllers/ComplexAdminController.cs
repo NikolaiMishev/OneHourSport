@@ -1,19 +1,14 @@
 ﻿namespace OneHourSport.Web.Areas.Admin.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Data;
-    using System.Data.Entity;
     using System.Linq;
-    using System.Net;
-    using System.Web;
     using System.Web.Mvc;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using OneHourSport.Models;
     using Data.Repositories;
     using Models.Complex;
-    using AutoMapper.QueryableExtensions;
+    using Infrastructure;
 
     [Authorize(Roles = "admin")]
     public class ComplexAdminController : Controller
@@ -34,7 +29,7 @@
         {
             var result = this.complexes
                  .AllWithDeleted()
-                 .ProjectTo<ComplexViewModel>()
+                 .To<ComplexViewModel>()
                  .ToList()
                  .ToDataSourceResult(request);
 
@@ -57,7 +52,7 @@
                 this.complexes.SaveChanges();
             }
             var postToDisplay = this.complexes.AllWithDeleted()
-                           .ProjectTo<ComplexViewModel>()
+                           .To<ComplexViewModel>()
                            .FirstOrDefault(x => x.Id == sportComplex.Id);
 
             return Json(new[] { sportComplex }.ToDataSourceResult(request, ModelState));

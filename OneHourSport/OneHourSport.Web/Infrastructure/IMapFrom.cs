@@ -1,6 +1,7 @@
 ﻿namespace OneHourSport.Web.Infrastructure
 {
-    public interface IMapFrom<T>
+    public interface IMapFrom<T> 
+        where T : class
     {
     }
 }

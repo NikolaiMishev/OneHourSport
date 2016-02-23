@@ -18,7 +18,7 @@
 
         public string ResieverUsername { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Skill, SkillViewModel>("SkillViewModel")
                 .ForMember(r => r.CreatorUsername, opts => opts.MapFrom(r => r.Creator.UserName))

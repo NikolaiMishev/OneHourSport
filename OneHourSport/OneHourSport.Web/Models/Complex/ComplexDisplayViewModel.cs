@@ -28,7 +28,7 @@
 
         public int Visits { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<SportComplex, ComplexDisplayViewModel>("ComplexDisplay")
                 .ForMember(r => r.PictureId, opts => opts.MapFrom(r => r.Picture.Id))

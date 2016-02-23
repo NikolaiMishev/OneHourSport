@@ -29,7 +29,7 @@
 
         public string CityName { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<SportComplex, ComplexViewModel>("ComplexViewModel")
                .ForMember(r => r.Description, opt => opt.MapFrom(r => r.Description.Length > 50 ? r.Description.Substring(0, 50) + "..." : r.Description))

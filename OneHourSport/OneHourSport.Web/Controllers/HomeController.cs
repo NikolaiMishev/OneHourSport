@@ -10,6 +10,7 @@
     using AutoMapper.QueryableExtensions;
     using Models.Field;
     using Models.Complex;
+    using Infrastructure;
     public class HomeController : Controller
     {
         private IUserService userService;
@@ -30,12 +31,12 @@
         {
             var topFields = this.fieldService
                 .GetTopThree()
-                .ProjectTo<FieldDisplayViewModel>()
+                .To<FieldDisplayViewModel>()
                 .ToList();
 
             var topComplexes = this.complexService
                 .GetTopThree()
-                .ProjectTo<ComplexDisplayViewModel>()
+                .To<ComplexDisplayViewModel>()
                 .ToList();
 
             var model = new HomeTop

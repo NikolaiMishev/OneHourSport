@@ -50,7 +50,7 @@
 
         public int WorkHourTo { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<SportField, FieldDetailsViewModel>("FieldDetails")
                 .ForMember(r => r.Rating, opts => opts.MapFrom(r => r.Ratings.Count > 0 ? (int)Math.Ceiling((double)r.Ratings.Sum(rg => rg.Value) / r.Ratings.Count) : 0))

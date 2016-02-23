@@ -30,7 +30,7 @@
 
         public SportCategory Category { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<SportField, FieldViewModel>("FieldViewModel")
                 .ForMember(r => r.Description, opt => opt.MapFrom(r => r.Description.Length > 50 ? r.Description.Substring(0, 50)+"..." : r.Description));

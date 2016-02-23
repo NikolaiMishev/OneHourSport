@@ -23,7 +23,7 @@
 
         public int FieldId { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<OneHourSport.Models.Comment, CommentViewModel>("CommentViewModel")
                 .ForMember(r => r.CreatorId, opts => opts.MapFrom(r => r.Creator.Id))

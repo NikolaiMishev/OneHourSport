@@ -26,7 +26,7 @@
         public int PictureId { get; set; }
         
         
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<User, UserDetailsViewModel>("UserDetails")
                  .ForMember(r => r.PictureId, opts => opts.MapFrom(r => r.Picture.Id));

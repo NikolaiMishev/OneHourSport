@@ -1,16 +1,15 @@
 ﻿namespace OneHourSport.Web.Areas.Admin.Controllers
 {
-    using System.Data.Entity;
     using System.Linq;
     using System.Web.Mvc;
 
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using AutoMapper.QueryableExtensions;
 
     using OneHourSport.Models;
     using Data.Repositories;
     using Models.Field;
+    using Infrastructure;
 
     [Authorize(Roles = "admin")]
     public class FieldAdminController : Controller
@@ -31,7 +30,7 @@
         {
             var result = this.fields
                 .AllWithDeleted()
-                .ProjectTo<FieldViewModel>()
+                .To<FieldViewModel>()
                 .ToList()
                 .ToDataSourceResult(request);
             
@@ -56,7 +55,7 @@
                 this.fields.SaveChanges();
             }
             var postToDisplay = this.fields.AllWithDeleted()
-                           .ProjectTo<FieldViewModel>()
+                           .To<FieldViewModel>()
                            .FirstOrDefault(x => x.Id == sportField.Id);
 
             return Json(new[] { sportField }.ToDataSourceResult(request, ModelState));

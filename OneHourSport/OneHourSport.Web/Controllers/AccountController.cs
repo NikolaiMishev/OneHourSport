@@ -1,9 +1,6 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
-    using System;
-    using System.Globalization;
     using System.Linq;
-    using System.Security.Claims;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
@@ -12,13 +9,10 @@
     using Microsoft.Owin.Security;
     using OneHourSport.Web.Models.Account;
     using OneHourSport.Models;
-    using AutoMapper.QueryableExtensions;
-    using System.IO;
     using OneHourSport.Services.Contracts;
-    using System.Collections.Generic;
-    using OneHourSport.Web.Models.Account.UserSkill;
     using OneHourSport.Common.Constants;
     using OneHourSport.Web.Helpers;
+    using Infrastructure;
 
     [Authorize]
     public class AccountController : Controller
@@ -58,6 +52,7 @@
         public ActionResult UserDetails(string username)
         {
             var userToSee = this.userService.GetByUsername(username).FirstOrDefault();
+
             if (userToSee == null)
             {
                 return this.RedirectToAction("NotFound", "Error");
@@ -70,7 +65,7 @@
 
             var model = this.userService
                 .GetByUsername(username)
-                .ProjectTo<UserDetailsViewModel>()
+                .To<UserDetailsViewModel>()
                 .FirstOrDefault();
            
             return this.View(model);

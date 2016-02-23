@@ -1,9 +1,8 @@
 ﻿namespace OneHourSport.Web.Controllers
 {
-    using Areas.Admin.Models.Comment;
-    using AutoMapper.QueryableExtensions;
     using Common.Constants;
     using Helpers;
+    using Infrastructure;
     using Models.Field;
     using OneHourSport.Models;
     using PagedList;
@@ -34,7 +33,7 @@
         {
             var model = this.fieldService
                 .GetById(fieldId)
-                .ProjectTo<FieldEditViewModel>()
+                .To<FieldEditViewModel>()
                 .FirstOrDefault();
 
             return this.View(model);
@@ -61,8 +60,12 @@
             }
 
             var dbModel = this.fieldService.GetById(model.Id).FirstOrDefault();
-            dbModel.Pictures.Clear();
-            dbModel.Pictures = ExtractFieldPictures(model.EditProfilePictures);
+            if (model.EditProfilePictures.First() != null)
+            {
+                dbModel.Pictures.Clear();
+                dbModel.Pictures = ExtractFieldPictures(model.EditProfilePictures);
+            }
+           
             dbModel.isCovered = model.isCovered;
             dbModel.Name = model.Name;
             dbModel.Description = model.Description;
@@ -70,7 +73,7 @@
 
             this.fieldService.Update(dbModel);
 
-            return RedirectToAction(GlobalConstants.FieldDetailsActionName, new { id = dbModel.Id });
+            return this.RedirectToActionPermanent(GlobalConstants.FieldDetailsActionName, new { id = dbModel.Id });
         }
 
         [HttpGet]
@@ -80,7 +83,7 @@
         {
             var result = this.fieldService
                 .GetAllByCategory(category)
-                .ProjectTo<FieldDisplayViewModel>()
+                .To<FieldDisplayViewModel>()
                 .ToList();
 
             this.ViewBag.category = category;
@@ -95,8 +98,9 @@
         {
             var field = this.fieldService
                 .GetById(id)
-                .ProjectTo<FieldDetailsViewModel>()
+                .To<FieldDetailsViewModel>()
                 .FirstOrDefault();
+
             if (field == null)
             {
                 return this.RedirectToAction("NotFound", "Error");
@@ -131,7 +135,10 @@
             }
 
             var complex = this.complexService.GetById(complexId).FirstOrDefault();
-            var modelAsEntity = AutoMapper.Mapper.Map<FieldRequestViewModel, OneHourSport.Models.SportField>(model);
+
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+
+            var modelAsEntity = mapper.Map<SportField>(model);
 
 
             modelAsEntity.Pictures = ExtractFieldPictures(model.ProfilePictures);
@@ -140,7 +147,7 @@
 
             this.complexService.Update(complex);
 
-            return RedirectToAction(GlobalConstants.FieldDetailsActionName, new { id = modelAsEntity.Id });
+            return this.RedirectToActionPermanent(GlobalConstants.FieldDetailsActionName, new { id = modelAsEntity.Id });
         }
 
         private List<Picture> ExtractFieldPictures(IEnumerable<HttpPostedFileBase> pics)

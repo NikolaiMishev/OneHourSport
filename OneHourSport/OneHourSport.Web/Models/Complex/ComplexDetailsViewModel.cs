@@ -34,7 +34,7 @@
 
         public ICollection<FieldDisplayViewModel> MyFields { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<SportComplex, ComplexDetailsViewModel>("ComplexDetails")
                  .ForMember(r => r.PictureId, opts => opts.MapFrom(r => r.Picture.Id))

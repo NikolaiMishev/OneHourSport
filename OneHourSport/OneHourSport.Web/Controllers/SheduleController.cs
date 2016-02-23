@@ -4,12 +4,12 @@
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
-
-    using AutoMapper.QueryableExtensions;
+    
     using OneHourSport.Web.Models.OccupiedHour;
     using OneHourSport.Common.Constants;
     using OneHourSport.Services.Contracts;
     using OneHourSport.Web.Models.Shedule;
+    using Infrastructure;
 
     [Authorize]
     public class SheduleController : Controller
@@ -36,7 +36,7 @@
 
             var hours = this.sheduleService
                 .GetAllHoursByDateAndField(date, fieldId)
-                .ProjectTo<OccupiedHourViewModel>()
+                .To<OccupiedHourViewModel>()
                 .ToList();
 
             var complex = this.complexService.GetByFieldId(fieldId);

@@ -1,19 +1,15 @@
 ﻿namespace OneHourSport.Web.Areas.Admin.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Data;
-    using System.Data.Entity;
     using System.Linq;
-    using System.Net;
-    using System.Web;
     using System.Web.Mvc;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using OneHourSport.Models;
     using Data.Repositories;
-    using AutoMapper.QueryableExtensions;
     using Web.Models.Picture;
+    using Infrastructure;
+
     [Authorize(Roles = "admin")]
     public class PicturesAdminController : Controller
     {
@@ -33,7 +29,7 @@
         {
             var result = this.pictures
                .All()
-               .ProjectTo<PictureViewModel>()
+               .To<PictureViewModel>()
                .ToList()
                .ToDataSourceResult(request);
 

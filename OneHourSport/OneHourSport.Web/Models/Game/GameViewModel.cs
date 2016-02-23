@@ -17,7 +17,7 @@
         
         public int SportFieldId { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<OneHourSport.Models.OccupiedHour, GameViewModel>("Gameview")
                 .ForMember(r => r.FieldName, opts => opts.MapFrom(r => r.SportField.Name));

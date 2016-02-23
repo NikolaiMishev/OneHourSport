@@ -7,7 +7,7 @@
     using Infrastructure;
     using OneHourSport.Models;
    
-    public class ComplexRequestViewModel : IMapFrom<SportComplex>, IHaveCustomMappings
+    public class ComplexRequestViewModel : IMapFrom<SportComplex>, IMapTo<SportComplex>, IHaveCustomMappings
     {
         [Required]
         [StringLength(50, MinimumLength = 5)]
@@ -33,7 +33,7 @@
         [Required]
         public string CityName { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<ComplexRequestViewModel, SportComplex>("ComplexCreate")
                 .ForMember(r => r.City, opts => opts.MapFrom(r => new City { Name = r.CityName }));

@@ -9,11 +9,12 @@
     using OneHourSport.Models;
     using Services.Contracts;
     
-    using AutoMapper.QueryableExtensions;
     using PagedList;
 
     using Common.Constants;
     using Helpers;
+    using AutoMapper;
+    using Infrastructure;
 
     [Authorize]
     public class ComplexController : Controller
@@ -38,7 +39,7 @@
         {
             var model = this.complexService
                 .GetById(complexId)
-                .ProjectTo<ComplexEditViewModel>()
+                .To<ComplexEditViewModel>()
                 .FirstOrDefault();
 
             return this.View(model);
@@ -54,25 +55,8 @@
             }
 
             var dbModel = this.complexService.GetById(model.Id).FirstOrDefault();
-
-
-            Picture image = null;
-            if (model.EditPicture != null)
-            {
-                using (var memory = new MemoryStream())
-                {
-                    model.EditPicture.InputStream.CopyTo(memory);
-                    var content = memory.GetBuffer();
-
-                    image = new Picture
-                    {
-                        Content = content,
-                        FileExtension = model.EditPicture.FileName.Split(new[] { '.' }).Last()
-                    };
-                }
-            }
-
-            dbModel.Picture = image;
+                       
+            dbModel.Picture = this.extractor.ExtractPicture(model.EditPicture);
             dbModel.Name = model.Name;
             dbModel.Address = model.Address;
             dbModel.Description = model.Description;
@@ -82,7 +66,7 @@
             this.complexService.Update(dbModel);
 
 
-            return this.RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = dbModel.Id });
+            return this.RedirectToActionPermanent(GlobalConstants.ComplexDetailsActionName, new { id = dbModel.Id });
         }
 
         [HttpGet]
@@ -91,7 +75,7 @@
         {
             var result = this.complexService
                 .GetAll()
-                .ProjectTo<ComplexDisplayViewModel>()
+                .To<ComplexDisplayViewModel>()
                 .ToList();
 
             this.ViewBag.action = "AllComplexes";
@@ -125,13 +109,13 @@
         {
             var result = this.complexService
                 .GetById(id)
-                .ProjectTo<ComplexDetailsViewModel>()
+                .To<ComplexDetailsViewModel>()
                 .FirstOrDefault();
 
             var complexFields = this.fieldService
                 .GetAll()
                 .Where(x => x.SportComplex.Id == id)
-                .ProjectTo<FieldDisplayViewModel>()
+                .To<FieldDisplayViewModel>()
                 .ToList();
 
             if (result == null)
@@ -182,7 +166,10 @@
             {
                 return this.View(model);
             }
-            var modelAsDb = AutoMapper.Mapper.Map<ComplexRequestViewModel, OneHourSport.Models.SportComplex>(model);
+
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+
+            var modelAsDb = mapper.Map<SportComplex>(model);
             
             modelAsDb.Picture = this.extractor.ExtractPicture(model.ProfilePicture);
 
@@ -192,7 +179,7 @@
             currentUser.SportComplex = modelAsDb;
             this.userService.UpdateUserComplex(currentUser);
 
-            return this.RedirectToAction(GlobalConstants.ComplexDetailsActionName, new { id = complexId });
+            return this.RedirectToActionPermanent(GlobalConstants.ComplexDetailsActionName, new { id = complexId });
         }
     }
 }
