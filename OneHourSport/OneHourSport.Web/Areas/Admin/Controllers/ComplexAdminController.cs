@@ -51,11 +51,11 @@
 
                 this.complexes.SaveChanges();
             }
-            var postToDisplay = this.complexes.AllWithDeleted()
+            var complexToDisplay = this.complexes.AllWithDeleted()
                            .To<ComplexViewModel>()
                            .FirstOrDefault(x => x.Id == sportComplex.Id);
 
-            return Json(new[] { sportComplex }.ToDataSourceResult(request, ModelState));
+            return Json(new[] { complexToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

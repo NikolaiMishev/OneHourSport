@@ -27,7 +27,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<OneHourSport.Models.Comment, CommentViewModel>("CommentViewModel")
+            configuration.CreateMap<OneHourSport.Models.Comment, CommentViewModel>()
                 .ForMember(r => r.FieldName, opt => opt.MapFrom(r => r.Field.Name))
                 .ForMember(r => r.CreatorName, opt => opt.MapFrom(r => r.Creator.UserName));
         }

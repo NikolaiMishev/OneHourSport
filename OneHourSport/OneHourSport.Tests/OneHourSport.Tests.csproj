@@ -133,6 +133,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OneHourSport.Common\OneHourSport.Common.csproj">
+      <Project>{3e7188cb-59ae-49cd-94be-5d9931a937f2}</Project>
+      <Name>OneHourSport.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OneHourSport.Web\OneHourSport.Web.csproj">
       <Project>{d85cff0a-f52f-451f-8050-3e5bf6a7c242}</Project>
       <Name>OneHourSport.Web</Name>

@@ -9,7 +9,7 @@
     using Data.Repositories;
     using Models.Comment;
     using Infrastructure;
-
+    using System.Data.Entity.Validation;
     [Authorize(Roles = "admin")]
     public class CommentAdminController : Controller
     {
@@ -44,13 +44,15 @@
                 var entity = this.comments.AllWithDeleted().Where(x => x.Id == comment.Id).FirstOrDefault();
                 entity.Text = comment.Text;
                 
+              
                 this.comments.SaveChanges();
             }
-            var postToDisplay = this.comments.AllWithDeleted()
+
+            var commentToDisplay = this.comments.AllWithDeleted()
                            .To<CommentViewModel>()
                            .FirstOrDefault(x => x.Id == comment.Id);
 
-            return Json(new[] { comment }.ToDataSourceResult(request, ModelState));
+            return Json(new[] { commentToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

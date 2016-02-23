@@ -26,8 +26,7 @@
         public string Text { get; set; }
 
         public string CreatorId { get; set; }
-
-        [Required]
+        
         public virtual User Creator { get; set; }
         
         public int FieldId { get; set; }

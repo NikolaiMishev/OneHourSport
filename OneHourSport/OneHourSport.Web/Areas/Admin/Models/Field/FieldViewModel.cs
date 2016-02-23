@@ -32,7 +32,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<SportField, FieldViewModel>("FieldViewModel")
+            configuration.CreateMap<SportField, FieldViewModel>()
                 .ForMember(r => r.Description, opt => opt.MapFrom(r => r.Description.Length > 50 ? r.Description.Substring(0, 50)+"..." : r.Description));
         }
     }

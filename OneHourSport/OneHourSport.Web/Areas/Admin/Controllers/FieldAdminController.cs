@@ -49,16 +49,14 @@
                 entity.isAprooved = sportField.isAprooved;
                 entity.Category = sportField.Category;
                 entity.PricePerHour = sportField.PricePerHour;
-
-
-
+                
                 this.fields.SaveChanges();
             }
-            var postToDisplay = this.fields.AllWithDeleted()
+            var fieldToDisplay = this.fields.AllWithDeleted()
                            .To<FieldViewModel>()
                            .FirstOrDefault(x => x.Id == sportField.Id);
 
-            return Json(new[] { sportField }.ToDataSourceResult(request, ModelState));
+            return Json(new[] { fieldToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
