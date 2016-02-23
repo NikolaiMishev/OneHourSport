@@ -17,8 +17,7 @@
     @Html.Label(category.ToString()) 
     if (canBeEndorsed && isNotTheSameUser)
     {
-        @* Add endosment action *@
-        <button class="text-right btn btn-link" onclick="endoseSkill('@this.ViewBag.username','@category')" style="font-size: 1.5em;margin-left: 5px;" title="Endorse">+</button>
+        <button class="text-right btn btn-link cpojer-links" onclick="endoseSkill('@this.ViewBag.username','@category')" style="font-size: 1.5em;margin-left: 5px;" title="Endorse"><a>+</a></button>
     }
     <div class="progress text-right">
         <div class="progress-bar" role="progressbar" aria-valuenow="@currentSkillsValue"
