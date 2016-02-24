@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     public class SportComplex : IDeletableEntity, IAuditInfo
     {
         private ICollection<SportField> fields;
@@ -15,10 +16,10 @@
             this.fields = new HashSet<SportField>();
         }
         
-        [Key, ForeignKey("Owner")]// a
-        public string OwnerId { get; set; }// a
+        [Key, ForeignKey("Owner")]
+        public string OwnerId { get; set; }
 
-        public virtual User Owner { get; set; }// a
+        public virtual User Owner { get; set; }
         
         public DateTime CreatedOn { get; set; }
 

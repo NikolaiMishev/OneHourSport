@@ -1,85 +1,10 @@
-﻿@model OneHourSport.Web.Models.HomeTop.HomeTop
-
-@{
+﻿@{
     ViewBag.Title = "Home Page";
-    var index = 1;
 }
 
-<div class="">
-    <hr />
-        <h2>Top Complexes</h2>
-    <hr style="border-top: 1px solid #93E888;"/>
-</div>
+@Html.Action("IndexCache");
 
-<div class="row">
-    @* Render partial home *@
-    @foreach (var item in Model.TopComplexes)
-    {
-        <div class="col-md-4">
-            @* Image goes here *@
-            <div class="col-md-5">
-                <h4 class="cpojer-links"><a href="@Url.Action("ComplexDetails", "Complex",new { area = string.Empty, id = item.Id })" class="">@item.Name</a></h4>
-                <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = item.PictureId })" class="img-responsive homedisplayImage" />
-            </div>
-            @* Info gose here *@
-            <div class="col-md-7">
-                <br />
-                <br />
 
-                <div>
-                    @Html.Label("City: ")
-                    @Html.DisplayFor(m => item.CityName)
-                </div>
-                <div>
-                    @Html.Label("Address: ")
-                    @Html.DisplayFor(m => item.Address)
-                </div>
-                <div>
-                    @Html.Label("Visits: ")
-                    @Html.DisplayFor(m => item.Visits)
-                </div>
-            </div>
-        </div>
-
-    }
-</div>
-
-<div class="">
-    <hr />
-    <h2>Top Fields</h2>
-    <hr style="border-top: 1px solid #93E888;" />
-</div>
-
-<div class="row">
-    @foreach (var item in Model.TopFields)
-    {
-        <div class="col-md-4">
-            @* Image goes here *@
-            <div class="col-md-5">
-                <h4 class="cpojer-links"><a href="@Url.Action("FieldDetails", "Field",new { area = string.Empty, id = item.Id })">@item.Name</a></h4>
-                <img src="@Url.Action("GetImage", "Picture", new { area = string.Empty, id = item.PictureId })" class="img-responsive homedisplayImage" />
-            </div>
-            @* Info gose here *@
-            <div class="col-md-7">
-                <br />
-                <br />
-                <div>
-                    <input id="@index-xs" value="@item.Rating" class="rating-loading ratingTOBe" data-max="5" data-step="1" data-size="xs">
-                </div>
-                <div>
-                    @Html.Label("Category: ")
-                    @Html.DisplayFor(m => item.Category)
-                </div>
-                <div>
-                    @Html.Label("Price: ")
-                    @Html.DisplayFor(m => item.PricePerHour)
-                </div>
-            </div>
-        </div>
-        index++;
-
-    }
-</div>
 @section styles{
     @Styles.Render("~/Content/rating")
 }
@@ -92,4 +17,4 @@
 
         });
     </script>
-    }
+}

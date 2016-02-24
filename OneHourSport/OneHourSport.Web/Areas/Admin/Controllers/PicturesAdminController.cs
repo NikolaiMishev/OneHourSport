@@ -41,7 +41,7 @@
         {
             var pic = this.pictures.AllWithDeleted().Where(x => x.Id == picture.PictureId).FirstOrDefault();
 
-            this.pictures.Delete(pic);
+            this.pictures.HardDelete(pic);
             this.pictures.SaveChanges();
 
             return Json(new[] { picture }.ToDataSourceResult(request, ModelState));

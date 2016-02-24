@@ -53,11 +53,11 @@
             @if (Model.IsMine)
             {
                 <div class="detailsBtn">
-                    @Html.ActionLink("Add field", "Create", "Field", new { area = string.Empty, complexId = Model.Id }, new { @class = "btn btn-default pull-right" })
+                    @Html.ActionLink("Add field", "Create", "Field", new { area = string.Empty, complexId = Model.OwnerId }, new { @class = "btn btn-default pull-right" })
                 </div>
              
                 <div class="detailsBtn">
-                    @Html.ActionLink("Edit", "EditComplex", "Complex", new { area = string.Empty, complexId = Model.Id }, new { @class = "btn btn-warning pull-right" })
+                    @Html.ActionLink("Edit", "EditComplex", "Complex", new { area = string.Empty, complexId = Model.OwnerId }, new { @class = "btn btn-warning pull-right" })
                 </div>
             }
         </div>

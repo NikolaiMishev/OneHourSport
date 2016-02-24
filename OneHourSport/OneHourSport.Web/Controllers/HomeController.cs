@@ -26,18 +26,25 @@
             this.complexService = complexService;
             this.fieldService = fieldService;
         }
-
+        
         public ActionResult Index()
+        {
+            return View();
+        }
+        
+        //[OutputCache(Duration = 60 * 30)]
+        [ChildActionOnly]
+        public ActionResult IndexCache()
         {
             var topFields = this.fieldService
                 .GetTopThree()
                 .To<FieldDisplayViewModel>()
                 .ToList();
-
+            
             var topComplexes = this.complexService
-                .GetTopThree()
-                .To<ComplexDisplayViewModel>()
-                .ToList();
+              .GetTopThree()
+              .To<ComplexDisplayViewModel>()
+              .ToList();
 
             var model = new HomeTop
             {
@@ -45,21 +52,7 @@
                 TopFields = topFields
             };
 
-            return View(model);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return this.PartialView("_HomeCachePartial", model);
         }
     }
 }

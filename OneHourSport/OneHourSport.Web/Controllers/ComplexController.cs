@@ -53,8 +53,11 @@
             }
 
             var dbModel = this.complexService.GetById(model.OwnerId).FirstOrDefault();
-                       
-            dbModel.Picture = this.extractor.ExtractPicture(model.EditPicture);
+            if (model.EditPicture != null)
+            {
+                dbModel.Picture = this.extractor.ExtractPicture(model.EditPicture);
+            }
+            
             dbModel.Name = model.Name;
             dbModel.Address = model.Address;
             dbModel.Description = model.Description;
@@ -172,6 +175,8 @@
             modelAsDb.Picture = this.extractor.ExtractPicture(model.ProfilePicture);
 
             var currentUser = this.userService.GetByUsername(this.User.Identity.Name).FirstOrDefault();
+            modelAsDb.OwnerId = currentUser.Id;
+
             var complexId = this.complexService.Create(modelAsDb);
 
             currentUser.SportComplex = modelAsDb;

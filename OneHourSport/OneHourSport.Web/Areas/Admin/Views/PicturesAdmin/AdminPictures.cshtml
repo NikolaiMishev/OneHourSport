@@ -10,7 +10,7 @@
       {
           columns.Bound(e => e.PictureId).ClientTemplate(
 
-              "<img src='" + Url.Action("GetImage", "Picture", new { area = string.Empty, id = "#= PictureId #" }) + "' alt='Some Image' />"
+              "<img style='height:200px;' src='" + Url.Action("GetImage", "Picture", new { area = string.Empty, id = "#= PictureId #" }) + "' alt='Some Image' />"
               ).Width(340).Title("Picture");
           columns.Command(command => { command.Destroy(); }).Width(180);
       })

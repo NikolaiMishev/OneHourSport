@@ -120,7 +120,7 @@
         }
 
         [HttpGet]
-        public ActionResult Create(int complexId)
+        public ActionResult Create(string complexId)
         {
             this.ViewBag.ComplexId = complexId;
             return this.View();

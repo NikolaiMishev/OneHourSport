@@ -30,7 +30,7 @@
       .Scrollable(s => s.Height(400))
       .DataSource(dataSource => dataSource
           .Ajax()
-          .Model(model => model.Id(p => p.Id))
+          .Model(model => model.Id(p => p.OwnerId))
           .Read(read => read.Action("SportComplexes_Read", "ComplexAdmin"))
           .Update(update => update.Action("SportComplexes_Update", "ComplexAdmin"))
           .Destroy(destroy => destroy.Action("SportComplexes_Destroy", "ComplexAdmin"))

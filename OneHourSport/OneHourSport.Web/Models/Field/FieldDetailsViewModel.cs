@@ -24,7 +24,7 @@
         
         public decimal PricePerHour { get; set; }
 
-        public int SportComplexId { get; set; }
+        public string SportComplexId { get; set; }
 
         public SportComplex SportComplex { get; set; }
 

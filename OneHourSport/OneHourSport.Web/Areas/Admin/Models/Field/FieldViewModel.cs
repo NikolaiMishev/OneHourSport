@@ -6,7 +6,7 @@
     using OneHourSport.Models;
     using OneHourSport.Web.Infrastructure;
 
-    public class FieldViewModel : IMapFrom<SportField>, IHaveCustomMappings
+    public class FieldViewModel : IMapFrom<SportField>
     {
         public int Id { get; set; }
 
@@ -29,11 +29,6 @@
         public bool isCovered { get; set; }
 
         public SportCategory Category { get; set; }
-
-        public void CreateMappings(IMapperConfiguration configuration)
-        {
-            configuration.CreateMap<SportField, FieldViewModel>()
-                .ForMember(r => r.Description, opt => opt.MapFrom(r => r.Description.Length > 50 ? r.Description.Substring(0, 50)+"..." : r.Description));
-        }
+        
     }
 }

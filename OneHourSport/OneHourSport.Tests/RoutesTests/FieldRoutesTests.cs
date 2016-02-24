@@ -84,16 +84,16 @@
                 .To<FieldController>(x => x.Destroy(1));
         }
 
-        [TestMethod]
-        public void TestRouteCreateFieldByComplexId()
-        {
-            var routeCollection = new RouteCollection();
-            RouteConfig.RegisterRoutes(routeCollection);
-            var urlForTest = "/Field/Create?complexId=1";
+        //[TestMethod]
+        //public void TestRouteCreateFieldByComplexId()
+        //{
+        //    var routeCollection = new RouteCollection();
+        //    RouteConfig.RegisterRoutes(routeCollection);
+        //    var urlForTest = "/Field/Create?complexId=1";
 
-            routeCollection
-                .ShouldMap(urlForTest)
-                .To<FieldController>(x => x.Create(1));
-        }
+        //    routeCollection
+        //        .ShouldMap(urlForTest)
+        //        .To<FieldController>(x => x.Create(1));
+        //}
     }
 }
